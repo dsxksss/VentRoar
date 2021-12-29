@@ -1,0 +1,234 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+  sm	640 像素	@media (min-width: 640px) { ... }
+  md	768 像素	@media (min-width: 768px) { ... }
+  lg	1024像素	@media (min-width: 1024px) { ... }
+  xl	1280 像素	@media (min-width: 1280px) { ... }
+  2xl	1536 像素	@media (min-width: 1536px) { ... }
+*/
+
+/* 动画设置区 */
+/* 从两边模糊渐入动画 */
+.an-1 {
+  animation-name: focus-in-expand;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: none;
+}
+@keyframes focus-in-expand {
+  0% {
+    letter-spacing: -1em;
+    filter: blur(10px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+/* 从顶部模糊渐入动画 */
+.an-2 {
+  animation-name: text-blur-out-top;
+  animation-duration: 1.7s;
+  animation-timing-function: ease;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: none;
+}
+@keyframes text-blur-out-top {
+  0% {
+    letter-spacing: -0.5em;
+    transform: translateY(-400px);
+    filter: blur(12px) opacity(0%);
+  }
+  100% {
+    transform: translateY(0);
+    filter: blur(0.01);
+  }
+}
+
+/* 从上方至下渐显 */
+.an-3 {
+  animation-name: fade-in-top;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: none;
+}
+@keyframes fade-in-top {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* 从向上下两边同时拉扯 */
+.an-4 {
+  animation-name: slit-in-horizontal;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: none;
+}
+@keyframes slit-in-horizontal {
+  0% {
+    transform: translateZ(-800px) rotateX(90deg);
+    opacity: 0;
+  }
+  50% {
+    transform: translateZ(-160px) rotateX(87deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateZ(0) rotateX(0);
+  }
+}
+
+/* 从左边模糊旋转渐入 */
+.an-5 {
+  animation-name: roll-in-blurred-left;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: none;
+}
+@keyframes roll-in-blurred-left {
+  0% {
+    transform: translateX(-1000px) rotate(-720deg);
+    filter: blur(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0) rotate(0deg);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+/* 从下至上缓入 */
+.an-6 {
+  animation-name: slide-in-bck-bottom;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: none;
+}
+@keyframes slide-in-bck-bottom {
+  0% {
+    transform: translateZ(700px) translateY(300px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateZ(0) translateY(0);
+    opacity: 1;
+  }
+}
+/* 动画设置区 */
+
+/* 清除自带浏览器滚动条样式 */
+::-webkit-scrollbar {
+  display: none;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  outline: none;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+input[type="text"],
+input[type="password"] {
+  text-align: center;
+  border-radius: 20px;
+  border: 1.7px solid rgb(10, 11, 12);
+}
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border: 1.7px solid rgb(2, 129, 255);
+}
+
+.bg-all {
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.08'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.at-item {
+  color: #3079ed;
+  animation-name: text-focus-in;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: none;
+  /* shorthand 
+  animation: text-focus-in 1s ease 0s 1 normal none;
+  */
+}
+
+@keyframes text-focus-in {
+  0% {
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+.bt-style {
+  @apply transition hover:duration-500 hover:text-black;
+}
+
+.loginPageStyle {
+  /* border-left-width: 9px; */
+  /* 样式 */
+  @apply bg-white p-6 text-center rounded-2xl 
+  shadow-lg border-y-0 border-l-blue-600 
+  border-y-gray-100 border-solid border-l-[7px];
+  /* 布局 */
+  @apply h-[20rem] xl:h-[25rem] w-[20rem] sm:w-[30rem] lg:w-[60rem] xl:w-[70rem] 2xl:w-[100rem]
+  flex justify-evenly items-center flex-col lg:flex-row;
+}
+
+.ventroar-size {
+  letter-spacing: 0.2rem;
+  /* 样式 */
+  @apply text-blue-600 font-bold font-sans text-5xl;
+  /* 布局 */
+  @apply lg:text-[7rem] xl:text-[8rem] lg:mr-[2rem];
+}
+
+.button-style {
+  /* 字体边框等样式 */
+  @apply font-sans text-white shadow-2xl ease-in-out uppercase 
+  tracking-widest bg-blue-500 py-1 px-5 font-bold rounded-xl focus:outline-none;
+  /* 动画设置 -translate-y:向y轴移动，duration:动画播放时长*/
+  @apply hover:-translate-y-1 hover:scale-110 
+  hover:bg-indigo-500 duration-300 hover:text-black;
+}
