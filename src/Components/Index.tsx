@@ -28,7 +28,14 @@ class Index extends React.Component {
         <main>
           <Routes>
             {/* 主页 */}
-            <Route path="/" element={<HomePage />}></Route>
+            <Route
+              path="/"
+              element={
+                <div className="mx-4">
+                  <HomePage />
+                </div>
+              }
+            ></Route>
             {/* 心墙页 */}
             <Route path="/HeartPage" element={<HeartPage />}></Route>
             {/* 用户主页 */}
