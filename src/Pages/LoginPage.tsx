@@ -57,7 +57,7 @@ const Login = () => {
 
           <div id="inputButton">
             <button
-              className="button-style"
+              className="login-button-style"
               onClick={() => DataByTrue(getUserData(), userName, userPassword)}
             >
               l o g i n

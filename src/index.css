@@ -85,7 +85,7 @@
 .an-3 {
   animation-name: fade-in-top;
   animation-duration: 1s;
-  animation-timing-function: ease;
+  animation-timing-function: var(--ease-out-cubic);
   animation-delay: 0s;
   animation-iteration-count: 1;
   animation-direction: normal;
@@ -126,11 +126,11 @@
   }
 }
 
-/* 从左边模糊旋转渐入 */
+/* 从右边模糊渐入 */
 .an-5 {
   animation-name: roll-in-blurred-left;
   animation-duration: 1s;
-  animation-timing-function: ease-out;
+  animation-timing-function: ease;
   animation-delay: 0s;
   animation-iteration-count: 1;
   animation-direction: normal;
@@ -138,9 +138,14 @@
 }
 @keyframes roll-in-blurred-left {
   0% {
-    transform: translateX(-1000px) rotate(-720deg);
+    transform: translateX(1000px);
     filter: blur(50px);
     opacity: 0;
+  }
+  50% {
+    transform: translateX(500px);
+    filter: blur(50px);
+    opacity: 0.4;
   }
   100% {
     transform: translateX(0) rotate(0deg);
@@ -217,31 +222,6 @@ input[type="password"]:focus {
   background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.08'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
-.at-item {
-  color: #3079ed;
-  animation-name: text-focus-in;
-  animation-duration: 1s;
-  animation-timing-function: ease;
-  animation-delay: 0s;
-  animation-iteration-count: 1;
-  animation-direction: normal;
-  animation-fill-mode: none;
-  /* shorthand 
-  animation: text-focus-in 1s ease 0s 1 normal none;
-  */
-}
-
-@keyframes text-focus-in {
-  0% {
-    filter: blur(12px);
-    opacity: 0;
-  }
-  100% {
-    filter: blur(0);
-    opacity: 1;
-  }
-}
-
 .bt-style {
   @apply transition hover:duration-500 hover:text-black;
 }
@@ -265,7 +245,7 @@ input[type="password"]:focus {
   @apply lg:text-[7rem] xl:text-[8rem] lg:mr-[2rem];
 }
 
-.button-style {
+.login-button-style {
   /* 字体边框等样式 */
   @apply font-sans text-white shadow-2xl ease-in-out uppercase 
   tracking-widest bg-blue-500 py-1 px-5 font-bold rounded-xl focus:outline-none;
