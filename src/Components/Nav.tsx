@@ -1,7 +1,12 @@
 import { Menu } from "@headlessui/react";
 //导入headlessui组件依赖，来方便的创建可交互样式;
 import { ViewListIcon, XIcon } from "@heroicons/react/solid";
-import { HeartIcon } from "@heroicons/react/outline";
+import {
+  HeartIcon,
+  UserCircleIcon,
+  HomeIcon,
+  LightBulbIcon,
+} from "@heroicons/react/outline";
 import { Link, useLocation } from "react-router-dom";
 // useLocation 是获取当前页面路由的一些数据
 
@@ -22,15 +27,18 @@ const Nav = () => {
 
       <div className="mr-7 font-bold text-slate-300 mt-3 hidden sm:block space-x-7">
         <Link className={ShowActive("/")} to={"/"}>
+          <HomeIcon className="inline-block h-5 mb-1 w-5" />
           主页
         </Link>
         <Link className={ShowActive("/HeartPage")} to={"/HeartPage"}>
           <HeartIcon className="inline-block h-5 mb-1 w-5" />墙
         </Link>
         <Link className={ShowActive("/HelpPage")} to={"/HelpPage"}>
-          帮助/关于
+          <LightBulbIcon className="inline-block h-5 mb-1 w-5" />
+          帮助
         </Link>
         <Link className={ShowActive("/LoginPage")} to={"/LoginPage"}>
+          <UserCircleIcon className="inline-block h-5 mb-1 w-5" />
           login登入
         </Link>
       </div>
@@ -51,21 +59,25 @@ const Nav = () => {
           </Menu.Button>
           <Menu.Item>
             <Link className={ShowActive("/")} to={"/"}>
+              <HomeIcon className="inline-block h-5 mb-1 w-5" />
               主页
             </Link>
           </Menu.Item>
           <Menu.Item>
             <Link className={ShowActive("/HeartPage")} to={"/HeartPage"}>
+              查看
               <HeartIcon className="inline-block h-5 mb-1 w-5" />墙
             </Link>
           </Menu.Item>
           <Menu.Item>
             <Link className={ShowActive("/HelpPage")} to={"/HelpPage"}>
+              <LightBulbIcon className="inline-block h-5 mb-1 w-5" />
               帮助/关于
             </Link>
           </Menu.Item>
           <Menu.Item>
             <Link className={ShowActive("/LoginPage")} to={"/LoginPage"}>
+              <UserCircleIcon className="inline-block h-5 mb-1 w-5" />
               login登入
             </Link>
           </Menu.Item>

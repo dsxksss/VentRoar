@@ -1,5 +1,5 @@
 function HelpPage() {
-  return <div>HelpPage</div>;
+  return <div className=" h-[93vh]">HelpPage</div>;
 }
 
 export default HelpPage;

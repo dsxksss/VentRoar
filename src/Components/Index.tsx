@@ -46,7 +46,7 @@ class Index extends React.Component {
             <Route
               path="/LoginPage"
               element={
-                <div className="flex justify-center items-center h-[90vh]">
+                <div className="flex justify-center items-center h-[93vh]">
                   <Login />
                 </div>
               }
@@ -59,6 +59,7 @@ class Index extends React.Component {
             <Route path="/Su" element={<SuPage />}></Route>
           </Routes>
         </main>
+        <Footer></Footer>
       </div>
     );
   }

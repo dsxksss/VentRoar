@@ -24,7 +24,7 @@ function PopularPage(props: any) {
         <div className="w-screen space-y-5">
           {list.map((user: any) => (
             <div key={user.id}>
-              <div className="an-6 flex-col bg-opacity-50 py-5 mx-4 max-w-md sm:mx-auto bg-white border-l-blue-500 border-l-[7px] border-solid rounded-lg shadow-2xl flex justify-center space-x-4">
+              <div className="an-6 flex-col bg-opacity-50 py-5 max-w-[19rem] sm:max-w-xl sm:mx-auto mx-auto bg-white border-l-blue-500 border-l-[7px] border-solid rounded-lg shadow-2xl flex justify-center space-x-4">
                 <div>
                   <div className="text-2xl pb-3 px-3 font-medium border-gray-800 border-b text-black">
                     <p
