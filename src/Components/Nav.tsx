@@ -9,7 +9,7 @@ const Nav = () => {
   const { pathname } = useLocation();
   //FUNCTION:动态显示当前点击的网页
   const ShowActive = (pagaName: string) =>
-    pathname === pagaName ? "" : "bt-style";
+    pathname === pagaName ? "text-black" : "bt-style";
 
   //FUNCTION:手机端点击导航栏显示
   const ShowListNav = (isopen: boolean) => (isopen ? "" : "hidden");
@@ -37,39 +37,9 @@ const Nav = () => {
         </Link>
       </div>
 
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="mr-2 mt-3 sm:hidden"
-      >
+      <button className="mr-2 mt-3 sm:hidden">
         <ViewListIcon className="h-5 w-5 text-black" />
       </button>
-
-      <div className={ShowListNav(isOpen)}>
-        <div className="bg-gray-900 h-[93vh] text-white">
-          <ul>
-            <li>
-              <Link className={ShowActive("/")} to={"/"}>
-                主页
-              </Link>
-            </li>
-            <li>
-              <Link className={ShowActive("/HeartPage")} to={"/HeartPage"}>
-                <HeartIcon className="inline-block h-5 mb-1 w-5" />墙
-              </Link>
-            </li>
-            <li>
-              <Link className={ShowActive("/HelpPage")} to={"/HelpPage"}>
-                帮助/关于
-              </Link>
-            </li>
-            <li>
-              <Link className={ShowActive("/LoginPage")} to={"/LoginPage"}>
-                login登入
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </div>
     </div>
   );
 };
