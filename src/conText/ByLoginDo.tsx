@@ -1,7 +1,7 @@
 import { useState, createContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 export const loginContext = createContext({});
-loginContext.displayName = "loginContext";
+// loginContext.displayName = "loginContext";
 const ByLoginDo = ({ children }: any) => {
   const [isLogin, setLogin] = useState(false);
   const toLink = useNavigate();
