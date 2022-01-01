@@ -1,6 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-import { getUserData } from "../server/userData";
-import React from "react";
 import Nav from "./Nav";
 import Footer from "./Footer";
 import HelpPage from "../Pages/HelpPage";
@@ -11,21 +9,18 @@ import UserPage from "../Pages/UserPage";
 import NotFoundPage from "../Pages/NotFoundPage";
 import RegisterPage from "../Pages/RegisterPage";
 import SuPage from "../Pages/Su";
-class Index extends React.Component {
-  state = {
-    userList: getUserData(),
-  };
+import ByLoginDo from "../conText/ByLoginDo";
+const IndexRouters = () => {
+  return (
+    <div className="h-screen">
+      <header>
+        <nav className="h-[7vh]">
+          <Nav />
+        </nav>
+      </header>
 
-  render() {
-    return (
-      <div className="h-screen">
-        <header>
-          <nav className="h-[7vh]">
-            <Nav />
-          </nav>
-        </header>
-
-        <main>
+      <main>
+        <ByLoginDo>
           <Routes>
             {/* 主页 */}
             <Route
@@ -58,11 +53,11 @@ class Index extends React.Component {
             {/* 隐藏页 */}
             <Route path="/Su" element={<SuPage />}></Route>
           </Routes>
-        </main>
-        <Footer></Footer>
-      </div>
-    );
-  }
-}
+        </ByLoginDo>
+      </main>
+      <Footer></Footer>
+    </div>
+  );
+};
 
-export default Index;
+export default IndexRouters;

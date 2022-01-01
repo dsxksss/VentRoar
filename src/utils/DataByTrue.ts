@@ -7,8 +7,10 @@
       data.find((m) => m.userName === name && m.userPassword === password) !==
       undefined
     ) {
-      console.log("登入成功");
+      console.log('登入成功');
+      return true;
     } else {
       console.log("登入失败");
+      return false;
     }
   };

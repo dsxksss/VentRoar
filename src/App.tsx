@@ -1,9 +1,6 @@
-import React from "react";
-import Index from "./Components/Index";
-class App extends React.Component {
-  render() {
-    return <Index />;
-  }
-}
+import IndexRouters from "./Components/IndexRouters";
+const App = () => {
+  return <IndexRouters />;
+};
 
 export default App;
