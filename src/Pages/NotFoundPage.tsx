@@ -1,8 +1,8 @@
 function NotFoundPage() {
   return (
     <>
-      <div className="mt-20 text-slate-50">
-        <div className="text-center">
+      <div className="h-[93vh] flex flex-col  justify-center items-center text-slate-900">
+        <div className="mt-[-7vh] text-center">
           <h1 className="text-2xl ">404错误 没找到此网页!!!</h1>
           <h2 className="m-2 text-xl  mt-5 text-md">
             {`没找到此网页，请回到正确的网页路径!!!`}
