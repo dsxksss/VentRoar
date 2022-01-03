@@ -50,8 +50,8 @@ const Nav = () => {
         </Menu.Button>
 
         <Menu.Items
-          style={{ zIndex: "1", animationDuration: "0.3s" }} //页面显示层级关系设置为最顶上
-          className="an-5 font-bold text-slate-400 fixed flex flex-col bg-slate-100 
+          style={{ zIndex: "1", animationDuration: "0.6s" }} //页面显示层级关系设置为最顶上
+          className="an-3 font-bold text-slate-400 fixed flex flex-col bg-slate-100 
             items-center justify-evenly rounded-b-2xl h-[40vh] outline-none w-screen top-0 right-0 sm:hidden"
         >
           <Menu.Button className="absolute top-1 right-2 mr-2 mt-3 sm:hidden">

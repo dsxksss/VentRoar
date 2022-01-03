@@ -37,7 +37,7 @@
   --ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
   --ease-in-out-circ: cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
-
+/* 文字从中间模糊扩散动画 */
 .an-1 {
   animation-name: focus-in-expand;
   animation-duration: 1s;
