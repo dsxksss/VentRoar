@@ -34,7 +34,7 @@ const Login = () => {
         <div id="input" className="space-y-6 lg:space-y-10">
           <div id="uesrText">
             <input
-              className="px-8 sm:px-[3rem] caret-sky-500 lg:px-16 focus:outline-none"
+              className="loginPage-input-Style"
               type="text"
               // SM:必填项
               required
@@ -47,7 +47,7 @@ const Login = () => {
           </div>
           <div id="userPassword">
             <input
-              className="px-8 sm:px-[3rem] caret-sky-500 lg:px-16 focus:outline-none"
+              className="loginPage-input-Style"
               type="password"
               // SM:必填项
               required
