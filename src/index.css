@@ -228,9 +228,9 @@ body {
 
 .loginPage-input-Style {
   /* 样式 */
-  @apply px-8 border-[1.3px] border-gray-900 sm:px-[3rem] text-center rounded-full shadow-lg shadow-slate-300/50 lg:px-16;
+  @apply px-8 border-[1.3px] border-gray-900 sm:px-[3rem] text-center rounded-full shadow-lg shadow-slate-300/60 lg:px-16;
   /* 动画 */
-  @apply transition ease-in-out focus:duration-300 focus:outline-none focus:ring-sky-400 focus:ring-1 focus:border-sky-400 focus:shadow-lg focus:shadow-sky-400/50;
+  @apply transition ease-in-out focus:duration-300 focus:outline-none focus:ring-sky-500 focus:ring-1 focus:border-sky-500 focus:shadow-sky-500/30;
 }
 
 .ventroar-size {
@@ -243,9 +243,9 @@ body {
 
 .login-button-style {
   /* 字体边框等样式 */
-  @apply font-sans text-white shadow-2xl ease-in-out uppercase 
+  @apply font-sans text-white ease-in-out uppercase shadow-md shadow-blue-500/50
   tracking-widest bg-blue-500 py-1 px-5 font-bold rounded-xl focus:outline-none;
   /* 动画设置 -translate-y:向y轴移动，duration:动画播放时长*/
-  @apply hover:-translate-y-1 hover:scale-110 
-  hover:bg-indigo-500 duration-300 hover:text-black;
+  @apply hover:-translate-y-[0.13rem] hover:scale-110 
+  hover:bg-indigo-500 hover:shadow-indigo-500/50 duration-300 hover:text-black;
 }
