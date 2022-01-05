@@ -1,15 +1,39 @@
-.beijing {
-  width: 100px;
-  height: 100px;
-  background: pink;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.box {
+  height: 53vh;
 }
-.a {
+.szk {
+  width: 10rem;
+  height: 20rem;
+  background: #eeebed;
+  position: relative;
+  left: 2rem;
+  bottom: -5rem;
+}
+.szk a {
+  text-decoration: none;
+  display: block;
+  margin: 20px;
+}
+.szk a:hover {
+  color: dodgerblue;
+}
+.zjym {
+  height: 40vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 93vh;
+  position: relative;
+  bottom: 13rem;
+}
+.zjb {
+  width: 600px;
+  height: 500px;
+  background: #bbb2b6;
+  border-radius: 25px;
+}
+.zjz {
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
