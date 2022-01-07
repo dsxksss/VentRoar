@@ -7,7 +7,7 @@ const HomePage = () => {
   async function getUser() {
     //利用异步方法请求数据
     const evenyUser = await axios(
-      "http://localhost:2546/api/ventroar/userDataApi"
+      "http://101.43.123.50:2546/api/ventroar/userDataApi/"
     );
     setList(evenyUser.data);
   }
