@@ -222,13 +222,13 @@ body {
   shadow-lg border-y-0  
   border-y-gray-100 border-solid border-l-[7px];
   /* 布局 */
-  @apply h-[20rem] xl:h-[25rem] w-[20rem] sm:w-[30rem] lg:w-[60rem] xl:w-[70rem] 2xl:w-[100rem]
+  @apply h-[20rem] xl:h-[25rem] w-[22.5rem] sm:w-[30rem] lg:w-[60rem] xl:w-[70rem] 2xl:w-[100rem]
   flex justify-evenly items-center flex-col lg:flex-row;
 }
 
 .input-Style {
   /* 样式 */
-  @apply px-8 mr-6 border-[1.3px] border-gray-900 sm:px-[3rem] text-center rounded-full shadow-lg shadow-slate-300/60 lg:px-16;
+  @apply px-5 mr-6 border-[1.3px] border-gray-900 md:px-[3rem] text-center rounded-full shadow-lg shadow-slate-300/60 lg:px-16;
   /* 动画 */
   @apply transition ease-in-out focus:duration-300 focus:outline-none focus:ring-sky-500 focus:ring-1 focus:border-sky-500 focus:shadow-sky-500/30;
 }
