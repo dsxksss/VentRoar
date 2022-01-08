@@ -16,8 +16,8 @@ const HomePage = () => {
   return (
     <>
       <div className="h-[93vh]">
-        <h1 className="text-[2.5rem]">网站介绍:</h1>
-        <p className="text-[1rem]">
+        <h1 className="text-[2.3rem]">网站介绍:</h1>
+        <p className="text-[1rem] indent-4">
           倾诉最近遇到的不开心的事情，发泄到这上面，此网站用匿名的方式可以和别人交流倾诉最近遇到的不开心
         </p>
         <hr />
@@ -36,7 +36,7 @@ const HomePage = () => {
           <br />
           <b className="text-yellow-400">
             登入和注册的后端逻辑、网站主页样式、前后端数据库链接、帮助页面、
-            用户主页样式及后台逻辑、优化页面交互、优化交互动画等......
+            Heart页面样式、Heart页面交互优化、用户主页样式及后台逻辑、优化页面交互、优化交互动画等......
           </b>
         </p>
         <br />
@@ -49,7 +49,7 @@ const HomePage = () => {
         </p>
         <br />
         <p>
-          不用理会一下内容，还未完成...... reprehenderit
+          不用理会以下内容，还未完成...... reprehenderit
           <b className="text-sky-500">necessitatibus</b> aliquid! Sunt labore
           repellendus minus quas vel sint fugiat{" "}
           <b
