@@ -62,7 +62,6 @@ const IndexRouters = () => {
           </Routes>
         </ByLoginDo>
       </main>
-      <Footer></Footer>
     </div>
   );
 };
