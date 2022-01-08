@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { loginContext } from "../conText/ByLoginDo";
 import { DataByTrue } from "./../utils/DataByTrue";
 import { getUserData } from "../server/userData";
+import { UserCircleIcon, LockOpenIcon } from "@heroicons/react/solid";
 const Login = () => {
   let userData: any[] = [];
   //HOOK:
@@ -25,16 +26,17 @@ const Login = () => {
       <div
         id="all"
         style={{ animationDuration: "0.7s" }}
-        className="an-4 mt-[-7vh] loginPageStyle space-y-4"
+        className="an-4 mt-[-7vh] login-And-Register-PageStyle border-l-blue-600 space-y-4"
       >
         <div id="title">
           {/* <p className="title-size">WelCome To</p> */}
-          <p className="ventroar-size">VentRoar</p>
+          <p className="ventroar-size text-blue-500">VentRoar</p>
         </div>
         <div id="input" className="space-y-6 lg:space-y-10">
-          <div id="uesrText">
+          <div id="uesrText" className="loginPage-input">
+            <UserCircleIcon className="w-5 h-5 mr-1" />
             <input
-              className="loginPage-input-Style"
+              className="input-Style"
               type="text"
               // SM:必填项
               required
@@ -45,9 +47,10 @@ const Login = () => {
               onChange={(e) => inputUserName(e.target.value)}
             />
           </div>
-          <div id="userPassword">
+          <div id="userPassword" className="loginPage-input">
+            <LockOpenIcon className="w-5 h-5 mr-1" />
             <input
-              className="loginPage-input-Style"
+              className="input-Style"
               type="password"
               // SM:必填项
               required
