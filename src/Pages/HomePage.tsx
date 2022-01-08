@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useState } from "react";
-import Footer from "../Components/Footer";
 
 const HomePage = () => {
   const [list, setList] = useState([]);
@@ -63,18 +62,16 @@ const HomePage = () => {
         <button className="login-button-style" onClick={getUser}>
           Get Data
         </button>
-
-        {list.map((c: any) => (
-          <ul className="ml-8 list-disc" key={c._id}>
-            <li>id: {c._id}</li>
-            <li>name: {c.userName}</li>
-            <li>password: {c.userPassword}</li>
-            <li>phone: {c.userPhoneNumber}</li>
-            <br />
-          </ul>
-        ))}
       </div>
-      <Footer></Footer>
+      {list.map((c: any) => (
+        <ul className="ml-8 list-disc" key={c._id}>
+          <li>id: {c._id}</li>
+          <li>name: {c.userName}</li>
+          <li>password: {c.userPassword}</li>
+          <li>phone: {c.userPhoneNumber}</li>
+          <br />
+        </ul>
+      ))}
     </>
   );
 };
