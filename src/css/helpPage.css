@@ -4,15 +4,16 @@
 .szk {
   width: 10rem;
   height: 20rem;
-  background: #eeebed;
+  background: #d3d3d3;
   position: relative;
-  left: 2rem;
-  bottom: -5rem;
+  left: 1rem;
+  bottom: 0;
 }
 .szk a {
   text-decoration: none;
   display: block;
-  margin: 20px;
+  margin: 0.8rem;
+  width: 7rem;
 }
 .szk a:hover {
   color: dodgerblue;
@@ -23,17 +24,26 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  bottom: 13rem;
+  bottom: 10rem;
 }
 .zjb {
-  width: 600px;
-  height: 500px;
-  background: #bbb2b6;
+  width: 25rem;
+  height: 20rem;
+  background: rgb(244, 244, 244);
+  background: linear-gradient(
+    150deg,
+    rgba(244, 244, 244, 1) 0%,
+    rgba(250, 224, 242, 1) 53%,
+    rgba(244, 243, 243, 1) 100%
+  );
   border-radius: 25px;
+  padding-left: 1.3rem;
+  padding-right: 1.3rem;
 }
 .zjz {
-  height: 90%;
+  height: 19rem;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
