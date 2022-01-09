@@ -1,32 +1,46 @@
 import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { loginContext } from "../conText/ByLoginDo";
-import { DataByTrue } from "./../utils/DataByTrue";
-import { getUserData } from "../server/userData";
+
 import {
   UserIcon,
   LockClosedIcon,
   DeviceMobileIcon,
 } from "@heroicons/react/outline";
 import { RefreshIcon } from "@heroicons/react/solid";
+import axios from "axios";
 
 const RegisterPage = () => {
-  let userData: any[] = [];
-  //HOOK:
-  const [userName, setUserName] = useState("");
-  const [userPassword, setUserPassword] = useState("");
-  useEffect(() => {
-    userData = getUserData();
-  }, [userData]);
+  const push = async () => {
+    await axios
+      .post("http://101.43.123.50:2546/api/ventroar/userDataApi", userDataForm)
+      .then((res) => {
+        alert(`注册成功`);
+        return res;
+      })
+      .catch((err) => {
+        return err;
+      });
+  };
 
-  //FUNCTION:
-  const inputUserName = (e: string) => {
-    setUserName(e);
+  const pushData = () => {
+    setuserDataFrom(userData);
+    push();
   };
-  const inputUserPassword = (e: string) => {
-    setUserPassword(e);
+
+  let userData = {
+    userName: "",
+    userPassword: "",
+    userPhoneNumber: 0,
+    isLogin: false,
   };
-  const { setLogin } = useContext<any>(loginContext);
+
+  //HOOK:
+  const [userDataForm, setuserDataFrom] = useState({});
+
+  // useEffect(() => {
+  //   console.log(userDataForm);
+  // }, [userDataForm]);
+
   return (
     <>
       <div
@@ -45,11 +59,11 @@ const RegisterPage = () => {
               type="text"
               // SM:必填项
               required
-              maxLength={13}
+              maxLength={8}
               pattern="^[a-zA-Z][a-zA-Z0-9_]{3,12}$"
               placeholder="要创建的账号昵称"
               //SM:实时接收输入框里的值
-              onChange={(e) => inputUserName(e.target.value)}
+              onChange={(e) => (userData.userName = e.target.value)}
             />
           </div>
           <div id="uesrPhone" className="registerPage-input">
@@ -59,11 +73,13 @@ const RegisterPage = () => {
               type="text"
               // SM:必填项
               required
-              maxLength={13}
+              maxLength={11}
               pattern="^[a-zA-Z][a-zA-Z0-9_]{3,12}$"
               placeholder="用来注册的11位手机号"
               //SM:实时接收输入框里的值
-              onChange={(e) => inputUserName(e.target.value)}
+              onChange={(e) =>
+                (userData.userPhoneNumber = parseInt(e.target.value))
+              }
             />
           </div>
 
@@ -74,11 +90,11 @@ const RegisterPage = () => {
               type="password"
               // SM:必填项
               required
-              maxLength={18}
+              maxLength={14}
               pattern="^[a-zA-Z]\w{5,17}$"
               placeholder="密码 6-18位字母数字"
               //SM:实时接收输入框里的值
-              onChange={(e) => inputUserPassword(e.target.value)}
+              onChange={(e) => (userData.userPassword = e.target.value)}
             />
           </div>
           <div id="userPassword2" className="registerPage-input">
@@ -88,21 +104,14 @@ const RegisterPage = () => {
               type="password"
               // SM:必填项
               required
-              maxLength={18}
               pattern="^[a-zA-Z]\w{5,17}$"
-              placeholder="请重复输入上述密码"
-              //SM:实时接收输入框里的值
-              onChange={(e) => inputUserPassword(e.target.value)}
+              placeholder="输入验证码(暂未开发)"
+              readOnly
             />
           </div>
 
           <div id="inputButton">
-            <button
-              className="register-button-style"
-              onClick={() =>
-                setLogin(DataByTrue(userData, userName, userPassword))
-              }
-            >
+            <button className="register-button-style" onClick={pushData}>
               注 册
             </button>
           </div>

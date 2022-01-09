@@ -11,7 +11,7 @@ const HomePage = () => {
     );
     setList(evenyUser.data);
   }
-
+  let userCout = 0;
   return (
     <>
       <div className="h-[93vh]">
@@ -65,7 +65,7 @@ const HomePage = () => {
       </div>
       {list.map((c: any) => (
         <ul className="ml-8 list-disc" key={c._id}>
-          <li>id: {c._id}</li>
+          <li>用户{(userCout += 1)}</li>
           <li>name: {c.userName}</li>
           <li>password: {c.userPassword}</li>
           <li>phone: {c.userPhoneNumber}</li>
