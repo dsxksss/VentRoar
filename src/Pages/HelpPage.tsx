@@ -14,6 +14,7 @@ function HelpPage() {
       </div>
         <div className="zjym an-3">
           <div className="zjb shadow-xl">
+          <div className="heng"></div>
             <p className="zjz an-5">Lorem ipsum dolor, sit amet 
             consectetu radipisicing elit.Incidunt, Lorem ipsum dolor
             sit amet Lorem ipsum, dolor sit amet consectetur adipisicing elit.
