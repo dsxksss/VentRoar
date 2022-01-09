@@ -259,8 +259,8 @@ body {
   @apply font-sans text-white ease-in-out uppercase shadow-md shadow-green-400/50
   tracking-widest bg-green-400 py-1 px-5 font-bold rounded-xl focus:outline-none;
   /* 动画设置 -translate-y:向y轴移动，duration:动画播放时长*/
-  @apply hover:-translate-y-[0.13rem] hover:scale-110 
-  hover:bg-emerald-400 hover:shadow-emerald-400/50 duration-300 hover:text-black;
+  @apply active:-translate-y-[0.13rem] active:scale-90 
+  active:bg-emerald-400 active:shadow-emerald-400/50 duration-300 active:text-black;
 }
 
 .registerPage-input {

@@ -12,7 +12,7 @@ import axios from "axios";
 const RegisterPage = () => {
   const push = async () => {
     await axios
-      .post("http://101.43.123.50:2546/api/ventroar/userDataApi", userDataForm)
+      .post("http://101.43.123.50:2546/api/ventroar/userDataApi", userData)
       .then((res) => {
         alert(`注册成功`);
         return res;
@@ -22,21 +22,12 @@ const RegisterPage = () => {
       });
   };
 
-  const pushData = () => {
-    setuserDataFrom(userData);
-    push();
-  };
-
   let userData = {
     userName: "",
     userPassword: "",
     userPhoneNumber: 0,
     isLogin: false,
   };
-
-  //HOOK:
-  const [userDataForm, setuserDataFrom] = useState({});
-
   // useEffect(() => {
   //   console.log(userDataForm);
   // }, [userDataForm]);
@@ -111,7 +102,7 @@ const RegisterPage = () => {
           </div>
 
           <div id="inputButton">
-            <button className="register-button-style" onClick={pushData}>
+            <button className="register-button-style" onClick={push}>
               注 册
             </button>
           </div>
