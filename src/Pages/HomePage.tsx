@@ -6,9 +6,7 @@ const HomePage = () => {
 
   async function getUser() {
     //利用异步方法请求数据
-    const evenyUser = await axios(
-      "http://101.43.123.50:2546/api/ventroar/userDataApi/"
-    );
+    const evenyUser = await axios("http://101.43.123.50:2546/userDataApi/");
     setList(evenyUser.data);
   }
   let userCout = 0;
@@ -67,7 +65,9 @@ const HomePage = () => {
         <ul className="ml-8 list-disc" key={c._id}>
           <li>用户{(userCout += 1)}</li>
           <li>name: {c.userName}</li>
-          <li>password: {c.userPassword}</li>
+          <li>
+            password: <p className=" overflow-auto">{c.userPassword}</p>
+          </li>
           <li>phone: {c.userPhoneNumber}</li>
           <br />
         </ul>

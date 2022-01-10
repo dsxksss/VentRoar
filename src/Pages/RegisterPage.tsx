@@ -1,4 +1,3 @@
-import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import {
@@ -12,12 +11,13 @@ import axios from "axios";
 const RegisterPage = () => {
   const push = async () => {
     await axios
-      .post("http://101.43.123.50:2546/api/ventroar/userDataApi", userData)
+      .post("http://101.43.123.50:2546/userCreateApi/", userData)
       .then((res) => {
         alert(`注册成功`);
-        return res;
+        console.log(res.data);
       })
       .catch((err) => {
+        alert(`注册失败,提交格式有误或已存在相同手机号！！！`);
         return err;
       });
   };
@@ -26,7 +26,6 @@ const RegisterPage = () => {
     userName: "",
     userPassword: "",
     userPhoneNumber: 0,
-    isLogin: false,
   };
   // useEffect(() => {
   //   console.log(userDataForm);
