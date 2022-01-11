@@ -251,7 +251,7 @@ body {
   py-1 px-5 font-bold rounded-xl focus:outline-none;
   /* 动画设置 -translate-y:向y轴移动，duration:动画播放时长*/
   @apply active:-translate-y-[-0.3rem] active:scale-90
-  duration-100 active:text-black;
+  duration-150 active:text-black;
 }
 
 .registerPage-input {
