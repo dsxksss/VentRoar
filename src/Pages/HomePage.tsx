@@ -58,7 +58,10 @@ const HomePage = () => {
           </b>
           nemo, ut facere, deserunt iure ab necessitatibus debitis!
         </p>
-        <button className="login-button-style" onClick={getUser}>
+        <button
+          className="button-style bg-green-400 hover:bg-green-500 text-white shadow-lg shadow-green-400/50"
+          onClick={getUser}
+        >
           Get Data
         </button>
       </div>

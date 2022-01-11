@@ -63,7 +63,7 @@ const Login = () => {
           </div>
           <div id="inputButton">
             <button
-              className="login-button-style"
+              className="button-style text-white bg-blue-400 shadow-lg shadow-sky-500/40"
               onClick={() =>
                 setLogin(DataByTrue(userData, userName, userPassword))
               }

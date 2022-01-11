@@ -241,26 +241,17 @@ body {
   @apply lg:text-[7rem] xl:text-[8rem] lg:mr-[2rem];
 }
 
-.login-button-style {
-  /* 字体边框等样式 */
-  @apply font-sans text-white ease-in-out uppercase shadow-md shadow-blue-500/50
-  tracking-widest bg-blue-500 py-1 px-5 font-bold rounded-xl focus:outline-none;
-  /* 动画设置 -translate-y:向y轴移动，duration:动画播放时长*/
-  @apply hover:-translate-y-[0.13rem] hover:scale-110 
-  hover:bg-indigo-500 hover:shadow-indigo-500/50 duration-300 hover:text-black;
-}
-
 .loginPage-input {
   @apply inline-flex items-center flex-row;
 }
 
-.register-button-style {
+.button-style {
   /* 字体边框等样式 */
-  @apply font-sans text-white ease-in-out uppercase shadow-md shadow-green-400/50
-  tracking-widest bg-green-400 py-1 px-5 font-bold rounded-xl focus:outline-none;
+  @apply font-sans ease-in-out uppercase tracking-widest 
+  py-1 px-5 font-bold rounded-xl focus:outline-none;
   /* 动画设置 -translate-y:向y轴移动，duration:动画播放时长*/
-  @apply active:-translate-y-[0.13rem] active:scale-90 
-  active:bg-emerald-400 active:shadow-emerald-400/50 duration-300 active:text-black;
+  @apply active:-translate-y-[-0.3rem] active:scale-90
+  duration-100 active:text-black;
 }
 
 .registerPage-input {

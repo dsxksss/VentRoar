@@ -101,7 +101,10 @@ const RegisterPage = () => {
           </div>
 
           <div id="inputButton">
-            <button className="register-button-style" onClick={push}>
+            <button
+              className="button-style bg-green-400 text-white shadow-lg shadow-green-400/50"
+              onClick={push}
+            >
               注 册
             </button>
           </div>
