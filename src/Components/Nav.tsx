@@ -1,5 +1,5 @@
 import { Menu } from "@headlessui/react";
-//导入headlessui组件依赖，来方便的创建可交互样式;
+//导入headlessui组件依赖，来方便的创建可交互样式
 import { ViewListIcon, XIcon } from "@heroicons/react/solid";
 import {
   HeartIcon,
@@ -45,14 +45,18 @@ const Nav = () => {
 
       {/* 手机端的显示设置 */}
       <Menu>
-        <Menu.Button className="mr-2 mt-3 sm:hidden">
+        <Menu.Button className="absolute top-1 right-2 mr-2 mt-3 sm:hidden">
           <ViewListIcon className="h-5 w-5 text-black" />
         </Menu.Button>
 
         <Menu.Items
-          style={{ zIndex: "1", animationDuration: "0.6s" }} //页面显示层级关系设置为最顶上
-          className="an-3 font-bold text-slate-400 fixed flex flex-col bg-slate-100 
-            items-center justify-evenly rounded-b-2xl h-[40vh] outline-none w-screen top-0 right-0 sm:hidden"
+          style={{
+            zIndex: "1",
+            animationDuration: "0.6s",
+            animationTimingFunction: "var(--ease-out-quart)",
+          }} //页面显示层级关系设置为最顶上
+          className="an-2 font-bold text-slate-400 fixed flex flex-col bg-slate-100 
+            items-center justify-evenly rounded-b-2xl h-[40vh] outline-none w-screen top-0 left-0 sm:hidden"
         >
           <Menu.Button className="absolute top-1 right-2 mr-2 mt-3 sm:hidden">
             <XIcon className="h-5 w-5 " />

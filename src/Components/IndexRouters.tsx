@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import Nav from "./Nav";
-import Footer from "./Footer";
 import HelpPage from "../Pages/HelpPage";
 import HomePage from "../Pages/HomePage";
 import Login from "../Pages/LoginPage";
@@ -62,7 +61,6 @@ const IndexRouters = () => {
           </Routes>
         </ByLoginDo>
       </main>
-      <Footer></Footer>
     </div>
   );
 };

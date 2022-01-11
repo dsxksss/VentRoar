@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-
+import Footer from "../Components/Footer";
 const HomePage = () => {
   const [list, setList] = useState([]);
 
@@ -10,6 +10,7 @@ const HomePage = () => {
     setList(evenyUser.data);
   }
   let userCout = 0;
+
   return (
     <>
       <div className="h-[93vh]">
@@ -72,6 +73,7 @@ const HomePage = () => {
           <br />
         </ul>
       ))}
+      <Footer />
     </>
   );
 };
