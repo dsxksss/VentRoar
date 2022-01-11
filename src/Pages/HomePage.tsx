@@ -65,12 +65,15 @@ const HomePage = () => {
           Get Data
         </button>
       </div>
-      {list.map((c: any) => (
-        <div className="">
-          <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-              <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                <table className="min-w-full divide-y divide-gray-200">
+      <div className="text-left">
+        <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+            <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+              {list.map((c: any) => (
+                <table
+                  key={c._id}
+                  className="table-fixed min-w-full divide-y divide-gray-200"
+                >
                   <thead className="bg-gray-200/50">
                     <tr>
                       <th
@@ -99,7 +102,7 @@ const HomePage = () => {
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-gray-50 divide-y text-blue-500 font-bold divide-gray-200">
+                  <tbody className="bg-gray-50 divide-y text-blue-500 divide-gray-200">
                     <td className="px-6 py-4 whitespace-nowrap">
                       {(userCout += 1)}
                     </td>
@@ -114,11 +117,12 @@ const HomePage = () => {
                     </td>
                   </tbody>
                 </table>
-              </div>
+              ))}
             </div>
           </div>
         </div>
-      ))}
+      </div>
+
       <Footer />
     </>
   );
