@@ -66,15 +66,58 @@ const HomePage = () => {
         </button>
       </div>
       {list.map((c: any) => (
-        <ul className="ml-8 list-disc" key={c._id}>
-          <li>用户{(userCout += 1)}</li>
-          <li>name: {c.userName}</li>
-          <li>
-            password: <p className=" overflow-auto">{c.userPassword}</p>
-          </li>
-          <li>phone: {c.userPhoneNumber}</li>
-          <br />
-        </ul>
+        <div className="">
+          <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+              <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                <table className="min-w-full divide-y divide-gray-200">
+                  <thead className="bg-gray-200/50">
+                    <tr>
+                      <th
+                        scope="col"
+                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider"
+                      >
+                        Number
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider"
+                      >
+                        UserName
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider"
+                      >
+                        UserPhoneNumber
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider"
+                      >
+                        UserPassword
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="bg-gray-50 divide-y text-blue-500 font-bold divide-gray-200">
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {(userCout += 1)}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {c.userName}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {c.userPhoneNumber}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {c.userPassword}
+                    </td>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
       ))}
       <Footer />
     </>
