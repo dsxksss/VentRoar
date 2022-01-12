@@ -65,63 +65,23 @@ const HomePage = () => {
           Get Data
         </button>
       </div>
-      <div className="text-left">
-        <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-          <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-            <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-              <table className="table-fixed min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-200/50">
-                  <tr>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider"
-                    >
-                      Number
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider"
-                    >
-                      UserName
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider"
-                    >
-                      UserPhoneNumber
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider"
-                    >
-                      UserPassword
-                    </th>
-                  </tr>
-                </thead>
-                {list.map((c: any) => (
-                  <tbody
-                    key={c._id}
-                    className="bg-gray-50 divide-y text-blue-500 divide-gray-200"
-                  >
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {(userCout += 1)}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {c.userName}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {c.userPhoneNumber}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {c.userPassword}
-                    </td>
-                  </tbody>
-                ))}
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
+      {list.map((c: any) => (
+        <ul key={c._id}>
+          <li>
+            <p>{(userCout += 1)}</p>
+          </li>
+          <li>
+            <p>username:{c.userName}</p>
+          </li>
+          <li>
+            <p>userphone:{c.userPhoneNumber}</p>
+          </li>
+          <li>
+            <p>userpassword:{c.userPassword}</p>
+          </li>
+          <br />
+        </ul>
+      ))}
 
       <Footer />
     </>

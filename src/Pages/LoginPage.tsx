@@ -1,18 +1,12 @@
-import { useEffect, useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { loginContext } from "../conText/ByLoginDo";
-import { DataByTrue } from "./../utils/DataByTrue";
-import { getUserData } from "../server/userData";
 import { UserCircleIcon, LockOpenIcon } from "@heroicons/react/solid";
 const Login = () => {
   let userData: any[] = [];
   //HOOK:
   const [userName, setUserName] = useState("");
   const [userPassword, setUserPassword] = useState("");
-  useEffect(() => {
-    userData = getUserData();
-  }, [userData]);
-
   //FUNCTION:
   const inputUserName = (e: string) => {
     setUserName(e);
@@ -62,12 +56,7 @@ const Login = () => {
             />
           </div>
           <div id="inputButton">
-            <button
-              className="button-style text-white bg-blue-400 shadow-lg shadow-sky-500/40"
-              onClick={() =>
-                setLogin(DataByTrue(userData, userName, userPassword))
-              }
-            >
+            <button className="button-style text-white bg-blue-400 shadow-lg shadow-sky-500/40">
               l o g i n
             </button>
           </div>
