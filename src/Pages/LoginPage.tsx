@@ -1,20 +1,6 @@
-import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { loginContext } from "../conText/ByLoginDo";
 import { UserCircleIcon, LockOpenIcon } from "@heroicons/react/solid";
 const Login = () => {
-  let userData: any[] = [];
-  //HOOK:
-  const [userName, setUserName] = useState("");
-  const [userPassword, setUserPassword] = useState("");
-  //FUNCTION:
-  const inputUserName = (e: string) => {
-    setUserName(e);
-  };
-  const inputUserPassword = (e: string) => {
-    setUserPassword(e);
-  };
-  const { setLogin } = useContext<any>(loginContext);
   return (
     <>
       <div
@@ -38,7 +24,6 @@ const Login = () => {
               pattern="^[a-zA-Z][a-zA-Z0-9_]{3,12}$"
               placeholder="账号 4-13位字母数字"
               //SM:实时接收输入框里的值
-              onChange={(e) => inputUserName(e.target.value)}
             />
           </div>
           <div id="userPassword" className="loginPage-input">
@@ -52,7 +37,6 @@ const Login = () => {
               pattern="^[a-zA-Z]\w{5,17}$"
               placeholder="密码 6-18位字母数字"
               //SM:实时接收输入框里的值
-              onChange={(e) => inputUserPassword(e.target.value)}
             />
           </div>
           <div id="inputButton">
