@@ -66,7 +66,7 @@ const HomePage = () => {
         </button>
       </div>
       {list.map((c: any) => (
-        <ul key={c._id}>
+        <ul key={c._id} className="overflow-x-auto">
           <li>
             <p>{(userCout += 1)}</p>
           </li>
