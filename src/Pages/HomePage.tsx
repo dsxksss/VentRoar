@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import Footer from "../Components/Footer";
+import { Button } from "@mui/material";
 const HomePage = () => {
   const [list, setList] = useState([]);
 
@@ -64,6 +65,7 @@ const HomePage = () => {
         >
           Get Data
         </button>
+        <Button variant="contained">hello word</Button>
       </div>
       {list.map((c: any) => (
         <ul key={c._id} className="overflow-x-auto">
@@ -82,7 +84,6 @@ const HomePage = () => {
           <br />
         </ul>
       ))}
-
       <Footer />
     </>
   );

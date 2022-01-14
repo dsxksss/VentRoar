@@ -222,7 +222,7 @@ body {
   shadow-lg border-y-0  
   border-y-gray-100 border-solid border-l-[7px];
   /* 布局 */
-  @apply h-[20rem] xl:h-[25rem] w-[22.5rem] sm:w-[30rem] lg:w-[60rem] xl:w-[70rem] 2xl:w-[100rem]
+  @apply h-[20rem] xl:h-[25rem] w-[20rem] overflow-hidden sm:w-[30rem] lg:w-[60rem] xl:w-[70rem] 2xl:w-[100rem]
   flex justify-evenly items-center flex-col lg:flex-row;
 }
 
