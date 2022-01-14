@@ -228,9 +228,9 @@ body {
 
 .input-Style {
   /* 样式 */
-  @apply px-5 mr-6 border-[1.3px] border-gray-900 md:px-[3rem] text-center rounded-full shadow-lg shadow-slate-300/60 lg:px-16;
+  @apply px-5 mr-6 border-[1.3px] border-gray-900 md:px-[3rem] text-center rounded-full shadow-sm shadow-slate-400/70 lg:px-16;
   /* 动画 */
-  @apply transition ease-in-out focus:duration-300 focus:outline-none focus:ring-sky-500 focus:ring-1 focus:border-sky-500 focus:shadow-sky-500/30;
+  @apply transition ease-in focus:duration-300 focus:outline-none focus:ring-blue-500 focus:shadow-none focus:border-blue-500 focus:ring-1;
 }
 
 .ventroar-size {
@@ -251,7 +251,7 @@ body {
   py-1 px-5 font-bold rounded-xl focus:outline-none;
   /* 动画设置 -translate-y:向y轴移动，duration:动画播放时长*/
   @apply active:-translate-y-[-0.3rem] active:scale-90
-  duration-150 active:text-black;
+  duration-150 active:text-black focus:outline-none;
 }
 
 .registerPage-input {
