@@ -11,7 +11,7 @@ import axios from "axios";
 const RegisterPage = () => {
   const push = async () => {
     await axios
-      .post("http://127.0.0.1:2546/userCreateApi/", userData)
+      .post("http://101.43.123.50:2546/userCreateApi/", userData)
       .then((res) => {
         alert(`注册成功`);
         console.log(res.data);
