@@ -7,17 +7,21 @@ import {
 } from "@heroicons/react/outline";
 import { RefreshIcon } from "@heroicons/react/solid";
 import axios from "axios";
+import { useState } from "react";
+import { Alert, Button, Slide, Snackbar } from "@mui/material";
 
 const RegisterPage = () => {
   const push = async () => {
     await axios
       .post("http://101.43.123.50:2546/userCreateApi/", userData)
       .then((res) => {
-        alert(`注册成功`);
+        setMsg(`注册成功`);
+        setOpen(true);
         console.log(res.data);
       })
       .catch((err) => {
-        alert(`注册失败,提交格式有误或已存在相同手机号！！！`);
+        setMsg(`注册失败,已存在相同手机号！！！`);
+        setOpen(true);
         return err;
       });
   };
@@ -45,6 +49,19 @@ const RegisterPage = () => {
     if (dataByTrue(userData)) push();
   };
 
+  const [open, setOpen] = useState(false);
+  const handleClick = () => {
+    setOpen(!open);
+  };
+  const action = (
+    <>
+      <Button color="secondary" size="small" onClick={handleClick}>
+        关闭
+      </Button>
+    </>
+  );
+
+  const [msg, setMsg] = useState("");
   return (
     <>
       <div
@@ -126,6 +143,22 @@ const RegisterPage = () => {
           </div>
         </form>
       </div>
+      <Snackbar
+        open={open}
+        //显示位置vertical:垂直位置,horizontal:水平位置
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        autoHideDuration={6000} //多少秒后关闭
+        onClose={handleClick}
+        sx={{ mt: 7 }}
+        action={action} //其他额外内容
+      >
+        <Alert
+          onClose={handleClick}
+          severity={msg === "注册成功" ? "success" : "error"}
+        >
+          {msg}
+        </Alert>
+      </Snackbar>
     </>
   );
 };
