@@ -65,8 +65,8 @@ const RegisterPage = () => {
                 // SM:必填项
                 required
                 maxLength={8}
-                pattern="^[a-zA-Z][a-zA-Z0-9_]{3,12}$"
-                placeholder="要创建的账号昵称"
+                pattern="^[a-zA-Z][a-zA-Z0-9_]{4,12}$"
+                placeholder="账号名 5-11位纯英文字母"
                 //SM:实时接收输入框里的值
                 onChange={(e) => (userData.userName = e.target.value)}
               />
@@ -95,7 +95,7 @@ const RegisterPage = () => {
                 required
                 maxLength={14}
                 pattern="^[a-zA-Z]\w{5,17}$"
-                placeholder="密码 6-18位字母数字"
+                placeholder="密码 6-18位混合字母数字"
                 //SM:实时接收输入框里的值
                 onChange={(e) => (userData.userPassword = e.target.value)}
               />
