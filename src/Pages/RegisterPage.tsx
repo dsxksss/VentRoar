@@ -25,7 +25,7 @@ const RegisterPage = () => {
   let userData = {
     userName: "",
     userPassword: "",
-    userPhoneNumber: 0,
+    userPhoneNumber: "",
   };
 
   // FUNCTION: 封装的数据验证函数;
@@ -34,7 +34,7 @@ const RegisterPage = () => {
     const schema = Joi.object({
       userName: Joi.string().min(5).max(50).required(),
       userPassword: Joi.string().min(8).max(1024).required(),
-      userPhoneNumber: Joi.number().min(11).required(),
+      userPhoneNumber: Joi.string().min(11).required(),
     });
     //返回验证结果
     return schema.validate(data);
@@ -83,9 +83,7 @@ const RegisterPage = () => {
                 pattern="(\d{11})|^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{4}|\d{3})-(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1}))$"
                 placeholder="用来注册的11位手机号"
                 //SM:实时接收输入框里的值
-                onChange={(e) =>
-                  (userData.userPhoneNumber = parseInt(e.target.value))
-                }
+                onChange={(e) => (userData.userPhoneNumber = e.target.value)}
               />
             </div>
             <div id="userPassword1" className="registerPage-input">
