@@ -40,13 +40,13 @@ const Login = () => {
             />
           </div>
           <div id="inputButton">
-            <button className="button-style text-white bg-blue-400 shadow-lg shadow-sky-400/30">
+            <button className="mt-2 button-style text-white bg-blue-400 shadow-lg shadow-sky-400/30">
               l o g i n
             </button>
           </div>
-          <div className="text-sm pt-1 font-bold text-blue-400 space-x-7">
-            <Link to={"/RegisterPage"}>点我注册加入 VentRoar</Link>
+          <div className="text-sm md:text-xl pt-1 font-bold text-blue-400 space-x-[4rem]">
             <Link to={"/RegisterPage"}>忘记密码</Link>
+            <Link to={"/RegisterPage"}>注册账号</Link>
           </div>
         </div>
       </div>

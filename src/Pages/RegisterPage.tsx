@@ -137,7 +137,7 @@ const RegisterPage = () => {
                 注 册
               </button>
             </div>
-            <div className="text-sm font-bold text-green-400">
+            <div className="text-sm md:text-xl font-bold text-green-400">
               <Link to={"/LoginPage"}>已有账号? 登入VentRoar</Link>
             </div>
           </div>
