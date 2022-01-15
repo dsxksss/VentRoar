@@ -21,7 +21,7 @@ const Nav = () => {
       : "bt-style";
   const ShowActiveMi = (pagaName: string) =>
     pathname === pagaName
-      ? "transition ease-in duration-150 text-blue-400 font-bold bg-slate-800/90 px-[3rem] py-2 rounded-md"
+      ? "transition ease-in duration-150 text-slate-100 font-bold bg-slate-800/90 px-[3rem] py-2 rounded-md"
       : "bt-style font-bold";
   const [open, setOpen] = useState(false); //手机导航栏的开合状态
   return (
