@@ -16,24 +16,22 @@ const Nav = () => {
   const { pathname } = useLocation();
   //FUNCTION:动态显示当前点击的网页
   const ShowActive = (pagaName: string) =>
-    pathname === pagaName
-      ? "text-black border-b-2 border-slate-800 pb-2"
-      : "bt-style";
+    pathname === pagaName ? "text-black" : "bt-style";
   const ShowActiveMi = (pagaName: string) =>
     pathname === pagaName
       ? "transition ease-in duration-150 text-slate-100 font-bold bg-slate-800/90 px-[3rem] py-2 rounded-md"
-      : "bt-style font-bold";
+      : "bt-style font-bold px-[3rem] py-2";
   const [open, setOpen] = useState(false); //手机导航栏的开合状态
   return (
-    <div className="pt-3 flex flex-row justify-between items-center an-3">
+    <div className="shadow-md shadow-gray-300/50 h-full flex flex-row justify-between items-center an-3">
       {/* 电脑端的显示设置 */}
       <div className="">
-        <Link className="ml-2 text-lg font-bold text-black" to={"/"}>
+        <Link className="ml-4 text-lg font-bold text-black" to={"/"}>
           www.ventroar.xyz
         </Link>
       </div>
 
-      <div className="mr-7 font-bold text-slate-300 hidden sm:block space-x-7">
+      <div className="mr-7 font-bold text-gray-500/60 hidden sm:block space-x-7">
         <Link className={ShowActive("/")} to={"/"}>
           <HomeIcon className="inline-block h-5 mb-1 w-5" />
           主页
@@ -45,7 +43,10 @@ const Nav = () => {
           <LightBulbIcon className="inline-block h-5 mb-1 w-5" />
           帮助
         </Link>
-        <Link className={ShowActive("/LoginPage")} to={"/LoginPage"}>
+        <Link
+          className=" text-gray-100 bg-blue-500 px-2 py-1 shadow-lg rounded-[0.3rem]"
+          to={"/LoginPage"}
+        >
           <UserCircleIcon className="inline-block h-5 mb-1 w-5" />
           login登入
         </Link>

@@ -40,7 +40,7 @@ const Login = () => {
             />
           </div>
           <div id="inputButton">
-            <button className="button-style text-white bg-blue-400 shadow-lg shadow-sky-400/30">
+            <button className="button-style text-white bg-blue-500/90 shadow-lg shadow-gray-300">
               l o g i n
             </button>
           </div>
