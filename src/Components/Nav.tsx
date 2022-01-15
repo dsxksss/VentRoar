@@ -25,7 +25,7 @@ const Nav = () => {
       : "bt-style font-bold";
   const [open, setOpen] = useState(false); //手机导航栏的开合状态
   return (
-    <div className="mt-3 flex flex-row justify-between items-center an-3">
+    <div className="pt-3 flex flex-row justify-between items-center an-3">
       {/* 电脑端的显示设置 */}
       <div className="">
         <Link className="ml-2 text-lg font-bold text-black" to={"/"}>
@@ -52,7 +52,7 @@ const Nav = () => {
       </div>
 
       {/* 手机端的显示设置 */}
-      <button className="mr-3 sm:hidden">
+      <button className="mr-3 sm:hidden border-none outline-none">
         <ViewListIcon onClick={() => setOpen(true)} className="h-5 w-5" />
       </button>
       <Transition.Root show={open} as={Fragment}>
@@ -98,7 +98,7 @@ const Nav = () => {
                     <div className="absolute top-1 right-1 mr-2 mt-3 active:outline-none sm:hidden">
                       <button
                         type="button"
-                        className=""
+                        className="border-none outline-none"
                         onClick={() => setOpen(false)}
                       >
                         <span className="sr-only">Close panel</span>
@@ -115,7 +115,7 @@ const Nav = () => {
                     <div className="mt-6 relative flex-1 px-4 sm:px-6">
                       {/* Replace with your content */}
                       <div className="absolute text-center inset-0 sm:px-6">
-                        <div className="flex flex-col mt-[10rem] h-[100%] space-y-[4rem] items-center">
+                        <div className="flex flex-col mt-[10rem] h-[60vh] space-y-[4rem] items-center">
                           <Link
                             className={ShowActiveMi("/")}
                             to={"/"}
