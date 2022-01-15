@@ -6,7 +6,7 @@ import {
   HeartIcon,
   UserCircleIcon,
   HomeIcon,
-  LightBulbIcon,
+  UserGroupIcon,
 } from "@heroicons/react/outline";
 import { Link, useLocation } from "react-router-dom";
 import { Fragment } from "react";
@@ -19,7 +19,7 @@ const Nav = () => {
     pathname === pagaName ? "text-black" : "bt-style";
   const ShowActiveMi = (pagaName: string) =>
     pathname === pagaName
-      ? "transition ease-in duration-150 text-slate-100 font-bold bg-slate-800/90 px-[3rem] py-2 rounded-md"
+      ? "transition ease-out duration-150 text-slate-100 active:bg-slate-800/90 w-[25vh] font-bold bg-slate-800/90 px-full py-2 rounded-md"
       : "bt-style font-bold px-[3rem] py-2";
   const [open, setOpen] = useState(false); //手机导航栏的开合状态
   return (
@@ -39,9 +39,9 @@ const Nav = () => {
         <Link className={ShowActive("/HeartPage")} to={"/HeartPage"}>
           <HeartIcon className="inline-block h-5 mb-1 w-5" />墙
         </Link>
-        <Link className={ShowActive("/HelpPage")} to={"/HelpPage"}>
-          <LightBulbIcon className="inline-block h-5 mb-1 w-5" />
-          帮助
+        <Link className={ShowActive("/AboutUsPage")} to={"/AboutUsPage"}>
+          <UserGroupIcon className="inline-block h-5 mb-1 w-5" />
+          关于我们
         </Link>
         <Link
           className=" text-gray-100 bg-blue-500 px-2 py-1 shadow-lg rounded-[0.3rem]"
@@ -96,7 +96,7 @@ const Nav = () => {
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                   >
-                    <div className="absolute top-1 right-1 mr-2 mt-3 active:outline-none sm:hidden">
+                    <div className="absolute top-1 right-1 mr-2 mt-3 active:outline-none">
                       <button
                         type="button"
                         className="border-none outline-none"
@@ -108,12 +108,12 @@ const Nav = () => {
                     </div>
                   </Transition.Child>
                   <div className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
-                    <div className="px-4 sm:px-6">
-                      <Dialog.Title className="pl-[2rem] pt-[1.7rem] text-xl font-bold text-gray-900">
-                        导 航 栏 VENTROAR
+                    <div>
+                      <Dialog.Title className="mt-[2rem] flex flex-col justify-center rounded-[0.3rem] py-[1rem] mx-[1rem] text-xl text-center font-bold text-white bg-blue-400">
+                        <div>V E N T R O A R</div>导 航 栏
                       </Dialog.Title>
                     </div>
-                    <div className="mt-6 relative flex-1 px-4 sm:px-6">
+                    <div className="mt-5 relative flex-1 px-4 sm:px-6">
                       {/* Replace with your content */}
                       <div className="absolute text-center inset-0 sm:px-6">
                         <div className="flex flex-col mt-[3.5rem] h-[60vh] space-y-[3rem] items-center">
@@ -135,12 +135,12 @@ const Nav = () => {
                             墙
                           </Link>
                           <Link
-                            className={ShowActiveMi("/HelpPage")}
-                            to={"/HelpPage"}
+                            className={ShowActiveMi("/AboutUsPage")}
+                            to={"/AboutUsPage"}
                             onClick={() => setOpen(false)}
                           >
-                            <LightBulbIcon className="inline-block h-5 mb-1 w-5" />
-                            帮助/关于
+                            <UserGroupIcon className="inline-block h-5 mb-1 w-5" />
+                            关于我们
                           </Link>
                           <Link
                             className={ShowActiveMi("/LoginPage")}

@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Nav from "./Nav";
-import HelpPage from "../Pages/HelpPage";
+import AboutUsPage from "../Pages/AboutUsPage";
 import HomePage from "../Pages/HomePage";
 import Login from "../Pages/LoginPage";
 import HeartPage from "../Pages/HeartPage";
@@ -39,7 +39,7 @@ const IndexRouters = () => {
             {/* 用户主页 */}
             <Route path="/FindPswPage" element={<FindPswPage />}></Route>
             {/* 关于与帮助页 */}
-            <Route path="/HelpPage" element={<HelpPage />}></Route>
+            <Route path="/AboutUsPage" element={<AboutUsPage />}></Route>
             {/* 登入页 */}
             <Route
               path="/LoginPage"
