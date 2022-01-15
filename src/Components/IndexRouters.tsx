@@ -9,6 +9,8 @@ import NotFoundPage from "../Pages/NotFoundPage";
 import RegisterPage from "../Pages/RegisterPage";
 import SuPage from "../Pages/Su";
 import ByLoginDo from "../conText/ByLoginDo";
+import FindPswPage from "../Pages/FindPswPage";
+
 const IndexRouters = () => {
   return (
     <div className="h-screen">
@@ -34,6 +36,8 @@ const IndexRouters = () => {
             <Route path="/HeartPage" element={<HeartPage />}></Route>
             {/* 用户主页 */}
             <Route path="/UserPage" element={<UserPage />}></Route>
+            {/* 用户主页 */}
+            <Route path="/FindPswPage" element={<FindPswPage />}></Route>
             {/* 关于与帮助页 */}
             <Route path="/HelpPage" element={<HelpPage />}></Route>
             {/* 登入页 */}

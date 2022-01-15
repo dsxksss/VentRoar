@@ -45,7 +45,7 @@ const Login = () => {
             </button>
           </div>
           <div className="text-sm md:text-xl pt-1 font-bold text-blue-400 space-x-[4rem]">
-            <Link to={"/RegisterPage"}>忘记密码</Link>
+            <Link to={"/FindPswPage"}>忘记密码</Link>
             <Link to={"/RegisterPage"}>注册账号</Link>
           </div>
         </div>
