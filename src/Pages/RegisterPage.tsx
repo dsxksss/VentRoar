@@ -132,12 +132,12 @@ const RegisterPage = () => {
             <div id="inputButton">
               <button
                 type="submit"
-                className="button-style bg-green-400 text-white shadow-lg shadow-green-400/50"
+                className="button-style bg-green-400 text-white shadow-lg shadow-green-400/50 active:shadow-green-400"
               >
                 注 册
               </button>
             </div>
-            <div className="text-xs">
+            <div className="text-sm font-bold text-green-400">
               <Link to={"/LoginPage"}>已有账号? 登入VentRoar</Link>
             </div>
           </div>

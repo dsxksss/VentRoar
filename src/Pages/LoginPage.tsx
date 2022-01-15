@@ -44,8 +44,9 @@ const Login = () => {
               l o g i n
             </button>
           </div>
-          <div className="text-xs">
-            <Link to={"/RegisterPage"}>还没账号? 点我注册加入VentRoar</Link>
+          <div className="text-sm pt-1 font-bold text-blue-400 space-x-7">
+            <Link to={"/RegisterPage"}>点我注册加入 VentRoar</Link>
+            <Link to={"/RegisterPage"}>忘记密码</Link>
           </div>
         </div>
       </div>
