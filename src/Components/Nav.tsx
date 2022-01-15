@@ -115,7 +115,7 @@ const Nav = () => {
                     <div className="mt-6 relative flex-1 px-4 sm:px-6">
                       {/* Replace with your content */}
                       <div className="absolute text-center inset-0 sm:px-6">
-                        <div className="flex flex-col mt-[10rem] h-[60vh] space-y-[4rem] items-center">
+                        <div className="flex flex-col mt-[3.5rem] h-[60vh] space-y-[3rem] items-center">
                           <Link
                             className={ShowActiveMi("/")}
                             to={"/"}
