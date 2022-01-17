@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
 import { UserCircleIcon, LockOpenIcon } from "@heroicons/react/solid";
+import axios from "axios";
 const Login = () => {
+  const push = async () => {
+    await axios;
+  };
+  const handleSubmit = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    push();
+  };
   return (
     <>
       <div
@@ -12,7 +20,11 @@ const Login = () => {
           {/* <p className="title-size">WelCome To</p> */}
           <p className="ventroar-size text-blue-500">VentRoar</p>
         </div>
-        <div id="input" className="flex flex-col space-y-6 lg:space-y-10">
+
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-6 flex flex-col items-center lg:space-y-8"
+        >
           <div id="uesrText" className="loginPage-input">
             <UserCircleIcon className="w-5 h-5 mr-1" />
             <input
@@ -21,7 +33,6 @@ const Login = () => {
               // SM:必填项
               required
               maxLength={13}
-              pattern="^[a-zA-Z][a-zA-Z0-9_]{3,12}$"
               placeholder="账号 4-13位字母数字"
               //SM:实时接收输入框里的值
             />
@@ -34,21 +45,21 @@ const Login = () => {
               // SM:必填项
               required
               maxLength={18}
-              pattern="^[a-zA-Z]\w{5,17}$"
               placeholder="密码 6-18位字母数字"
               //SM:实时接收输入框里的值
             />
           </div>
-          <div id="inputButton">
-            <button className="button-style text-white bg-blue-500/90 shadow-lg shadow-gray-300">
-              l o g i n
-            </button>
-          </div>
-          <div className="text-sm md:text-xl pt-1 font-bold text-blue-400 space-x-[4rem]">
+          <button
+            type="submit"
+            className="button-style text-white bg-blue-500/90 shadow-lg shadow-gray-300"
+          >
+            l o g i n
+          </button>
+          <div className="text-sm md:text-[1.25rem] font-bold text-blue-400 space-x-[2rem]">
             <Link to={"/FindPswPage"}>忘记密码</Link>
             <Link to={"/RegisterPage"}>注册账号</Link>
           </div>
-        </div>
+        </form>
       </div>
     </>
   );
