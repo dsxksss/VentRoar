@@ -8,7 +8,7 @@ import {
 import { RefreshIcon } from "@heroicons/react/solid";
 import axios from "axios";
 import { useState } from "react";
-import { Alert, Button, Slide, Snackbar } from "@mui/material";
+import { Alert, Button, Snackbar } from "@mui/material";
 
 const RegisterPage = () => {
   const push = async () => {
@@ -20,7 +20,7 @@ const RegisterPage = () => {
         console.log(res.data);
       })
       .catch((err) => {
-        setMsg(`注册失败,已存在相同手机号！！！`);
+        setMsg(`注册失败,已存在相同手机号!!!`);
         setOpen(true);
         return err;
       });
