@@ -5,10 +5,6 @@ const Login = () => {
   const push = async () => {
     await axios;
   };
-  const handleSubmit = (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    push();
-  };
   return (
     <>
       <div
@@ -21,10 +17,7 @@ const Login = () => {
           <p className="ventroar-size text-blue-500">VentRoar</p>
         </div>
 
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-6 flex flex-col items-center lg:space-y-8"
-        >
+        <div className="space-y-6 flex flex-col items-center lg:space-y-8">
           <div id="uesrText" className="loginPage-input">
             <UserCircleIcon className="w-5 h-5 mr-1" />
             <input
@@ -59,7 +52,7 @@ const Login = () => {
             <Link to={"/FindPswPage"}>忘记密码</Link>
             <Link to={"/RegisterPage"}>注册账号</Link>
           </div>
-        </form>
+        </div>
       </div>
     </>
   );

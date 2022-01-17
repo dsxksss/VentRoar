@@ -228,7 +228,7 @@ body {
 
 .input-Style {
   /* 样式 */
-  @apply px-5 mr-6 border-[1.3px] border-gray-900 md:px-[3rem] text-center rounded-xl shadow-sm shadow-slate-400/70 lg:px-16;
+  @apply px-5 mr-6 border-[1.3px] border-gray-500/50 md:px-[3rem] text-center rounded-xl shadow-sm shadow-slate-400/70 lg:px-16;
   /* 动画 */
   @apply transition ease-in focus:duration-150 focus:outline-none focus:ring-blue-500 focus:shadow-none focus:border-blue-500 focus:ring-1;
 }
