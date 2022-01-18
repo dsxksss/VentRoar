@@ -14,25 +14,13 @@ const HomePage = () => {
   const [showtext, setShowtext] = useState(false);
   const animation = useSpring({
     opacity: showtext ? 1 : 0,
-    transform: showtext ? `translateY(0%)` : `translateY(-50%)`,
+    transform: showtext ? `translateY(0)` : `translateY(30)`,
     config: config.gentle,
   });
 
   return (
     <>
       <div className="h-[93vh]">
-        <animated.p style={animation}>
-          不用理会以下内容，还未完成...... reprehenderit
-          <b className="text-sky-500">necessitatibus</b> aliquid! Sunt labore
-          repellendus minus quas vel sint fugiat{" "}
-          <b
-            className="text-sky-500
-          "
-          >
-            doloremque
-          </b>
-          nemo, ut facere, deserunt iure ab necessitatibus debitis!
-        </animated.p>
         <button
           className="button-style bg-green-400 text-white shadow-lg shadow-green-400/50"
           onClick={getUser}
@@ -45,6 +33,18 @@ const HomePage = () => {
         >
           SHOW TEXT
         </button>
+        <animated.p className="select-none" style={animation}>
+          不用理会以下内容，还未完成...... reprehenderit
+          <b className="text-sky-500">necessitatibus</b> aliquid! Sunt labore
+          repellendus minus quas vel sint fugiat{" "}
+          <b
+            className="text-sky-500
+          "
+          >
+            doloremque
+          </b>
+          nemo, ut facere, deserunt iure ab necessitatibus debitis!
+        </animated.p>
       </div>
       {list.map((c: any) => (
         <ul key={c._id} className="overflow-x-auto">

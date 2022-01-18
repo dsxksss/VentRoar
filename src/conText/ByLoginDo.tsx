@@ -3,17 +3,17 @@ import { useNavigate } from "react-router-dom";
 export const loginContext = createContext({});
 // loginContext.displayName = "loginContext";
 const ByLoginDo = ({ children }: any) => {
-  const [isLogin, setLogin] = useState(false);
+  const [token, setToken] = useState("");
   const toLink = useNavigate();
   useEffect(() => {
-    if (isLogin) {
+    if (token !== "") {
       toLink("/UserPage");
     } else {
-      toLink("/LoginPage");
+      toLink("/");
     }
-  }, [isLogin]); //当isLogin值更改时才会调用Effect方法
+  }, [token]); //当token值更改时才会调用Effect方法
   return (
-    <loginContext.Provider value={{ isLogin, setLogin }}>
+    <loginContext.Provider value={{ token, setToken, toLink }}>
       {children}
     </loginContext.Provider>
   );

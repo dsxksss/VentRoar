@@ -2,11 +2,12 @@ import { Link } from "react-router-dom";
 import { UserCircleIcon, LockOpenIcon } from "@heroicons/react/solid";
 import { Alert, Button, Snackbar } from "@mui/material";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Joi from "joi";
+import { loginContext } from "./../conText/ByLoginDo";
 const Login = () => {
   const [open, setOpen] = useState(false);
-
+  const { setToken, token, toLink } = useContext<any>(loginContext);
   const [data, setData] = useState({
     msg: "请输入您的账号密码!",
     userPassword: "",
@@ -14,7 +15,9 @@ const Login = () => {
     token: "",
   });
 
-  useEffect(() => {}, [open]);
+  useEffect(() => {
+    if (token !== "") toLink("/UserPage");
+  }, [open]);
 
   const push = async () => {
     await axios
@@ -25,6 +28,9 @@ const Login = () => {
           msg: `登录成功`,
         }));
         setOpen(true);
+        setTimeout(() => {
+          setToken(res.data);
+        }, 2000);
         console.log(res.data);
       })
       .catch((err) => {
