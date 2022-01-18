@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import Footer from "../Components/Footer";
-import { useSpring, animated } from "react-spring";
+import { useSpring, animated, config } from "react-spring";
 const HomePage = () => {
   const [list, setList] = useState([]);
   async function getUser() {
@@ -14,7 +14,8 @@ const HomePage = () => {
   const [showtext, setShowtext] = useState(false);
   const animation = useSpring({
     opacity: showtext ? 1 : 0,
-    transform: showtext ? `translateY(0)` : `translateY(-200%)`,
+    transform: showtext ? `translateY(0%)` : `translateY(-50%)`,
+    config: config.gentle,
   });
 
   return (
