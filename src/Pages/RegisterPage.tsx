@@ -7,29 +7,44 @@ import {
 } from "@heroicons/react/outline";
 import { RefreshIcon } from "@heroicons/react/solid";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Alert, Button, Snackbar } from "@mui/material";
 
 const RegisterPage = () => {
+  const [open, setOpen] = useState(false);
+  const [data, setData] = useState({
+    msg: "请填写完您的注册信息!",
+    userName: "",
+    userPassword: "",
+    userPhoneNumber: "",
+    token: "",
+  });
+  useEffect(() => {}, [open]);
   const push = async () => {
     await axios
       .post("http://101.43.123.50:2546/userCreateApi/", userData)
       .then((res) => {
-        setMsg(`注册成功`);
+        setData((data) => ({
+          ...data,
+          msg: `注册成功`,
+        }));
         setOpen(true);
         console.log(res.data);
       })
       .catch((err) => {
-        setMsg(`注册失败,已存在相同手机号!!!`);
+        setData((data) => ({
+          ...data,
+          msg: `注册失败,请检查格式如已注册请勿重复注册!`,
+        }));
         setOpen(true);
         return err;
       });
   };
 
   let userData = {
-    userName: "",
-    userPassword: "",
-    userPhoneNumber: "",
+    userName: data.userName,
+    userPassword: data.userPassword,
+    userPhoneNumber: data.userPhoneNumber,
   };
 
   // FUNCTION: 封装的数据验证函数;
@@ -49,7 +64,6 @@ const RegisterPage = () => {
     if (dataByTrue(userData)) push();
   };
 
-  const [open, setOpen] = useState(false);
   const handleClick = () => {
     setOpen(!open);
   };
@@ -61,7 +75,6 @@ const RegisterPage = () => {
     </>
   );
 
-  const [msg, setMsg] = useState("");
   return (
     <>
       <div
@@ -83,9 +96,14 @@ const RegisterPage = () => {
                 required
                 maxLength={8}
                 pattern="^[a-zA-Z][a-zA-Z0-9_]{4,12}$"
-                placeholder="账号名 5-11位纯英文字母"
+                placeholder="账号名5-11位英文开头"
                 //SM:实时接收输入框里的值
-                onChange={(e) => (userData.userName = e.target.value)}
+                onChange={(e) =>
+                  setData((data) => ({
+                    ...data,
+                    userName: e.target.value,
+                  }))
+                }
               />
             </div>
             <div id="uesrPhone" className="registerPage-input">
@@ -100,7 +118,12 @@ const RegisterPage = () => {
                 pattern="(\d{11})|^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{4}|\d{3})-(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1}))$"
                 placeholder="用来注册的11位手机号"
                 //SM:实时接收输入框里的值
-                onChange={(e) => (userData.userPhoneNumber = e.target.value)}
+                onChange={(e) =>
+                  setData((data) => ({
+                    ...data,
+                    userPhoneNumber: e.target.value,
+                  }))
+                }
               />
             </div>
             <div id="userPassword1" className="registerPage-input">
@@ -112,9 +135,14 @@ const RegisterPage = () => {
                 required
                 maxLength={14}
                 pattern="^[a-zA-Z]\w{5,17}$"
-                placeholder="密码 6-18位混合字母数字"
+                placeholder="密码6-18位字母开头"
                 //SM:实时接收输入框里的值
-                onChange={(e) => (userData.userPassword = e.target.value)}
+                onChange={(e) =>
+                  setData((data) => ({
+                    ...data,
+                    userPassword: e.target.value,
+                  }))
+                }
               />
             </div>
             <div id="userPassword2" className="registerPage-input">
@@ -125,7 +153,7 @@ const RegisterPage = () => {
                 // SM:必填项
                 required
                 pattern="^[a-zA-Z]\w{5,17}$"
-                placeholder="输入验证码(暂未开发)X"
+                placeholder="输入验证码:暂未开发"
                 readOnly
               />
             </div>
@@ -154,9 +182,9 @@ const RegisterPage = () => {
       >
         <Alert
           onClose={handleClick}
-          severity={msg === "注册成功" ? "success" : "error"}
+          severity={data.msg === "注册成功" ? "success" : "error"}
         >
-          {msg}
+          {data.msg}
         </Alert>
       </Snackbar>
     </>

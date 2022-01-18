@@ -2,27 +2,39 @@ import { Link } from "react-router-dom";
 import { UserCircleIcon, LockOpenIcon } from "@heroicons/react/solid";
 import { Alert, Button, Snackbar } from "@mui/material";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Joi from "joi";
 const Login = () => {
+  const [open, setOpen] = useState(false);
+
+  const [data, setData] = useState({
+    msg: "请输入您的账号密码!",
+    userPassword: "",
+    userPhoneNumber: "",
+    token: "",
+  });
+
+  useEffect(() => {}, [open]);
+
   const push = async () => {
     await axios
-      .post("http://101.43.123.50:2546/userLoginApi/", loginData)
+      .post("http://101.43.123.50:2546/userLoginApi/", userData)
       .then((res) => {
-        setMsg(`登录成功`);
+        setData((data) => ({
+          ...data,
+          msg: `登录成功`,
+        }));
         setOpen(true);
         console.log(res.data);
       })
       .catch((err) => {
-        setMsg(`登录失败,账号或密码错误!!!`);
+        setData({
+          ...data,
+          msg: `登录失败,账号或密码错误!`,
+        });
         setOpen(true);
         return err;
       });
-  };
-
-  let loginData = {
-    userPassword: "",
-    userPhoneNumber: "",
   };
 
   // FUNCTION: 封装的数据验证函数;
@@ -36,14 +48,21 @@ const Login = () => {
     return schema.validate(data);
   };
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    if (dataByTrue(loginData)) push();
+  const userData = {
+    userPhoneNumber: data.userPhoneNumber,
+    userPassword: data.userPassword,
   };
-  const [open, setOpen] = useState(false);
+
+  const handleSubmit = (e: { preventDefault: () => void }) => {
+    if (data.token !== "") console.log(data.token);
+    e.preventDefault();
+    if (dataByTrue(userData)) push();
+  };
+
   const handleClick = () => {
     setOpen(!open);
   };
+
   const action = (
     <>
       <Button color="secondary" size="small" onClick={handleClick}>
@@ -51,7 +70,6 @@ const Login = () => {
       </Button>
     </>
   );
-  const [msg, setMsg] = useState("请输入您的账号密码!");
   return (
     <>
       <div
@@ -76,7 +94,12 @@ const Login = () => {
                 maxLength={13}
                 placeholder="手机号码"
                 //SM:实时接收输入框里的值
-                onChange={(e) => (loginData.userPhoneNumber = e.target.value)}
+                onChange={(e) =>
+                  setData((data) => ({
+                    ...data,
+                    userPhoneNumber: e.target.value,
+                  }))
+                }
               />
             </div>
             <div id="userPassword" className="loginPage-input">
@@ -89,7 +112,12 @@ const Login = () => {
                 maxLength={18}
                 placeholder="用户密码"
                 //SM:实时接收输入框里的值
-                onChange={(e) => (loginData.userPassword = e.target.value)}
+                onChange={(e) =>
+                  setData((data) => ({
+                    ...data,
+                    userPassword: e.target.value,
+                  }))
+                }
               />
             </div>
             <button
@@ -109,16 +137,16 @@ const Login = () => {
         open={open}
         //显示位置vertical:垂直位置,horizontal:水平位置
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
-        autoHideDuration={6000} //多少秒后关闭
+        autoHideDuration={2000} //多少秒后关闭
         onClose={handleClick}
         sx={{ mt: 7 }}
         action={action} //其他额外内容
       >
         <Alert
           onClose={handleClick}
-          severity={msg === "登录成功" ? "success" : "error"}
+          severity={data.msg === "登录成功" ? "success" : "error"}
         >
-          {msg}
+          {data.msg}
         </Alert>
       </Snackbar>
     </>
