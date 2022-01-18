@@ -7,8 +7,9 @@ import {
 } from "@heroicons/react/outline";
 import { RefreshIcon } from "@heroicons/react/solid";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Alert, Button, Snackbar } from "@mui/material";
+import { loginContext } from "./../conText/ByLoginDo";
 
 const RegisterPage = () => {
   const [open, setOpen] = useState(false);
@@ -19,6 +20,7 @@ const RegisterPage = () => {
     userPhoneNumber: "",
     token: "",
   });
+  const { toLink } = useContext<any>(loginContext);
   useEffect(() => {}, [open]);
   const push = async () => {
     await axios
@@ -26,10 +28,13 @@ const RegisterPage = () => {
       .then((res) => {
         setData((data) => ({
           ...data,
-          msg: `注册成功`,
+          msg: `注册成功,正在跳转登录界面...`,
         }));
         setOpen(true);
-        console.log(res.data);
+        setTimeout(() => {
+          console.log(res.data);
+          toLink("/loginPage");
+        }, 1500);
       })
       .catch((err) => {
         setData((data) => ({
@@ -182,7 +187,9 @@ const RegisterPage = () => {
       >
         <Alert
           onClose={handleClick}
-          severity={data.msg === "注册成功" ? "success" : "error"}
+          severity={
+            data.msg === "注册成功,正在跳转登录界面..." ? "success" : "error"
+          }
         >
           {data.msg}
         </Alert>

@@ -25,12 +25,12 @@ const Login = () => {
       .then((res) => {
         setData((data) => ({
           ...data,
-          msg: `登录成功`,
+          msg: `登录成功,转入用户页面...`,
         }));
         setOpen(true);
         setTimeout(() => {
           setToken(res.data);
-        }, 2000);
+        }, 1200);
         console.log(res.data);
       })
       .catch((err) => {
@@ -150,7 +150,9 @@ const Login = () => {
       >
         <Alert
           onClose={handleClick}
-          severity={data.msg === "登录成功" ? "success" : "error"}
+          severity={
+            data.msg === "登录成功,转入用户页面..." ? "success" : "error"
+          }
         >
           {data.msg}
         </Alert>
