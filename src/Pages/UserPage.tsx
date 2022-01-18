@@ -19,7 +19,7 @@ function UserPage() {
         });
     };
     getUserData();
-  }, [userData]);
+  }, []);
 
   return (
     <>
