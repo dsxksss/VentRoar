@@ -23,16 +23,12 @@ function UserPage() {
 
   return (
     <>
-      {userData !== [] ? (
-        <div className="text-center">
-          <p>
-            Hi!👋👋👋 <strong>{userData.userName}</strong>{" "}
-          </p>
-          <p>欢迎来到你的主页!!!</p>
-        </div>
-      ) : (
-        <div>"读取用户数据发生错误"</div>
-      )}
+      <div className="text-center">
+        <p>
+          Hi!👋👋👋 <strong>{userData.userName}</strong>{" "}
+        </p>
+        <p>欢迎来到你的主页!!!</p>
+      </div>
     </>
   );
 }
