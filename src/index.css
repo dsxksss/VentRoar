@@ -250,8 +250,8 @@ body {
   @apply font-sans ease-in-out uppercase tracking-widest 
   py-[5px] px-5 font-bold rounded-[4px] focus:outline-none;
   /* 动画设置 -translate-y:向y轴移动，duration:动画播放时长*/
-  @apply active:-translate-y-[-0.2rem] active:scale-90 duration-150 
-  active:text-black focus:outline-none;
+  @apply active:-translate-y-[-0.2rem] active:scale-90 duration-100 
+  active:text-black active:outline-none focus:outline-none;
 }
 
 .registerPage-input {
