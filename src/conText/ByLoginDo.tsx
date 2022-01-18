@@ -6,7 +6,7 @@ const ByLoginDo = ({ children }: any) => {
   const [token, setToken] = useState("");
   const toLink = useNavigate();
   useEffect(() => {
-    if (token === "" || token === undefined) {
+    if (token !== "" || token !== undefined) {
       toLink("/UserPage");
     } else {
       toLink("/");
