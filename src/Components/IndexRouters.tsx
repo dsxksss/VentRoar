@@ -27,7 +27,7 @@ const IndexRouters = () => {
             <Route
               path="/"
               element={
-                <div className="mx-4">
+                <div>
                   <HomePage />
                 </div>
               }

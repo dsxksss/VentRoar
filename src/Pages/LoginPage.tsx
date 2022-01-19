@@ -81,7 +81,7 @@ const Login = () => {
       <div
         id="all"
         style={{ animationDuration: "0.7s" }}
-        className="an-4 mt-[-7vh] login-And-Register-PageStyle border-l-blue-500/90 space-y-4"
+        className="an-4 mt-[-7vh] login-And-Register-PageStyle border-l-blue-500 space-y-4"
       >
         <div id="title">
           {/* <p className="title-size">WelCome To</p> */}
@@ -128,7 +128,7 @@ const Login = () => {
             </div>
             <button
               type="submit"
-              className="button-style text-white bg-blue-500/90 shadow-lg shadow-gray-300"
+              className="button-style text-white bg-blue-500 shadow-lg shadow-gray-300"
             >
               l o g i n
             </button>
