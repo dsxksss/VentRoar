@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Dialog, Menu, Transition } from "@headlessui/react";
+import { Dialog, Transition } from "@headlessui/react";
 //导入headlessui组件依赖，来方便的创建可交互样式
 import { ViewListIcon, XIcon } from "@heroicons/react/solid";
 import {
@@ -48,7 +48,7 @@ const Nav = () => {
           to={"/LoginPage"}
         >
           <UserCircleIcon className="inline-block h-5 mb-1 w-5" />
-          login登入
+          login登录
         </Link>
       </div>
 
@@ -148,7 +148,7 @@ const Nav = () => {
                             onClick={() => setOpen(false)}
                           >
                             <UserCircleIcon className="inline-block h-5 mb-1 w-5" />
-                            login登入
+                            login登录
                           </Link>
                         </div>
                       </div>

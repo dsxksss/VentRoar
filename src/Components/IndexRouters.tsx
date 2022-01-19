@@ -40,7 +40,7 @@ const IndexRouters = () => {
             <Route path="/FindPswPage" element={<FindPswPage />}></Route>
             {/* 关于与帮助页 */}
             <Route path="/AboutUsPage" element={<AboutUsPage />}></Route>
-            {/* 登入页 */}
+            {/* 登录页 */}
             <Route
               path="/LoginPage"
               element={
