@@ -78,7 +78,7 @@ function PopularPage() {
       >
         <input
           type="text"
-          minLength={5}
+          minLength={11}
           maxLength={150}
           className="icon-input-Style px-4 mr-5 sm:px-[20%] sm:mr-10 overflow-x-auto"
           required={true}
