@@ -9,8 +9,10 @@ import {
   HeartIcon,
   DotsHorizontalIcon,
 } from "@heroicons/react/outline";
+import { animated, config, useSpring } from "react-spring";
 function PopularPage() {
   const [list, setList] = useState([]);
+  const [showMsg, setShowMsg] = useState({ isOpen: false, showtext: "" });
   const [text, setText] = useState({ userText: "" });
   const { token } = useContext<any>(loginContext);
   async function getUser() {
@@ -22,24 +24,41 @@ function PopularPage() {
     getUser(); //因为react不支持导出async函数,小方法是再包裹一个函数来内部执行调用
   }, []);
   const push = async () => {
-    if (token === "") return console.log("请先登录!!!");
+    if (token === "")
+      return (
+        setShowMsg({ isOpen: true, showtext: "请登录!" }),
+        setTimeout(() => {
+          setShowMsg({ isOpen: false, showtext: "请登录!" });
+        }, 2000)
+      );
     await axios
       .post(`http://101.43.123.50:2546/userTextApi/${token}`, text)
       .then((res) => {
-        console.log("发送成功", res.data);
+        setShowMsg({ isOpen: true, showtext: "发送成功" });
+        setTimeout(() => {
+          setShowMsg({ isOpen: false, showtext: "发送成功" });
+        }, 2000);
         getUser();
       })
       .catch((err) => {
-        console.log("发送失败", err);
+        setShowMsg({ isOpen: true, showtext: "发送失败,网络繁忙!" });
+        setTimeout(() => {
+          setShowMsg({ isOpen: false, showtext: "发送失败,网络繁忙!" });
+        }, 2000);
       });
   };
   const headerSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (text.userText !== "") push();
   };
+  const animation = useSpring({
+    opacity: showMsg.isOpen ? 1 : 0,
+    transform: showMsg.isOpen ? `translateX(0%)` : `translateX(30%)`,
+    config: config.slow,
+  });
   return (
     <>
-      <div className="h-[85vh] mt-3 z-[-1] overflow-y-auto ">
+      <div className="h-[83vh] mt-3 z-[-1] overflow-y-auto relative">
         {list.map((c: any) => (
           <div key={c._id} className="my-5">
             {(c.userText === "" || c.userText === undefined) &&
@@ -71,7 +90,14 @@ function PopularPage() {
             )}
           </div>
         ))}
+        <animated.div
+          className="absolute right-[2%] top-[0%] text-center bg-green-500 button-style text-gray-100 font-bold"
+          style={animation}
+        >
+          {showMsg.showtext}
+        </animated.div>
       </div>
+
       <form
         onSubmit={headerSubmit}
         className="absolute border-t-[2px]  right-0 left-0 bottom-0 h-[8vh] flex justify-center items-center"
