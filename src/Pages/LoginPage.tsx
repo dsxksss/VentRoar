@@ -130,7 +130,7 @@ const Login = () => {
               type="submit"
               className="button-style text-white bg-blue-500 shadow-lg shadow-gray-300"
             >
-              l o g i n
+              L O G I N
             </button>
             <div className="text-sm md:text-[1.25rem] font-bold text-blue-400 space-x-[2rem]">
               <Link to={"/FindPswPage"}>忘记密码</Link>
