@@ -97,16 +97,15 @@ function PopularPage() {
           {showMsg.showtext}
         </animated.div>
       </div>
-
       <form
         onSubmit={headerSubmit}
-        className="absolute border-t-[2px]  right-0 left-0 bottom-0 h-[8vh] flex justify-center items-center"
+        className="absolute border-t-[2px] right-0 left-0 bottom-0 h-[8vh] flex justify-center items-center"
       >
         <input
           type="text"
           minLength={11}
           maxLength={150}
-          className="icon-input-Style px-4 mr-5 sm:px-[20%] sm:mr-10 overflow-x-auto"
+          className="icon-input-Style pl-2 w-[75vw] mr-5 sm:mr-10 overflow-x-auto"
           required={true}
           onChange={(e: any) => setText({ userText: e.target.value })}
         ></input>
