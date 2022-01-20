@@ -58,12 +58,12 @@ function PopularPage() {
   });
   return (
     <>
-      <div className="h-[83vh] mt-3 z-[-1] overflow-y-auto relative">
+      <div className="h-[83vh] mt-3 z-[-1] overflow-y-auto">
         {list.map((c: any) => (
           <div key={c._id} className="my-5">
             {(c.userText === "" || c.userText === undefined) &&
             (c.userTextDate === "" || c.userTextDate === undefined) ? null : (
-              <div className="showText-BoxStyle mx-5 mt-5 flex flex-col ">
+              <div className="showText-BoxStyle mx-5 mt-5 flex flex-col">
                 {
                   <div className="mx-6 flex justify-between md:justify-start items-center">
                     <span className="text-[1.5rem] font-bold pr-4">
@@ -77,7 +77,7 @@ function PopularPage() {
                 <div className="bg-slate-50/50  flex justify-cente md:items-center text-[15px] px-4 indent-8 pt-1 text-slate-700 ">
                   {c.userText}
                 </div>
-                <div className="mx-5 my-1 lg:mb-5 h-[4vh] flex justify-between items-center py-2">
+                <div className="mx-5 my-1 h-[4vh] flex justify-between items-center py-2">
                   <div className="flex justify-start items-center space-x-3">
                     <HeartIcon className="w-7 h-7 text-slate-400" />
                     <EmojiSadIcon className="w-7 h-7 text-slate-400" />
@@ -91,7 +91,7 @@ function PopularPage() {
           </div>
         ))}
         <animated.div
-          className="absolute right-[2%] top-[0%] text-center bg-green-500 button-style text-gray-100 font-bold"
+          className="fixed right-[2%] top-[6%] text-center bg-green-500 button-style text-gray-100 font-bold"
           style={animation}
         >
           {showMsg.showtext}
