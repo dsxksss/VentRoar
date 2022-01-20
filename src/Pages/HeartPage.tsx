@@ -74,7 +74,7 @@ function PopularPage() {
       </div>
       <form
         onSubmit={headerSubmit}
-        className="absolute right-0 left-0 bottom-0 h-[8vh] flex justify-center items-center bg-all"
+        className="absolute border-t-[2px]  right-0 left-0 bottom-0 h-[8vh] flex justify-center items-center"
       >
         <input
           type="text"
