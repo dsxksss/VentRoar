@@ -84,7 +84,7 @@ function PopularPage() {
               <div className="showText-BoxStyle mx-5 mt-5 flex flex-col">
                 <div>
                   {
-                    <div className="mx-6 flex justify-between md:justify-start items-center">
+                    <div className="mx-6 flex justify-between items-center">
                       <span className="text-[1.5rem] font-bold pr-4">
                         {c.userName}
                       </span>
