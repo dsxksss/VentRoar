@@ -45,7 +45,7 @@ function PopularPage() {
       .then((_res) => {
         setTextBar({
           isOpen: true,
-          MsgStyle: "textBar-style bg-red-400 text-white w-[40vw]",
+          MsgStyle: "textBar-style bg-green-400 text-white w-[40vw]",
           msg: "发送成功",
         });
         setTimeout(() => {
