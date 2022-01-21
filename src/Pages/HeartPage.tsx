@@ -116,7 +116,7 @@ function PopularPage() {
         className="fixed border-t-[2px] right-0 left-0 bottom-0 h-[8vh] flex justify-center items-center"
       >
         <input
-          type="textarea"
+          type="text"
           minLength={11}
           maxLength={150}
           className="icon-input-Style pl-2 w-[75vw] mr-5 sm:mr-10 overflow-x-auto"
