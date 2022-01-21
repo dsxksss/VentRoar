@@ -1,8 +1,24 @@
-/* This example requires Tailwind CSS v2.0+ */
-import { Fragment, useState } from "react";
-import { Dialog, Transition } from "@headlessui/react";
-import { XIcon, ViewListIcon } from "@heroicons/react/outline";
+import { useEffect, useContext } from "react";
+import { TextBarContext } from "../Components/TextBar";
 const FindPswPage = () => {
-  return <>FindPswPage</>;
+  const { setTextBar } = useContext<any>(TextBarContext);
+  useEffect(() => {
+    setTextBar({
+      isOpen: true,
+      msg: "bad gay",
+      MsgStyle: "textBar-style bg-green-400 text-white w-[40vw]",
+    });
+    setTimeout(() => {
+      setTextBar((oldData: any) => ({
+        ...oldData,
+        isOpen: false,
+      }));
+    }, 3000);
+  }, []);
+  return (
+    <>
+      <div>FindPswPage</div>
+    </>
+  );
 };
 export default FindPswPage;

@@ -1,29 +1,27 @@
-import { Alert, Button, Snackbar } from "@mui/material";
-
-// c1:要显示的内容c2:打开状态c3:设置打开状态的函数c4:样式c5:自动消失时间(毫秒)
-const TextBar = (textMsg: any) => {
-  const { msg, isOpen, FC, style, closeTime } = textMsg;
-  const action = (
-    <>
-      <Button color="secondary" size="small" onClick={() => FC()}>
-        关闭
-      </Button>
-    </>
-  );
+import { useState, createContext } from "react";
+import { animated, config, useSpring } from "react-spring";
+export const TextBarContext = createContext({});
+const TextBar = ({ children }: any) => {
+  const [textBar, setTextBar] = useState({
+    isOpen: false,
+    msg: "",
+    MsgStyle: "",
+  });
+  const animation = useSpring({
+    opacity: textBar.isOpen ? 1 : 0,
+    transform: textBar.isOpen ? `translateX(0%)` : `translateX(30%)`,
+    config: config.slow,
+  });
   return (
-    <Snackbar
-      open={isOpen}
-      //显示位置vertical:垂直位置,horizontal:水平位置
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
-      autoHideDuration={closeTime} //多少秒后关闭
-      onClose={() => FC()}
-      sx={{ mt: 7 }}
-      action={action} //其他额外内容
-    >
-      <Alert onClose={() => FC()} severity={style}>
-        {msg}
-      </Alert>
-    </Snackbar>
+    <TextBarContext.Provider value={{ textBar, setTextBar }}>
+      <animated.div
+        className={`textBar-style ${textBar.MsgStyle}`}
+        style={animation}
+      >
+        {textBar.msg}
+      </animated.div>
+      {children}
+    </TextBarContext.Provider>
   );
 };
 export default TextBar;

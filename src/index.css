@@ -277,3 +277,9 @@ body {
 .registerPage-input {
   @apply flex items-center flex-row;
 }
+
+.textBar-style {
+  /* 字体边框等样式 */
+  @apply font-sans tracking-widest py-[5px] px-5 rounded-[4px] focus:outline-none
+  fixed right-[0%] top-[6%] text-center font-bold;
+}
