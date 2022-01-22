@@ -140,7 +140,9 @@ function PopularPage() {
                 <div className="mx-5 my-1 h-[4vh] flex justify-between items-center py-2">
                   <div className="flex justify-start items-center space-x-3">
                     <HeartIcon className="w-7 h-7 text-slate-400" />
+                    {c.heart}
                     <EmojiSadIcon className="w-7 h-7 text-slate-400" />
+                    {c.smil}
                   </div>
                   <div>
                     <DotsHorizontalIcon className="w-7 h-7 text-slate-600" />
