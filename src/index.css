@@ -212,33 +212,43 @@ body {
 
 .icon-0 {
   background-image: url("./img/faceImg/bird.svg");
+  background-repeat: no-repeat;
 }
 .icon-1 {
   background-image: url("./img/faceImg/dog.svg");
+  background-repeat: no-repeat;
 }
 .icon-2 {
   background-image: url("./img/faceImg/cat.svg");
+  background-repeat: no-repeat;
 }
 .icon-3 {
   background-image: url("./img/faceImg/fox.svg");
+  background-repeat: no-repeat;
 }
 .icon-4 {
   background-image: url("./img/faceImg/rabbit.svg");
+  background-repeat: no-repeat;
 }
 .icon-5 {
   background-image: url("./img/faceImg/blackcat.svg");
+  background-repeat: no-repeat;
 }
 .icon-6 {
   background-image: url("./img/faceImg/bear.svg");
+  background-repeat: no-repeat;
 }
 .icon-7 {
   background-image: url("./img/faceImg/elephant.svg");
+  background-repeat: no-repeat;
 }
 .icon-8 {
   background-image: url("./img/faceImg/ghost.svg");
+  background-repeat: no-repeat;
 }
 .icon-9 {
   background-image: url("./img/faceImg/pig.svg");
+  background-repeat: no-repeat;
 }
 
 .bt-style {

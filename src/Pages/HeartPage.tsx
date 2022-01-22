@@ -79,6 +79,39 @@ function PopularPage() {
   return (
     <>
       <div className="h-[83vh] mt-3 z-[-1] snap-y scroll-smooth overflow-y-scroll">
+        <div className="snap-start showText-BoxStyle mx-5 mt-5 flex flex-col">
+          <div>
+            {
+              <div className="mr-6 ml-2 mt-3 flex justify-between items-center">
+                <div className="flex justify-center items-end">
+                  <span className={`w-10 h-10 md:w-13 md:h-13 icon-2`}></span>
+                  <span className="text-[1.3rem] font-bold text-green-500">
+                    建设者:
+                  </span>
+                </div>
+                <span className="text-blue-500 select-none text-right pt-2">
+                  {timeSCV(1642847381)}
+                </span>
+              </div>
+            }
+          </div>
+          <div className="bg-slate-50/50 h-full flex justify-cente md:items-center text-[15px] px-4 indent-8 pt-1 text-slate-700 ">
+            <p className="break-all">
+              在这里随便说点什么,比如今天的心情怎么样?是好还是坏呢?或者遇到了不开心的事也可以发送到这上面喔,别把太多压力扛在自己身上❤️❤️❤️
+            </p>
+          </div>
+          <div className="mx-5 my-1 h-[4vh] flex justify-between items-center py-2">
+            <div className="flex justify-start items-center space-x-3">
+              <HeartIcon className="w-7 h-7 text-red-500" />
+              999+
+              <EmojiHappyIcon className="text-yellow-500 w-7 h-7" />
+              999+
+            </div>
+            <div>
+              <DotsHorizontalIcon className="w-7 h-7 text-slate-600" />
+            </div>
+          </div>
+        </div>
         {list.map((c: any) => (
           <div key={c._id} className="my-5 snap-start">
             {(c.textData === "" || c.textData === undefined) &&
@@ -86,10 +119,15 @@ function PopularPage() {
               <div className="showText-BoxStyle mx-5 mt-5 flex flex-col">
                 <div>
                   {
-                    <div className="mr-6 ml-4 mt-2 flex justify-between items-center">
-                      <span
-                        className={`w-10 h-10 md:w-13 md:h-13 icon-${c.img}`}
-                      ></span>
+                    <div className="mr-6 ml-2 mt-3 flex justify-between items-center">
+                      <div className="flex justify-center items-end">
+                        <span
+                          className={`w-10 h-10 md:w-13 md:h-13 icon-${c.img}`}
+                        ></span>
+                        <span className="text-[1.3rem] font-bold text-blue-400">
+                          匿名者:
+                        </span>
+                      </div>
                       <span className="text-blue-500 select-none text-right pt-2">
                         {timeSCV(c.textDate)}
                       </span>
