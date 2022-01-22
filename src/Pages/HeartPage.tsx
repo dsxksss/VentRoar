@@ -13,13 +13,13 @@ import {
 
 function PopularPage() {
   const [list, setList] = useState([]);
-  const [text, setText] = useState({ userText: "" });
+  const [text, setText] = useState({ textData: "" });
   const { token } = useContext<any>(loginContext);
   const { setTextBar } = useContext<any>(TextBarContext);
   async function getUser() {
     //利用异步方法请求数据
     return setList(
-      (await axios("http://101.43.123.50:2546/userDataApi/")).data
+      (await axios.get("http://101.43.123.50:2546/textDataApi/")).data
     );
   }
   useEffect(() => {
@@ -72,30 +72,32 @@ function PopularPage() {
   };
   const headerSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    if (text.userText !== "") push();
+    if (text.textData !== "") push();
+    setText({ textData: "" });
   };
+  //{newtime-oldtime/60}
   return (
     <>
       <div className="h-[83vh] mt-3 z-[-1] snap-y scroll-smooth overflow-y-scroll">
         {list.map((c: any) => (
           <div key={c._id} className="my-5 snap-start">
-            {(c.userText === "" || c.userText === undefined) &&
-            (c.userTextDate === "" || c.userTextDate === undefined) ? null : (
+            {(c.textData === "" || c.textData === undefined) &&
+            (c.textDate === "" || c.textDate === undefined) ? null : (
               <div className="showText-BoxStyle mx-5 mt-5 flex flex-col">
                 <div>
                   {
-                    <div className="mx-6 flex justify-between items-center">
-                      <span className="text-[1.5rem] font-bold pr-4">
-                        {c.userName}
-                      </span>
+                    <div className="mr-6 ml-4 mt-2 flex justify-between items-center">
+                      <span
+                        className={`w-10 h-10 md:w-13 md:h-13 icon-${c.img}`}
+                      ></span>
                       <span className="text-blue-500 select-none text-right pt-2">
-                        {timeSCV(c.userTextDate)}
+                        {timeSCV(c.textDate)}
                       </span>
                     </div>
                   }
                 </div>
                 <div className="bg-slate-50/50 h-full flex justify-cente md:items-center text-[15px] px-4 indent-8 pt-1 text-slate-700 ">
-                  <p className="break-all">{c.userText}</p>
+                  <p className="break-all">{c.textData}</p>
                 </div>
                 <div className="mx-5 my-1 h-[4vh] flex justify-between items-center py-2">
                   <div className="flex justify-start items-center space-x-3">
@@ -117,11 +119,12 @@ function PopularPage() {
       >
         <input
           type="text"
-          minLength={11}
-          maxLength={150}
+          minLength={10}
+          maxLength={295}
+          value={text.textData}
           className="icon-input-Style pl-2 w-[75vw] mr-5 sm:mr-10 overflow-x-auto"
           required={true}
-          onChange={(e: any) => setText({ userText: e.target.value })}
+          onChange={(e: any) => setText({ textData: e.target.value })}
         ></input>
         <button type="submit" className="icon-button-style">
           <ReplyIcon className="w-7 h-7" />
