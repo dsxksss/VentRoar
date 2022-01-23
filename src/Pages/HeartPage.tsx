@@ -146,7 +146,7 @@ function PopularPage() {
                   </span>
                 </div>
                 <span className="text-blue-500 select-none text-right pt-2">
-                  {timeSCV(1642847381)}
+                  {timeSCV(1642525759)}
                 </span>
               </div>
             }
@@ -285,7 +285,8 @@ function PopularPage() {
       >
         <input
           type="text"
-          minLength={10}
+          placeholder="在这里输入,宣泄情绪..."
+          minLength={3}
           maxLength={295}
           value={text.textData}
           className="icon-input-Style pl-2 w-[75vw] mr-5 sm:mr-10 overflow-x-auto"

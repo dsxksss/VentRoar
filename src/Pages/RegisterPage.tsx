@@ -7,78 +7,61 @@ import {
 } from "@heroicons/react/outline";
 import { RefreshIcon } from "@heroicons/react/solid";
 import axios from "axios";
-import { useEffect, useState, useContext } from "react";
-import { Alert, Button, Snackbar } from "@mui/material";
+import { useState, useContext } from "react";
 import { loginContext } from "./../conText/ByLoginDo";
+import { TextBarContext } from "../Components/TextBar";
 
 const RegisterPage = () => {
-  const [open, setOpen] = useState(false);
-  const [data, setData] = useState({
-    msg: "请填写完您的注册信息!",
+  const [userData, setUserData] = useState({
     userName: "",
     userPassword: "",
     userPhoneNumber: "",
-    token: "",
   });
   const { toLink } = useContext<any>(loginContext);
-  useEffect(() => {}, [open]);
+  const { setTextBar } = useContext<any>(TextBarContext);
+  const trueBarStyle =
+    "textBar-style rounded-[4px] bg-green-400 text-white w-[100vw] md:w-[20vw]";
+  const falseBarStyle =
+    "textBar-style rounded-[4px] bg-red-400 text-white w-[100vw] md:w-[20vw]";
   const push = async () => {
     await axios
       .post("http://101.43.123.50:2546/userCreateApi/", userData)
       .then((res) => {
-        setData((data) => ({
-          ...data,
-          msg: `注册成功,正在跳转登录界面...`,
-        }));
-        setOpen(true);
+        setTextBar({
+          isOpen: true,
+          MsgStyle: trueBarStyle,
+          msg: "注册成功,正在转入登录页面...",
+        }),
+          setTimeout(() => {
+            toLink("/loginPage");
+          }, 1500);
         setTimeout(() => {
-          console.log(res.data);
-          toLink("/loginPage");
-        }, 1500);
+          setTextBar((oldData: any) => ({
+            ...oldData,
+            isOpen: false,
+          }));
+        }, 3000);
       })
       .catch((err) => {
-        setData((data) => ({
-          ...data,
-          msg: `注册失败,请检查格式如已注册请勿重复注册!`,
-        }));
-        setOpen(true);
+        setTextBar({
+          isOpen: true,
+          MsgStyle: falseBarStyle,
+          msg: "注册失败! 重复注册 或 数据库已存在相同手机号 或 网络繁忙!",
+        }),
+          setTimeout(() => {
+            setTextBar((oldData: any) => ({
+              ...oldData,
+              isOpen: false,
+            }));
+          }, 3000);
         return err;
       });
   };
 
-  let userData = {
-    userName: data.userName,
-    userPassword: data.userPassword,
-    userPhoneNumber: data.userPhoneNumber,
-  };
-
-  // FUNCTION: 封装的数据验证函数;
-  const dataByTrue = (data: any) => {
-    //创建前端传来的标准数据模版格式
-    const schema = Joi.object({
-      userName: Joi.string().min(5).max(50).required(),
-      userPassword: Joi.string().min(8).max(1024).required(),
-      userPhoneNumber: Joi.string().min(11).required(),
-    });
-    //返回验证结果
-    return schema.validate(data);
-  };
-
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    if (dataByTrue(userData)) push();
+    push();
   };
-
-  const handleClick = () => {
-    setOpen(!open);
-  };
-  const action = (
-    <>
-      <Button color="secondary" size="small" onClick={handleClick}>
-        关闭
-      </Button>
-    </>
-  );
 
   return (
     <>
@@ -100,12 +83,12 @@ const RegisterPage = () => {
                   type="text"
                   // SM:必填项
                   required
+                  minLength={3}
                   maxLength={8}
-                  pattern="^[a-zA-Z][a-zA-Z0-9_]{4,12}$"
-                  placeholder="账号名5-11位英文开头"
+                  placeholder="昵称3-8位"
                   //SM:实时接收输入框里的值
                   onChange={(e) =>
-                    setData((data) => ({
+                    setUserData((data) => ({
                       ...data,
                       userName: e.target.value,
                     }))
@@ -121,11 +104,10 @@ const RegisterPage = () => {
                   required
                   minLength={11}
                   maxLength={11}
-                  pattern="(\d{11})|^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{4}|\d{3})-(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1}))$"
-                  placeholder="用来注册的11位手机号"
+                  placeholder="11位手机号"
                   //SM:实时接收输入框里的值
                   onChange={(e) =>
-                    setData((data) => ({
+                    setUserData((data) => ({
                       ...data,
                       userPhoneNumber: e.target.value,
                     }))
@@ -139,12 +121,12 @@ const RegisterPage = () => {
                   type="password"
                   // SM:必填项
                   required
-                  maxLength={14}
-                  pattern="^[a-zA-Z]\w{5,17}$"
-                  placeholder="密码6-18位字母开头"
+                  minLength={8}
+                  maxLength={16}
+                  placeholder="密码8-16位"
                   //SM:实时接收输入框里的值
                   onChange={(e) =>
-                    setData((data) => ({
+                    setUserData((data) => ({
                       ...data,
                       userPassword: e.target.value,
                     }))
@@ -177,24 +159,6 @@ const RegisterPage = () => {
             </div>
           </form>
         </div>
-        <Snackbar
-          open={open}
-          //显示位置vertical:垂直位置,horizontal:水平位置
-          anchorOrigin={{ vertical: "top", horizontal: "right" }}
-          autoHideDuration={6000} //多少秒后关闭
-          onClose={handleClick}
-          sx={{ mt: 7 }}
-          action={action} //其他额外内容
-        >
-          <Alert
-            onClose={handleClick}
-            severity={
-              data.msg === "注册成功,正在跳转登录界面..." ? "success" : "error"
-            }
-          >
-            {data.msg}
-          </Alert>
-        </Snackbar>
       </div>
     </>
   );

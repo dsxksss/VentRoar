@@ -1,81 +1,65 @@
 import { Link } from "react-router-dom";
 import { UserCircleIcon, LockOpenIcon } from "@heroicons/react/solid";
-import { Alert, Button, Snackbar } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState, useContext } from "react";
-import Joi from "joi";
 import { loginContext } from "./../conText/ByLoginDo";
+import { TextBarContext } from "../Components/TextBar";
 const Login = () => {
-  const [open, setOpen] = useState(false);
   const { setToken, token, toLink } = useContext<any>(loginContext);
-  const [data, setData] = useState({
-    msg: "请输入您的账号密码!",
+  const { setTextBar } = useContext<any>(TextBarContext);
+  const [userData, setUserData] = useState({
     userPassword: "",
     userPhoneNumber: "",
-    token: "",
   });
-
   useEffect(() => {
     if (token !== "") toLink("/UserPage");
-  }, [open]);
+  }, []);
+  const trueBarStyle =
+    "textBar-style rounded-[4px] bg-green-400 text-white w-[100vw] md:w-[20vw]";
+  const falseBarStyle =
+    "textBar-style rounded-[4px] bg-red-400 text-white w-[100vw] md:w-[20vw]";
 
   const push = async () => {
     await axios
       .post("http://101.43.123.50:2546/userLoginApi/", userData)
       .then((res) => {
-        setData((data) => ({
-          ...data,
-          msg: `登录成功,转入用户页面...`,
-        }));
-        setOpen(true);
+        setTextBar({
+          isOpen: true,
+          MsgStyle: trueBarStyle,
+          msg: "登录成功...",
+        }),
+          setTimeout(() => {
+            setTextBar((oldData: any) => ({
+              ...oldData,
+              isOpen: false,
+            }));
+          }, 3000);
         setTimeout(() => {
           setToken(res.data);
         }, 1200);
         console.log(res.data);
       })
       .catch((err) => {
-        setData({
-          ...data,
-          msg: `登录失败,账号或密码错误!`,
-        });
-        setOpen(true);
+        setTextBar({
+          isOpen: true,
+          MsgStyle: falseBarStyle,
+          msg: "登录失败!手机号或密码错误!",
+        }),
+          setTimeout(() => {
+            setTextBar((oldData: any) => ({
+              ...oldData,
+              isOpen: false,
+            }));
+          }, 3000);
         return err;
       });
   };
 
-  // FUNCTION: 封装的数据验证函数;
-  const dataByTrue = (data: any) => {
-    //创建前端传来的标准数据模版格式
-    const schema = Joi.object({
-      userPhoneNumber: Joi.string().min(11).required(),
-      userPassword: Joi.string().min(8).max(1024).required(),
-    });
-    //返回验证结果
-    return schema.validate(data);
-  };
-
-  const userData = {
-    userPhoneNumber: data.userPhoneNumber,
-    userPassword: data.userPassword,
-  };
-
   const handleSubmit = (e: { preventDefault: () => void }) => {
-    if (data.token !== "") console.log(data.token);
     e.preventDefault();
-    if (dataByTrue(userData)) push();
+    push();
   };
 
-  const handleClick = () => {
-    setOpen(!open);
-  };
-
-  const action = (
-    <>
-      <Button color="secondary" size="small" onClick={handleClick}>
-        关闭
-      </Button>
-    </>
-  );
   return (
     <>
       <div className="flex justify-center items-center h-[93vh]">
@@ -85,7 +69,6 @@ const Login = () => {
           className="an-4 mt-[-7vh] login-And-Register-PageStyle border-l-blue-500 space-y-4"
         >
           <div id="title">
-            {/* <p className="title-size">WelCome To</p> */}
             <p className="ventroar-size text-blue-500">VentRoar</p>
           </div>
 
@@ -102,7 +85,7 @@ const Login = () => {
                   placeholder="手机号码"
                   //SM:实时接收输入框里的值
                   onChange={(e) =>
-                    setData((data) => ({
+                    setUserData((data) => ({
                       ...data,
                       userPhoneNumber: e.target.value,
                     }))
@@ -120,7 +103,7 @@ const Login = () => {
                   placeholder="用户密码"
                   //SM:实时接收输入框里的值
                   onChange={(e) =>
-                    setData((data) => ({
+                    setUserData((data) => ({
                       ...data,
                       userPassword: e.target.value,
                     }))
@@ -140,24 +123,6 @@ const Login = () => {
             </div>
           </form>
         </div>
-        <Snackbar
-          open={open}
-          //显示位置vertical:垂直位置,horizontal:水平位置
-          anchorOrigin={{ vertical: "top", horizontal: "right" }}
-          autoHideDuration={2000} //多少秒后关闭
-          onClose={handleClick}
-          sx={{ mt: 7 }}
-          action={action} //其他额外内容
-        >
-          <Alert
-            onClose={handleClick}
-            severity={
-              data.msg === "登录成功,转入用户页面..." ? "success" : "error"
-            }
-          >
-            {data.msg}
-          </Alert>
-        </Snackbar>
       </div>
     </>
   );
