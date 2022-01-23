@@ -78,85 +78,87 @@ const Login = () => {
   );
   return (
     <>
-      <div
-        id="all"
-        style={{ animationDuration: "0.7s" }}
-        className="an-4 mt-[-7vh] login-And-Register-PageStyle border-l-blue-500 space-y-4"
-      >
-        <div id="title">
-          {/* <p className="title-size">WelCome To</p> */}
-          <p className="ventroar-size text-blue-500">VentRoar</p>
-        </div>
-
-        <form onSubmit={handleSubmit}>
-          <div className="space-y-6 flex flex-col items-center lg:space-y-8">
-            <div id="uesrText" className="loginPage-input">
-              <UserCircleIcon className="w-5 h-5 mr-1" />
-              <input
-                className="input-Style"
-                type="text"
-                // SM:必填项
-                required
-                maxLength={13}
-                placeholder="手机号码"
-                //SM:实时接收输入框里的值
-                onChange={(e) =>
-                  setData((data) => ({
-                    ...data,
-                    userPhoneNumber: e.target.value,
-                  }))
-                }
-              />
-            </div>
-            <div id="userPassword" className="loginPage-input">
-              <LockOpenIcon className="w-5 h-5 mr-1" />
-              <input
-                className="input-Style"
-                type="password"
-                // SM:必填项
-                required
-                maxLength={18}
-                placeholder="用户密码"
-                //SM:实时接收输入框里的值
-                onChange={(e) =>
-                  setData((data) => ({
-                    ...data,
-                    userPassword: e.target.value,
-                  }))
-                }
-              />
-            </div>
-            <button
-              type="submit"
-              className="button-style text-white bg-blue-500 shadow-lg shadow-gray-300"
-            >
-              L O G I N
-            </button>
-            <div className="text-sm md:text-[1.25rem] font-bold text-blue-400 space-x-[2rem]">
-              <Link to={"/FindPswPage"}>忘记密码</Link>
-              <Link to={"/RegisterPage"}>注册账号</Link>
-            </div>
-          </div>
-        </form>
-      </div>
-      <Snackbar
-        open={open}
-        //显示位置vertical:垂直位置,horizontal:水平位置
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
-        autoHideDuration={2000} //多少秒后关闭
-        onClose={handleClick}
-        sx={{ mt: 7 }}
-        action={action} //其他额外内容
-      >
-        <Alert
-          onClose={handleClick}
-          severity={
-            data.msg === "登录成功,转入用户页面..." ? "success" : "error"
-          }
+      <div className="flex justify-center items-center h-[93vh] bg-all">
+        <div
+          id="all"
+          style={{ animationDuration: "0.7s" }}
+          className="an-4 pm-[-7vh] login-And-Register-PageStyle border-l-blue-500 space-y-4"
         >
-          {data.msg}
-        </Alert>
-      </Snackbar>
+          <div id="title">
+            {/* <p className="title-size">WelCome To</p> */}
+            <p className="ventroar-size text-blue-500">VentRoar</p>
+          </div>
+
+          <form onSubmit={handleSubmit}>
+            <div className="space-y-6 flex flex-col items-center lg:space-y-8">
+              <div id="uesrText" className="loginPage-input">
+                <UserCircleIcon className="w-5 h-5 mr-1" />
+                <input
+                  className="input-Style"
+                  type="text"
+                  // SM:必填项
+                  required
+                  maxLength={13}
+                  placeholder="手机号码"
+                  //SM:实时接收输入框里的值
+                  onChange={(e) =>
+                    setData((data) => ({
+                      ...data,
+                      userPhoneNumber: e.target.value,
+                    }))
+                  }
+                />
+              </div>
+              <div id="userPassword" className="loginPage-input">
+                <LockOpenIcon className="w-5 h-5 mr-1" />
+                <input
+                  className="input-Style"
+                  type="password"
+                  // SM:必填项
+                  required
+                  maxLength={18}
+                  placeholder="用户密码"
+                  //SM:实时接收输入框里的值
+                  onChange={(e) =>
+                    setData((data) => ({
+                      ...data,
+                      userPassword: e.target.value,
+                    }))
+                  }
+                />
+              </div>
+              <button
+                type="submit"
+                className="button-style text-white bg-blue-500 shadow-lg shadow-gray-300"
+              >
+                L O G I N
+              </button>
+              <div className="text-sm md:text-[1.25rem] font-bold text-blue-400 space-x-[2rem]">
+                <Link to={"/FindPswPage"}>忘记密码</Link>
+                <Link to={"/RegisterPage"}>注册账号</Link>
+              </div>
+            </div>
+          </form>
+        </div>
+        <Snackbar
+          open={open}
+          //显示位置vertical:垂直位置,horizontal:水平位置
+          anchorOrigin={{ vertical: "top", horizontal: "right" }}
+          autoHideDuration={2000} //多少秒后关闭
+          onClose={handleClick}
+          sx={{ mt: 7 }}
+          action={action} //其他额外内容
+        >
+          <Alert
+            onClose={handleClick}
+            severity={
+              data.msg === "登录成功,转入用户页面..." ? "success" : "error"
+            }
+          >
+            {data.msg}
+          </Alert>
+        </Snackbar>
+      </div>
     </>
   );
 };

@@ -43,23 +43,9 @@ const IndexRouters = () => {
               {/* 关于与帮助页 */}
               <Route path="/AboutUsPage" element={<AboutUsPage />}></Route>
               {/* 登录页 */}
-              <Route
-                path="/LoginPage"
-                element={
-                  <div className="flex justify-center items-center h-[93vh]">
-                    <Login />
-                  </div>
-                }
-              ></Route>
+              <Route path="/LoginPage" element={<Login />}></Route>
               {/* 注册页 */}
-              <Route
-                path="/RegisterPage"
-                element={
-                  <div className="flex justify-center items-center h-[93vh]">
-                    <RegisterPage />
-                  </div>
-                }
-              ></Route>
+              <Route path="/RegisterPage" element={<RegisterPage />}></Route>
               {/* 404NOTFOUND */}
               <Route path="*" element={<NotFoundPage />}></Route>
               {/* 隐藏页 */}
