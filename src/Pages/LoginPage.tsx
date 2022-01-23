@@ -129,7 +129,7 @@ const Login = () => {
               </div>
               <button
                 type="submit"
-                className="button-style text-white bg-blue-500 shadow-lg shadow-gray-300"
+                className="button-style rounded-[4px] text-white bg-blue-500 shadow-lg shadow-gray-300"
               >
                 L O G I N
               </button>

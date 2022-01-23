@@ -9,13 +9,21 @@ import {
   EmojiSadIcon,
   HeartIcon,
   DotsHorizontalIcon,
+  AnnotationIcon,
+  TrashIcon,
 } from "@heroicons/react/outline";
+import { Menu, Transition } from "@headlessui/react";
 
 function PopularPage() {
   const [list, setList] = useState([]);
   const [text, setText] = useState({ textData: "" });
   const { token } = useContext<any>(loginContext);
   const { setTextBar } = useContext<any>(TextBarContext);
+  const trueBarStyle =
+    "textBar-style rounded-[4px] bg-green-400 text-white w-[40vw] md:w-[20vw]";
+  const falseBarStyle =
+    "textBar-style rounded-[4px] bg-red-400 text-white w-[40vw] md:w-[20vw]";
+
   async function getUser() {
     //利用异步方法请求数据
     return setList(
@@ -33,7 +41,7 @@ function PopularPage() {
       return (
         setTextBar({
           isOpen: true,
-          MsgStyle: "textBar-style bg-red-400 text-white w-[40vw] md:w-[20vw]",
+          MsgStyle: falseBarStyle,
           msg: "请先登录!",
         }),
         setTimeout(() => {
@@ -48,8 +56,7 @@ function PopularPage() {
       .then((_res) => {
         setTextBar({
           isOpen: true,
-          MsgStyle:
-            "textBar-style bg-green-400 text-white w-[40vw] md:w-[20vw]",
+          MsgStyle: trueBarStyle,
           msg: "发送成功",
         });
         setTimeout(() => {
@@ -63,7 +70,7 @@ function PopularPage() {
       .catch((_err) => {
         setTextBar({
           isOpen: true,
-          MsgStyle: "textBar-style bg-red-400 text-white w-[40vw] md:w-[20vw]",
+          MsgStyle: falseBarStyle,
           msg: "发送失败,网络繁忙!",
         });
         setTimeout(() => {
@@ -79,7 +86,7 @@ function PopularPage() {
       return (
         setTextBar({
           isOpen: true,
-          MsgStyle: "textBar-style bg-red-400 text-white w-[40vw] md:w-[20vw]",
+          MsgStyle: falseBarStyle,
           msg: "请先登录!",
         }),
         setTimeout(() => {
@@ -94,8 +101,7 @@ function PopularPage() {
       .then((_res) => {
         setTextBar({
           isOpen: true,
-          MsgStyle:
-            "textBar-style bg-green-400 text-black w-[20vw] md:w-[10vw]",
+          MsgStyle: trueBarStyle,
           msg: "+1",
         });
         setTimeout(() => {
@@ -109,7 +115,7 @@ function PopularPage() {
       .catch((_err) => {
         setTextBar({
           isOpen: true,
-          MsgStyle: "textBar-style bg-red-400 text-white w-[40vw] md:w-[20vw]",
+          MsgStyle: falseBarStyle,
           msg: "发送失败,网络繁忙!",
         });
         setTimeout(() => {
@@ -235,8 +241,37 @@ function PopularPage() {
                     )}
                     {c.smil}
                   </div>
-                  <div>
-                    <DotsHorizontalIcon className="w-7 h-7 text-slate-600" />
+                  <div className="relative">
+                    <Menu>
+                      <Menu.Button>
+                        <DotsHorizontalIcon className="icon-button-style w-7 h-7 text-slate-600" />
+                      </Menu.Button>
+                      <Transition
+                        enter="transition ease-out duration-100"
+                        enterFrom="transform opacity-0 scale-95"
+                        enterTo="transform opacity-100 scale-100"
+                        leave="transition ease-in duration-75"
+                        leaveFrom="transform opacity-100 scale-100"
+                        leaveTo="transform opacity-0 scale-95"
+                      >
+                        <Menu.Items className="absolute w-[9rem] top-full right-0 space-y-2">
+                          <Menu.Item>
+                            <button className="w-full button-style rounded-full bg-gray-800 text-gray-100">
+                              <span>评论帖子</span>
+                              <AnnotationIcon className="w-5 h-5 inline-block text-slate-100" />
+                            </button>
+                          </Menu.Item>
+                          {token === "" ? null : (
+                            <Menu.Item>
+                              <button className="w-full button-style rounded-full bg-gray-800 text-gray-100">
+                                删除帖子
+                                <TrashIcon className="w-5 h-5 inline-block text-slate-100" />
+                              </button>
+                            </Menu.Item>
+                          )}
+                        </Menu.Items>
+                      </Transition>
+                    </Menu>
                   </div>
                 </div>
               </div>
