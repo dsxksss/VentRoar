@@ -24,8 +24,11 @@ function PopularPage() {
   }
   useEffect(() => {
     getUser(); //因为react不支持导出async函数,小方法是再包裹一个函数来内部执行调用
+    return () => {
+      setList([]);
+    };
   }, []);
-  const push = async () => {
+  const POST = async () => {
     if (token === "")
       return (
         setTextBar({
@@ -70,21 +73,66 @@ function PopularPage() {
         }, 3000);
       });
   };
+  const PUT = async (textId: string, smilOrheart: object) => {
+    if (token === "")
+      return (
+        setTextBar({
+          isOpen: true,
+          MsgStyle: "textBar-style bg-red-400 text-white w-[40vw]",
+          msg: "请先登录!",
+        }),
+        setTimeout(() => {
+          setTextBar((oldData: any) => ({
+            ...oldData,
+            isOpen: false,
+          }));
+        }, 3000)
+      );
+    await axios
+      .put(`http://101.43.123.50:2546/userTextApi/${textId}`, smilOrheart)
+      .then((_res) => {
+        setTextBar({
+          isOpen: true,
+          MsgStyle: "textBar-style bg-green-400 text-black w-[20vw]",
+          msg: "+1",
+        });
+        setTimeout(() => {
+          setTextBar((oldData: any) => ({
+            ...oldData,
+            isOpen: false,
+          }));
+        }, 3000);
+        getUser();
+      })
+      .catch((_err) => {
+        setTextBar({
+          isOpen: true,
+          MsgStyle: "textBar-style bg-red-400 text-white w-[40vw]",
+          msg: "发送失败,网络繁忙!",
+        });
+        setTimeout(() => {
+          setTextBar((oldData: any) => ({
+            ...oldData,
+            isOpen: false,
+          }));
+        }, 3000);
+      });
+  };
   const headerSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    if (text.textData !== "") push();
+    if (text.textData !== "") POST();
     setText({ textData: "" });
   };
   //{newtime-oldtime/60}
   return (
     <>
-      <div className="h-[83vh] mt-3 z-[-1] snap-y scroll-smooth overflow-y-scroll">
-        <div className="snap-start showText-BoxStyle mx-5 mt-5 flex flex-col">
+      <div className="h-[83vh] mt-3 z-[-1] space-y-[2.3rem] snap-y scroll-smooth overflow-y-scroll">
+        <div className="snap-start showText-BoxStyle mx-5 sm:mx-[3rem] md:mx-[7rem] lg:mx-[15rem] mt-5 flex flex-col">
           <div>
             {
               <div className="mr-6 ml-2 mt-3 flex justify-between items-center">
                 <div className="flex justify-center items-end">
-                  <span className={`w-10 h-10 md:w-13 md:h-13 icon-2`}></span>
+                  <span className={`w-10 h-10 md:w-13 md:h-13 icon-999`}></span>
                   <span className="text-[1.3rem] font-bold text-green-500">
                     建设者:
                   </span>
@@ -97,7 +145,7 @@ function PopularPage() {
           </div>
           <div className="bg-slate-50/50 h-full flex justify-cente md:items-center text-[15px] px-4 indent-8 pt-1 text-slate-700 ">
             <p className="break-all">
-              在这里随便说点什么,比如今天的心情怎么样?是好还是坏呢?或者遇到了不开心的事也可以发送到这上面喔,别把太多压力扛在自己身上❤️❤️❤️
+              在这里随便说点什么,比如今天的心情怎么样?是好还是坏呢?或者遇到了不开心的事也可以发泄到这上面喔,别把太多压力扛在自己身上❤️❤️❤️
             </p>
           </div>
           <div className="mx-5 my-1 h-[4vh] flex justify-between items-center py-2">
@@ -116,7 +164,7 @@ function PopularPage() {
           <div key={c._id} className="my-5 snap-start">
             {(c.textData === "" || c.textData === undefined) &&
             (c.textDate === "" || c.textDate === undefined) ? null : (
-              <div className="showText-BoxStyle mx-5 mt-5 flex flex-col">
+              <div className="showText-BoxStyle mx-5 sm:mx-[3rem] md:mx-[7rem] lg:mx-[15rem] mt-5 flex flex-col">
                 <div>
                   {
                     <div className="mr-6 ml-2 mt-3 flex justify-between items-center">
@@ -139,9 +187,32 @@ function PopularPage() {
                 </div>
                 <div className="mx-5 my-1 h-[4vh] flex justify-between items-center py-2">
                   <div className="flex justify-start items-center space-x-3">
-                    <HeartIcon className="w-7 h-7 text-slate-400" />
+                    <button
+                      className="icon-button-style"
+                      onClick={() => PUT(c._id, { heart: true })}
+                    >
+                      <HeartIcon
+                        className={`w-7 h-7 text-${
+                          c.heart > 0 ? "red-500" : "slate-400"
+                        }`}
+                      />
+                    </button>
                     {c.heart}
-                    <EmojiSadIcon className="w-7 h-7 text-slate-400" />
+                    {c.smil > 0 ? (
+                      <button
+                        className="icon-button-style"
+                        onClick={() => PUT(c._id, { smil: true })}
+                      >
+                        <EmojiHappyIcon className="w-7 h-7 text-yellow-500" />
+                      </button>
+                    ) : (
+                      <button
+                        className="icon-button-style"
+                        onClick={() => PUT(c._id, { smil: true })}
+                      >
+                        <EmojiSadIcon className="w-7 h-7 text-slate-400" />
+                      </button>
+                    )}
                     {c.smil}
                   </div>
                   <div>
