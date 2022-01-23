@@ -78,7 +78,7 @@ const Login = () => {
   );
   return (
     <>
-      <div className="flex justify-center items-center h-[93vh] bg-all">
+      <div className="flex justify-center items-center h-[93vh]">
         <div
           id="all"
           style={{ animationDuration: "0.7s" }}

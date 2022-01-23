@@ -128,7 +128,7 @@ function PopularPage() {
   //{newtime-oldtime/60}
   return (
     <>
-      <div className="h-[83vh] mt-3 z-[-1] space-y-[2.3rem] snap-y scroll-smooth overflow-y-scroll">
+      <div className="h-[83vh] bg-all mt-3 z-[-1] space-y-[2.3rem] snap-y scroll-smooth overflow-y-scroll">
         <div className="snap-start showText-BoxStyle mx-5 sm:mx-[3rem] md:mx-[7rem] lg:mx-[15rem] mt-5 flex flex-col">
           <div>
             {
