@@ -243,7 +243,7 @@ function PopularPage() {
                   </div>
                   <div className="relative">
                     <Menu>
-                      <Menu.Button>
+                      <Menu.Button className="outline-none">
                         <DotsHorizontalIcon className="icon-button-style w-7 h-7 text-slate-600" />
                       </Menu.Button>
                       <Transition
@@ -254,16 +254,16 @@ function PopularPage() {
                         leaveFrom="transform opacity-100 scale-100"
                         leaveTo="transform opacity-0 scale-95"
                       >
-                        <Menu.Items className="absolute w-[9rem] top-full right-0 space-y-2">
+                        <Menu.Items className="absolute w-[9rem] outline-none top-full right-0 space-y-2">
                           <Menu.Item>
-                            <button className="w-full button-style rounded-full bg-gray-800 text-gray-100">
+                            <button className="w-full button-style outline-none rounded-full bg-gray-800 text-gray-100">
                               <span>评论帖子</span>
                               <AnnotationIcon className="w-5 h-5 inline-block text-slate-100" />
                             </button>
                           </Menu.Item>
                           {token === "" ? null : (
                             <Menu.Item>
-                              <button className="w-full button-style rounded-full bg-gray-800 text-gray-100">
+                              <button className="w-full button-style outline-none rounded-full bg-gray-800 text-gray-100">
                                 删除帖子
                                 <TrashIcon className="w-5 h-5 inline-block text-slate-100" />
                               </button>
