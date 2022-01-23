@@ -82,7 +82,7 @@ const Login = () => {
         <div
           id="all"
           style={{ animationDuration: "0.7s" }}
-          className="an-4 pm-[-7vh] login-And-Register-PageStyle border-l-blue-500 space-y-4"
+          className="an-4 mt-[-7vh] login-And-Register-PageStyle border-l-blue-500 space-y-4"
         >
           <div id="title">
             {/* <p className="title-size">WelCome To</p> */}
