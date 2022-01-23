@@ -33,7 +33,7 @@ function PopularPage() {
       return (
         setTextBar({
           isOpen: true,
-          MsgStyle: "textBar-style bg-red-400 text-white w-[40vw]",
+          MsgStyle: "textBar-style bg-red-400 text-white w-[40vw] md:w-[20vw]",
           msg: "请先登录!",
         }),
         setTimeout(() => {
@@ -48,7 +48,8 @@ function PopularPage() {
       .then((_res) => {
         setTextBar({
           isOpen: true,
-          MsgStyle: "textBar-style bg-green-400 text-white w-[40vw]",
+          MsgStyle:
+            "textBar-style bg-green-400 text-white w-[40vw] md:w-[20vw]",
           msg: "发送成功",
         });
         setTimeout(() => {
@@ -62,7 +63,7 @@ function PopularPage() {
       .catch((_err) => {
         setTextBar({
           isOpen: true,
-          MsgStyle: "textBar-style bg-red-400 text-white w-[40vw]",
+          MsgStyle: "textBar-style bg-red-400 text-white w-[40vw] md:w-[20vw]",
           msg: "发送失败,网络繁忙!",
         });
         setTimeout(() => {
@@ -78,7 +79,7 @@ function PopularPage() {
       return (
         setTextBar({
           isOpen: true,
-          MsgStyle: "textBar-style bg-red-400 text-white w-[40vw]",
+          MsgStyle: "textBar-style bg-red-400 text-white w-[40vw] md:w-[20vw]",
           msg: "请先登录!",
         }),
         setTimeout(() => {
@@ -93,7 +94,8 @@ function PopularPage() {
       .then((_res) => {
         setTextBar({
           isOpen: true,
-          MsgStyle: "textBar-style bg-green-400 text-black w-[20vw]",
+          MsgStyle:
+            "textBar-style bg-green-400 text-black w-[20vw] md:w-[10vw]",
           msg: "+1",
         });
         setTimeout(() => {
@@ -107,7 +109,7 @@ function PopularPage() {
       .catch((_err) => {
         setTextBar({
           isOpen: true,
-          MsgStyle: "textBar-style bg-red-400 text-white w-[40vw]",
+          MsgStyle: "textBar-style bg-red-400 text-white w-[40vw] md:w-[20vw]",
           msg: "发送失败,网络繁忙!",
         });
         setTimeout(() => {
@@ -143,10 +145,28 @@ function PopularPage() {
               </div>
             }
           </div>
-          <div className="bg-slate-50/50 h-full flex justify-cente md:items-center text-[15px] px-4 indent-8 pt-1 text-slate-700 ">
-            <p className="break-all">
-              在这里随便说点什么,比如今天的心情怎么样?是好还是坏呢?或者遇到了不开心的事也可以发泄到这上面喔,别把太多压力扛在自己身上❤️❤️❤️
-            </p>
+          <div className="bg-slate-50/50 h-full flex justify-cente md:items-center text-[15px] px-4 pt-1 text-slate-700 ">
+            <div className="break-all">
+              <p className="text-center font-bold text-[1.2rem]">
+                Hi👋~!欢迎来到发泄墙
+              </p>
+              <p className="indent-6 font-extrabold">
+                在这里随便说点什么,比如今天的心情怎么样?是好还是坏呢?或者遇到了不开心的事也可以发泄到这上面喔,别把太多压力扛在自己身上❤️❤️❤️
+              </p>
+              <br />
+              <span className="font-bold">注意规范❗❗❗:</span>
+              <ul className="font-bold list-decimal indent-8 list-inside">
+                <li>
+                  不允许发表任何带有政治言论,如辱骂国家、民族、职业工作者等有关的政治性言论,如出现有关内容:发表言论账号所有数据删除、注册手机号禁止注册账号.
+                </li>
+                <li>
+                  不允许发表任何带有淫秽暴力或辱骂等词汇,如出现有关内容:发表言论账号封号1-3月不等,初次违法警告处理.
+                </li>
+                <li>
+                  不允许发表任何带有真实姓名或地名词汇，如:"xxx地,张xx,刘xx等",如出现有关内容:发表言论账号封号1-3月不等,初次违法警告处理.
+                </li>
+              </ul>
+            </div>
           </div>
           <div className="mx-5 my-1 h-[4vh] flex justify-between items-center py-2">
             <div className="flex justify-start items-center space-x-3">
