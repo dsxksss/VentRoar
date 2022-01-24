@@ -10,7 +10,7 @@ function UserPage() {
     //利用token获取数据库用户数据
     const getUserData = async () => {
       await axios
-        .get(`http://101.43.123.50:2546/userDataApi/${token}`)
+        .get(`https://ventroar:2546/userDataApi/${token}`)
         .then((res) => {
           setUserData(res.data);
         })
