@@ -27,7 +27,7 @@ function PopularPage() {
   async function getUser() {
     //利用异步方法请求数据
     return setList(
-      (await axios.get("http://101.43.123.50:2546/textDataApi/")).data
+      (await axios.get("https://101.43.123.50:2546/textDataApi/")).data
     );
   }
   useEffect(() => {
@@ -52,7 +52,7 @@ function PopularPage() {
         }, 3000)
       );
     await axios
-      .post(`http://101.43.123.50:2546/userTextApi/${token}`, text)
+      .post(`https://101.43.123.50:2546/userTextApi/${token}`, text)
       .then((_res) => {
         setTextBar({
           isOpen: true,
@@ -97,7 +97,7 @@ function PopularPage() {
         }, 3000)
       );
     await axios
-      .put(`http://101.43.123.50:2546/userTextApi/${textId}`, smilOrheart)
+      .put(`https://101.43.123.50:2546/userTextApi/${textId}`, smilOrheart)
       .then((_res) => {
         setTextBar({
           isOpen: true,

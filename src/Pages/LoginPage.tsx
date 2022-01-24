@@ -21,7 +21,7 @@ const Login = () => {
 
   const push = async () => {
     await axios
-      .post("http://101.43.123.50:2546/userLoginApi/", userData)
+      .post("https://101.43.123.50:2546/userLoginApi/", userData)
       .then((res) => {
         setTextBar({
           isOpen: true,
