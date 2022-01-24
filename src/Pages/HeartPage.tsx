@@ -26,7 +26,9 @@ function PopularPage() {
 
   async function getUser() {
     //利用异步方法请求数据
-    return setList((await axios.get("https://ventroar.xyz/textDataApi/")).data);
+    return setList(
+      (await axios.get("https://ventroar.xyz:2546/textDataApi/")).data
+    );
   }
   useEffect(() => {
     getUser(); //因为react不支持导出async函数,小方法是再包裹一个函数来内部执行调用
@@ -50,7 +52,7 @@ function PopularPage() {
         }, 3000)
       );
     await axios
-      .post(`https://ventroar.xyz/userTextApi/${token}`, text)
+      .post(`https://ventroar.xyz:2546/userTextApi/${token}`, text)
       .then((_res) => {
         setTextBar({
           isOpen: true,
@@ -95,7 +97,7 @@ function PopularPage() {
         }, 3000)
       );
     await axios
-      .put(`https://ventroar.xyz/userTextApi/${textId}`, smilOrheart)
+      .put(`https://ventroar.xyz:2546/userTextApi/${textId}`, smilOrheart)
       .then((_res) => {
         setTextBar({
           isOpen: true,

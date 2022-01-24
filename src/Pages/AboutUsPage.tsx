@@ -4,7 +4,7 @@ function HelpPage() {
   const [list, setList] = useState([]);
   async function getUser() {
     //利用异步方法请求数据
-    const evenyUser = await axios("https://ventroar.xyz/userDataApi/");
+    const evenyUser = await axios("https://ventroar.xyz:2546/userDataApi/");
     setList(evenyUser.data);
   }
   let userCout = 0;

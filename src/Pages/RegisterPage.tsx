@@ -24,7 +24,7 @@ const RegisterPage = () => {
     "textBar-style rounded-[4px] bg-red-400 text-white w-[100vw] md:w-[20vw]";
   const push = async () => {
     await axios
-      .post("https://ventroar.xyz/userCreateApi/", userData)
+      .post("https://ventroar.xyz:2546/userCreateApi/", userData)
       .then((res) => {
         setTextBar({
           isOpen: true,
