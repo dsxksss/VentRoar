@@ -33,7 +33,7 @@ const Login = () => {
               ...oldData,
               isOpen: false,
             }));
-          }, 3000);
+          }, 1500);
         setTimeout(() => {
           setToken(res.data);
         }, 1200);
