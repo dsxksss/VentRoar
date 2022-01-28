@@ -1,4 +1,5 @@
 import { useState } from "react";
+import cimg from "../img/cImg/developer.svg";
 import axios from "axios";
 function HelpPage() {
   const [list, setList] = useState([]);
@@ -11,11 +12,12 @@ function HelpPage() {
 
   return (
     <>
-      <div className="pt-[5rem] px-3 h-[93vh] overflow-y-auto">
+      <div className="pt-[3rem] px-3 h-[93vh] overflow-y-auto">
         <div
           style={{ animationDuration: "2.5s" }}
           className="an-3 overflow-auto"
         >
+          <img src={cimg} alt="developerCImg" />
           <div className="shadow-xl">
             <h1 className="text-[2.3rem] text-center mb-3">网站介绍</h1>
 
