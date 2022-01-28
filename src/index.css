@@ -266,7 +266,7 @@ body {
   shadow-lg shadow-gray-300 border-y-0  
   border-y-gray-100 border-solid border-l-[7px];
   /* 布局 */
-  @apply h-[20rem] md:h-[50vh] lg:h-[70vh] xl:h-[70vh] w-[96vw] overflow-hidden sm:w-[67vw] lg:w-[96vw] xl:w-[80vw] 2xl:w-[85vw]
+  @apply h-[21rem] md:h-[50vh] lg:h-[70vh] xl:h-[70vh] w-[96vw] overflow-hidden sm:w-[67vw] lg:w-[96vw] xl:w-[80vw] 2xl:w-[85vw]
   flex justify-evenly items-center flex-col;
 }
 
