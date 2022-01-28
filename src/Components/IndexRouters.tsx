@@ -26,14 +26,7 @@ const IndexRouters = () => {
           <TextBar>
             <Routes>
               {/* 主页 */}
-              <Route
-                path="/"
-                element={
-                  <div>
-                    <HomePage />
-                  </div>
-                }
-              ></Route>
+              <Route path="/" element={<HomePage />}></Route>
               {/* 心墙页 */}
               <Route path="/HeartPage" element={<HeartPage />}></Route>
               {/* 用户主页 */}
