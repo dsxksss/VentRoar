@@ -27,7 +27,7 @@ const Nav = () => {
       {/* 电脑端的显示设置 */}
       <div className="">
         <Link className="ml-4 text-lg font-bold text-black" to={"/"}>
-          www.ventroar.xyz
+          ventroar.xyz
         </Link>
       </div>
 
