@@ -68,7 +68,7 @@ const RegisterPage = () => {
         <div
           id="all"
           style={{ animationDuration: "0.7s" }}
-          className="an-4 mt-[-7vh] login-And-Register-PageStyle border-l-green-400 space-y-5"
+          className="an-4 mt-[-7vh] login-And-Register-PageStyle lg:flex-row border-l-green-400 space-y-5"
         >
           <div id="title">
             <p className="ventroar-size text-green-400">VentRoar</p>

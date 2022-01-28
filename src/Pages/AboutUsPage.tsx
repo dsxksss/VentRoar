@@ -12,7 +12,7 @@ function HelpPage() {
 
   return (
     <>
-      <div className="pt-[3rem] px-3 h-[93vh] overflow-y-auto">
+      <div className="pt-[1.1rem] px-3 h-[93vh] overflow-y-auto">
         <div
           style={{ animationDuration: "2.5s" }}
           className="an-3 overflow-auto flex flex-col-reverse sm:flex-row items-center justify-center "
@@ -20,22 +20,19 @@ function HelpPage() {
           <div className="bg-cover">
             <img src={cimg} alt="developerCImg" />
           </div>
-          <div className="md:px-10">
+          <div>
             <h1 className="text-[2.3rem] md:text-[2.7rem] lg:text-[3rem] text-center mb-3">
               网站介绍
             </h1>
-
-            <p className="text-[1rem] md:text-[1.3rem] lg:text-[1.6rem] font-bold indent-4 text-center">
+            <p className="text-[1rem] md:text-[1.3rem] lg:text-[1.6rem]  font-bold indent-4 text-center">
               倾诉最近遇到的不开心的事情，发泄到这上面，此网站用匿名的方式可以和别人交流倾诉最近遇到的不开心
             </p>
             <br />
             <p
               className="
-        text-center text-[1.2rem] md:text-[1.5rem] lg:text-[1.8rem] font-bold text-red-600"
+        text-center text-[1.2rem] md:text-[1.5rem] lg:text-[1.8rem] font-bold text-red-500"
             >
-              网站还在火速开发中🚀🚀🚀
-              <br />
-              版本V:0.2.5
+              网站还在火速开发中🚀🚀🚀 版本V:0.2.5
             </p>
             <br />
           </div>
