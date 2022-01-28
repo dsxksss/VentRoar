@@ -4,6 +4,7 @@ import axios from "axios";
 import { useEffect, useState, useContext } from "react";
 import { loginContext } from "./../conText/ByLoginDo";
 import { TextBarContext } from "../Components/TextBar";
+import cimg from "../img/cImg/loginPage.svg";
 const Login = () => {
   const { setToken, token, toLink } = useContext<any>(loginContext);
   const { setTextBar } = useContext<any>(TextBarContext);
@@ -62,11 +63,16 @@ const Login = () => {
 
   return (
     <>
-      <div className="flex justify-center items-center h-[93vh]">
+      <div
+        style={{ animationDuration: "0.7s" }}
+        className="an-4 flex flex-col justify-center items-center h-[93vh]"
+      >
+        <div className="sm:hidden bg-cover mt-[-15vh] w-[92vw]">
+          <img src={cimg} alt="cat" />
+        </div>
         <div
           id="all"
-          style={{ animationDuration: "0.7s" }}
-          className="an-4 mt-[-7vh] login-And-Register-PageStyle lg:flex-row border-l-blue-500 space-y-4"
+          className="login-And-Register-PageStyle lg:flex-row border-l-blue-500 space-y-4"
         >
           <div id="title">
             <p className="ventroar-size text-blue-500">VentRoar</p>

@@ -9,7 +9,7 @@ import axios from "axios";
 import { useState, useContext } from "react";
 import { loginContext } from "./../conText/ByLoginDo";
 import { TextBarContext } from "../Components/TextBar";
-
+import cimg from "../img/cImg/registerPage.svg";
 const RegisterPage = () => {
   const [userData, setUserData] = useState({
     userName: "",
@@ -64,11 +64,16 @@ const RegisterPage = () => {
 
   return (
     <>
-      <div className="flex justify-center items-center h-[93vh]">
+      <div
+        style={{ animationDuration: "0.7s" }}
+        className="flex flex-col justify-center items-center h-[93vh] an-4"
+      >
+        <div className="sm:hidden bg-cover mt-[-22vh] w-[92vw]">
+          <img src={cimg} alt="Graduation" />
+        </div>
         <div
           id="all"
-          style={{ animationDuration: "0.7s" }}
-          className="an-4 mt-[-7vh] login-And-Register-PageStyle lg:flex-row border-l-green-400 space-y-5"
+          className="login-And-Register-PageStyle lg:flex-row border-l-green-400 space-y-5"
         >
           <div id="title">
             <p className="ventroar-size text-green-400">VentRoar</p>
