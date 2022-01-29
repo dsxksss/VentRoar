@@ -19,6 +19,7 @@ const Login = () => {
     if (local.getItem("tokenForServer") !== "") {
       tokenPush();
     }
+    return;
     // console.log(localStorage.getItem("tokenForServer"));
   }, []);
   const trueBarStyle =
@@ -34,9 +35,7 @@ const Login = () => {
         )}`
       )
       .then(() => {
-        setTimeout(() => {
-          setToken(local.getItem("tokenForServer"));
-        }, 1200);
+        setToken(local.getItem("tokenForServer"));
         // console.log(res.data);
       })
       .catch((err) => {
@@ -44,7 +43,13 @@ const Login = () => {
           isOpen: true,
           MsgStyle: falseBarStyle,
           msg: "登录过期,请重新登录!",
-        });
+        }),
+          setTimeout(() => {
+            setTextBar((oldData: any) => ({
+              ...oldData,
+              isOpen: false,
+            }));
+          }, 2000);
         local.clear();
         return err;
       });
