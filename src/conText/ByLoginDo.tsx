@@ -8,8 +8,6 @@ const ByLoginDo = ({ children }: any) => {
   useEffect(() => {
     if (token !== "") {
       toLink("/UserPage");
-    } else {
-      toLink("/");
     }
   }, [token]); //当token值更改时才会调用Effect方法
   return (

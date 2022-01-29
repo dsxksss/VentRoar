@@ -3,10 +3,10 @@ import axios from "axios";
 import { loginContext } from "./../conText/ByLoginDo";
 
 function UserPage() {
-  const { token, toLink } = useContext<any>(loginContext);
+  const { setToken, token, toLink } = useContext<any>(loginContext);
   const [userData, setUserData] = useState<any>([]);
   useEffect(() => {
-    if (token === "" || token === undefined) return toLink("/");
+    if (token === "") return toLink("/LoginPage");
     //利用token获取数据库用户数据
     const getUserData = async () => {
       await axios
@@ -15,7 +15,7 @@ function UserPage() {
           setUserData(res.data);
         })
         .catch(() => {
-          toLink("/");
+          toLink("/LoginPage");
         });
     };
     getUserData();
@@ -28,6 +28,16 @@ function UserPage() {
           Hi!👋👋👋 <strong>{userData.userName}</strong>{" "}
         </p>
         <p>欢迎来到你的主页!!!</p>
+        <button
+          className="button-style bg-slate-500 text-white"
+          onClick={() => {
+            toLink("/LoginPage");
+            setToken("");
+            window.localStorage.clear();
+          }}
+        >
+          退出登录
+        </button>
       </div>
     </>
   );

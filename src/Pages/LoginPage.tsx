@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import { UserCircleIcon, LockOpenIcon } from "@heroicons/react/solid";
-import axios from "axios";
 import { useEffect, useState, useContext } from "react";
 import { loginContext } from "./../conText/ByLoginDo";
 import { TextBarContext } from "../Components/TextBar";
 import cimg from "../img/cImg/loginPage.svg";
+import axios from "axios";
+
 const Login = () => {
+  let local = window.localStorage;
   const { setToken, token, toLink } = useContext<any>(loginContext);
   const { setTextBar } = useContext<any>(TextBarContext);
   const [userData, setUserData] = useState({
@@ -14,12 +16,39 @@ const Login = () => {
   });
   useEffect(() => {
     if (token !== "") toLink("/UserPage");
+    if (local.getItem("tokenForServer") !== "") {
+      tokenPush();
+    }
+    // console.log(localStorage.getItem("tokenForServer"));
   }, []);
   const trueBarStyle =
     "textBar-style rounded-[4px] bg-green-400 text-white w-[100vw] md:w-[20vw]";
   const falseBarStyle =
     "textBar-style rounded-[4px] bg-red-400 text-white w-[100vw] md:w-[20vw]";
 
+  const tokenPush = async () => {
+    await axios
+      .post(
+        `https://ventroar.xyz:2546/userLoginApi/${local.getItem(
+          "tokenForServer"
+        )}`
+      )
+      .then(() => {
+        setTimeout(() => {
+          setToken(local.getItem("tokenForServer"));
+        }, 1200);
+        // console.log(res.data);
+      })
+      .catch((err) => {
+        setTextBar({
+          isOpen: true,
+          MsgStyle: falseBarStyle,
+          msg: "登录过期,请重新登录!",
+        });
+        local.clear();
+        return err;
+      });
+  };
   const push = async () => {
     await axios
       .post("https://ventroar.xyz:2546/userLoginApi/", userData)
@@ -28,16 +57,17 @@ const Login = () => {
           isOpen: true,
           MsgStyle: trueBarStyle,
           msg: "登录成功...",
-        }),
-          setTimeout(() => {
-            setTextBar((oldData: any) => ({
-              ...oldData,
-              isOpen: false,
-            }));
-          }, 1500);
+        });
+        setToken(res.data.token);
+        local.setItem("tokenForServer", res.data.token);
+        local.setItem("oldTime", res.data.time);
+        console.log(local.getItem("tokenForServer"), local.getItem("oldTime"));
         setTimeout(() => {
-          setToken(res.data);
-        }, 1200);
+          setTextBar((oldData: any) => ({
+            ...oldData,
+            isOpen: false,
+          }));
+        }, 1500);
         console.log(res.data);
       })
       .catch((err) => {
