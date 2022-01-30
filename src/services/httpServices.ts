@@ -10,9 +10,19 @@ axios.interceptors.response.use(undefined, (error) => {
     console.log("发生了一些意外错误!!!");
   }
   return Promise.reject(error);
-}); //参数请求成功和请求失败
+}); // 参数1:请求成功 和 参数2:请求失败
+
+const apiPath = `https://ventroar.xyz:2546/`;
+const apiName = {
+  userDataApi: `${apiPath}userDataApi/`, //只用于获得用户数据、不提供其他权限
+  textDataApi: `${apiPath}textDataApi/`, //只用于获得文本数据、不提供其他权限
+  userCreateApi: `${apiPath}userCreateApi/`, //只允许用户创建数据,不提供其他权限
+  userLoginApi: `${apiPath}userLoginApi/`, //只允许验证用户创建后的数据,不提供其他权限
+  userTextApi: `${apiPath}userTextApi/`, //用户提交文本类型等功能的一个集合
+};
 
 export default {
+  api: apiName,
   get: axios.get,
   post: axios.post,
   put: axios.put,
