@@ -1,22 +1,19 @@
 import { useEffect, useContext, useState } from "react";
-import axios from "axios";
 import { loginContext } from "./../conText/ByLoginDo";
+import https from "../services/httpServices";
 
 function UserPage() {
   const { setToken, token, toLink } = useContext<any>(loginContext);
   const [userData, setUserData] = useState<any>([]);
   useEffect(() => {
-    if (token === "") return toLink("/LoginPage");
     //利用token获取数据库用户数据
     const getUserData = async () => {
-      await axios
-        .get(`https://ventroar.xyz:2546/userDataApi/${token}`)
-        .then((res) => {
-          setUserData(res.data);
-        })
-        .catch(() => {
-          toLink("/LoginPage");
-        });
+      try {
+        const { data } = await https.get(`${https.api.userDataApi}${token}`);
+        setUserData(data);
+      } catch (err) {
+        if (token === "") return toLink("/LoginPage");
+      }
     };
     getUserData();
   }, []);

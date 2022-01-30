@@ -1,11 +1,11 @@
 import { useState } from "react";
 import cimg from "../img/cImg/developer.svg";
-import axios from "axios";
+import https from "../services/httpServices";
 function HelpPage() {
   const [list, setList] = useState([]);
   async function getUser() {
     //利用异步方法请求数据
-    const evenyUser = await axios("https://ventroar.xyz:2546/userDataApi/");
+    const evenyUser = await https.get(`${https.api.userDataApi}`);
     setList(evenyUser.data);
   }
   let userCout = 0;
