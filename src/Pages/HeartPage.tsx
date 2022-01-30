@@ -1,7 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import timeSCV from "../utils/timeSCV";
 import { loginContext } from "../conText/ByLoginDo";
-import { TextBarContext } from "../Components/TextBar";
 import {
   ReplyIcon,
   EmojiHappyIcon,
@@ -10,8 +9,9 @@ import {
   DotsHorizontalIcon,
   AnnotationIcon,
   TrashIcon,
+  ArrowNarrowRightIcon,
 } from "@heroicons/react/outline";
-import { toast } from "react-toastify";
+import { toast, Slide } from "react-toastify";
 import { Menu, Transition } from "@headlessui/react";
 import https from "../services/httpServices";
 
@@ -21,11 +21,32 @@ function PopularPage() {
   const { token } = useContext<any>(loginContext);
 
   useEffect(() => {
-    getUser(); //因为react不支持导出async函数,小方法是再包裹一个函数来内部执行调用
+    getUser();
+
+    //toast网络请求例子,参1:api请求,参2:设置三种状态显示的msg,参3:toast配置
+    // toast.promise(
+    //   new Promise((resolve) => setTimeout(resolve, 3000)),
+    //   {
+    //     pending: "发送中...",
+    //     success: "发送成功 👌",
+    //     error: "发送失败 网络繁忙 🤯",
+    //   },
+    //   {
+    //     autoClose: 1000,
+    //   }
+    // );
+
     return () => {
       setList([]);
     };
   }, []);
+
+  const CloseButton = () => (
+    <div className="flex justify-center items-center animate-[cloes_1.2s_ease-in-out_infinite]">
+      滑动关闭
+      <ArrowNarrowRightIcon className="text-gray-900 w-7 h-5" />
+    </div>
+  );
 
   //GET
   const getUser = async () => {
@@ -36,10 +57,25 @@ function PopularPage() {
 
   //POST
   const POST = async () => {
-    if (token === "") return toast.warning("请先登录");
+    if (token === "")
+      return toast.warning("请先登录", {
+        transition: Slide,
+        closeButton: CloseButton,
+        autoClose: false,
+        toastId: "place Login", //添加id避免出现重复通知
+      });
     try {
       await https.post(`${https.api.userTextApi}${token}`, text);
-      toast.success("发送成功 👌");
+      toast.promise(
+        new Promise((resolve) => setTimeout(resolve, 1000)),
+        {
+          pending: "发送中...",
+          success: "发送成功 👌",
+        },
+        {
+          autoClose: 1000,
+        }
+      );
       getUser();
     } catch (err) {
       toast.error("发送失败,网络繁忙");
@@ -50,14 +86,21 @@ function PopularPage() {
   const PUT = async (textId: string, smilOrheart: object) => {
     if (token === "")
       return toast.warning("请先登录", {
-        autoClose: 2000,
+        transition: Slide,
+        closeButton: CloseButton,
+        autoClose: false,
+        toastId: "place Login", //添加id避免出现重复通知
       });
     try {
       await https.put(`${https.api.userTextApi}${textId}`, smilOrheart);
-      toast.success("+1 👌");
+      toast.success("+1", {
+        toastId: "addOne", //添加id避免出现重复通知
+      });
       getUser();
     } catch (err) {
-      toast.error("网络繁忙");
+      toast.error("网络繁忙", {
+        toastId: "deleteOne", //添加id避免出现重复通知
+      });
     }
   };
   const headerSubmit = (e: { preventDefault: () => void }) => {

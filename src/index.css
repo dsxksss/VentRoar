@@ -175,6 +175,18 @@
   }
 }
 
+@keyframes cloes {
+  0%,
+  100% {
+    transform: translateX(-10%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateX(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
 /* 动画设置区 */
 
 /* 清除自带浏览器滚动条样式 */
