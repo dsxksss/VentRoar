@@ -5,11 +5,11 @@ import {
   DeviceMobileIcon,
 } from "@heroicons/react/outline";
 import { RefreshIcon } from "@heroicons/react/solid";
-import axios from "axios";
 import { useState, useContext } from "react";
 import { loginContext } from "./../conText/ByLoginDo";
 import { TextBarContext } from "../Components/TextBar";
 import cimg from "../img/cImg/registerPage.svg";
+import https from "../services/httpServices";
 const RegisterPage = () => {
   const [userData, setUserData] = useState({
     userName: "",
@@ -22,39 +22,38 @@ const RegisterPage = () => {
     "textBar-style rounded-[4px] bg-green-400 text-white w-[100vw] md:w-[20vw]";
   const falseBarStyle =
     "textBar-style rounded-[4px] bg-red-400 text-white w-[100vw] md:w-[20vw]";
+
+  //POST
   const push = async () => {
-    await axios
-      .post("https://ventroar.xyz:2546/userCreateApi/", userData)
-      .then((res) => {
-        setTextBar({
-          isOpen: true,
-          MsgStyle: trueBarStyle,
-          msg: "注册成功,正在转入登录页面...",
-        }),
-          setTimeout(() => {
-            toLink("/loginPage");
-          }, 1500);
+    try {
+      await https.post(`${https.api.userCreateApi}`, userData);
+      setTextBar({
+        isOpen: true,
+        MsgStyle: trueBarStyle,
+        msg: "注册成功,正在转入登录页面...",
+      });
+      setTimeout(() => {
+        toLink("/loginPage");
+      }, 1500);
+      setTimeout(() => {
+        setTextBar((oldData: any) => ({
+          ...oldData,
+          isOpen: false,
+        }));
+      }, 3000);
+    } catch (err) {
+      setTextBar({
+        isOpen: true,
+        MsgStyle: falseBarStyle,
+        msg: "注册失败! 重复注册 或 数据库已存在相同手机号 或 网络繁忙!",
+      }),
         setTimeout(() => {
           setTextBar((oldData: any) => ({
             ...oldData,
             isOpen: false,
           }));
         }, 3000);
-      })
-      .catch((err) => {
-        setTextBar({
-          isOpen: true,
-          MsgStyle: falseBarStyle,
-          msg: "注册失败! 重复注册 或 数据库已存在相同手机号 或 网络繁忙!",
-        }),
-          setTimeout(() => {
-            setTextBar((oldData: any) => ({
-              ...oldData,
-              isOpen: false,
-            }));
-          }, 3000);
-        return err;
-      });
+    }
   };
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
