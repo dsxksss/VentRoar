@@ -1,6 +1,5 @@
 import { useEffect, useState, useContext } from "react";
 import timeSCV from "../utils/timeSCV";
-import axios from "axios"; //导入处理JSON请求的工具包
 import { loginContext } from "../conText/ByLoginDo";
 import { TextBarContext } from "../Components/TextBar";
 import {
@@ -13,6 +12,7 @@ import {
   TrashIcon,
 } from "@heroicons/react/outline";
 import { Menu, Transition } from "@headlessui/react";
+import https from "../services/httpServices";
 
 function PopularPage() {
   const [list, setList] = useState([]);
@@ -24,18 +24,21 @@ function PopularPage() {
   const falseBarStyle =
     "textBar-style rounded-[4px] bg-red-400 text-white w-[40vw] md:w-[20vw]";
 
-  async function getUser() {
-    //利用异步方法请求数据
-    return setList(
-      (await axios.get("https://ventroar.xyz:2546/textDataApi/")).data
-    );
-  }
   useEffect(() => {
     getUser(); //因为react不支持导出async函数,小方法是再包裹一个函数来内部执行调用
     return () => {
       setList([]);
     };
   }, []);
+
+  //GET
+  const getUser = async () => {
+    //利用异步方法请求数据
+    const { data } = await https.get(`${https.api.textDataApi}`);
+    setList(data);
+  };
+
+  //POST
   const POST = async () => {
     if (token === "")
       return (
@@ -51,36 +54,36 @@ function PopularPage() {
           }));
         }, 3000)
       );
-    await axios
-      .post(`https://ventroar.xyz:2546/userTextApi/${token}`, text)
-      .then((_res) => {
-        setTextBar({
-          isOpen: true,
-          MsgStyle: trueBarStyle,
-          msg: "发送成功",
-        });
-        setTimeout(() => {
-          setTextBar((oldData: any) => ({
-            ...oldData,
-            isOpen: false,
-          }));
-        }, 3000);
-        getUser();
-      })
-      .catch((_err) => {
-        setTextBar({
-          isOpen: true,
-          MsgStyle: falseBarStyle,
-          msg: "发送失败,网络繁忙!",
-        });
-        setTimeout(() => {
-          setTextBar((oldData: any) => ({
-            ...oldData,
-            isOpen: false,
-          }));
-        }, 3000);
+    try {
+      await https.post(`${https.api.userTextApi}${token}`, text);
+      setTextBar({
+        isOpen: true,
+        MsgStyle: trueBarStyle,
+        msg: "发送成功",
       });
+      setTimeout(() => {
+        setTextBar((oldData: any) => ({
+          ...oldData,
+          isOpen: false,
+        }));
+      }, 3000);
+      getUser();
+    } catch (err) {
+      setTextBar({
+        isOpen: true,
+        MsgStyle: falseBarStyle,
+        msg: "发送失败,网络繁忙!",
+      });
+      setTimeout(() => {
+        setTextBar((oldData: any) => ({
+          ...oldData,
+          isOpen: false,
+        }));
+      }, 3000);
+    }
   };
+
+  //PUT
   const PUT = async (textId: string, smilOrheart: object) => {
     if (token === "")
       return (
@@ -96,42 +99,40 @@ function PopularPage() {
           }));
         }, 3000)
       );
-    await axios
-      .put(`https://ventroar.xyz:2546/userTextApi/${textId}`, smilOrheart)
-      .then((_res) => {
-        setTextBar({
-          isOpen: true,
-          MsgStyle: trueBarStyle,
-          msg: "+1",
-        });
-        setTimeout(() => {
-          setTextBar((oldData: any) => ({
-            ...oldData,
-            isOpen: false,
-          }));
-        }, 3000);
-        getUser();
-      })
-      .catch((_err) => {
-        setTextBar({
-          isOpen: true,
-          MsgStyle: falseBarStyle,
-          msg: "发送失败,网络繁忙!",
-        });
-        setTimeout(() => {
-          setTextBar((oldData: any) => ({
-            ...oldData,
-            isOpen: false,
-          }));
-        }, 3000);
+    try {
+      await https.put(`${https.api.userTextApi}${textId}`, smilOrheart);
+      setTextBar({
+        isOpen: true,
+        MsgStyle: trueBarStyle,
+        msg: "+1",
       });
+      setTimeout(() => {
+        setTextBar((oldData: any) => ({
+          ...oldData,
+          isOpen: false,
+        }));
+      }, 3000);
+      getUser();
+    } catch (err) {
+      setTextBar({
+        isOpen: true,
+        MsgStyle: falseBarStyle,
+        msg: "发送失败,网络繁忙!",
+      });
+      setTimeout(() => {
+        setTextBar((oldData: any) => ({
+          ...oldData,
+          isOpen: false,
+        }));
+      }, 3000);
+    }
   };
   const headerSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (text.textData !== "") POST();
     setText({ textData: "" });
   };
-  //{newtime-oldtime/60}
+
   return (
     <>
       <div className="bg-all">

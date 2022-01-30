@@ -68,7 +68,7 @@ const Login = () => {
           isOpen: false,
         }));
       }, 1500);
-      console.log(data.data);
+      console.log(data);
     } catch (err) {
       setTextBar({
         isOpen: true,
