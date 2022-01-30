@@ -4,7 +4,7 @@ import { useEffect, useState, useContext } from "react";
 import { loginContext } from "./../conText/ByLoginDo";
 import { TextBarContext } from "../Components/TextBar";
 import cimg from "../img/cImg/loginPage.svg";
-import axios from "axios";
+import https from "../services/httpServices";
 
 const Login = () => {
   let local = window.localStorage;
@@ -28,67 +28,60 @@ const Login = () => {
     "textBar-style rounded-[4px] bg-red-400 text-white w-[100vw] md:w-[20vw]";
 
   const tokenPush = async () => {
-    await axios
-      .post(
-        `https://ventroar.xyz:2546/userLoginApi/${local.getItem(
-          "tokenForServer"
-        )}`
-      )
-      .then(() => {
-        setToken(local.getItem("tokenForServer"));
-        // console.log(res.data);
-      })
-      .catch((err) => {
-        setTextBar({
-          isOpen: true,
-          MsgStyle: falseBarStyle,
-          msg: "登录过期,请重新登录!",
-        }),
-          setTimeout(() => {
-            setTextBar((oldData: any) => ({
-              ...oldData,
-              isOpen: false,
-            }));
-          }, 2000);
-        local.clear();
-        return err;
+    try {
+      await https.post(
+        `${https.api.userLoginApi}${local.getItem("tokenForServer")}`
+      );
+      setToken(local.getItem("tokenForServer"));
+      // console.log(res.data);
+    } catch (err) {
+      setTextBar({
+        isOpen: true,
+        MsgStyle: falseBarStyle,
+        msg: "登录过期,请重新登录!",
       });
+      setTimeout(() => {
+        setTextBar((oldData: any) => ({
+          ...oldData,
+          isOpen: false,
+        }));
+      }, 2000);
+      local.clear();
+    }
   };
+
   const push = async () => {
-    await axios
-      .post("https://ventroar.xyz:2546/userLoginApi/", userData)
-      .then((res) => {
-        setTextBar({
-          isOpen: true,
-          MsgStyle: trueBarStyle,
-          msg: "登录成功...",
-        });
-        setToken(res.data.token);
-        local.setItem("tokenForServer", res.data.token);
-        local.setItem("oldTime", res.data.time);
-        console.log(local.getItem("tokenForServer"), local.getItem("oldTime"));
-        setTimeout(() => {
-          setTextBar((oldData: any) => ({
-            ...oldData,
-            isOpen: false,
-          }));
-        }, 1500);
-        console.log(res.data);
-      })
-      .catch((err) => {
-        setTextBar({
-          isOpen: true,
-          MsgStyle: falseBarStyle,
-          msg: "登录失败!手机号或密码错误!",
-        }),
-          setTimeout(() => {
-            setTextBar((oldData: any) => ({
-              ...oldData,
-              isOpen: false,
-            }));
-          }, 3000);
-        return err;
+    try {
+      const { data } = await https.post(`${https.api.userLoginApi}`, userData);
+      setTextBar({
+        isOpen: true,
+        MsgStyle: trueBarStyle,
+        msg: "登录成功...",
       });
+      setToken(data.token);
+      local.setItem("tokenForServer", data.token);
+      local.setItem("oldTime", data.time);
+      console.log(local.getItem("tokenForServer"), local.getItem("oldTime"));
+      setTimeout(() => {
+        setTextBar((oldData: any) => ({
+          ...oldData,
+          isOpen: false,
+        }));
+      }, 1500);
+      console.log(data.data);
+    } catch (err) {
+      setTextBar({
+        isOpen: true,
+        MsgStyle: falseBarStyle,
+        msg: "登录失败!手机号或密码错误!",
+      });
+      setTimeout(() => {
+        setTextBar((oldData: any) => ({
+          ...oldData,
+          isOpen: false,
+        }));
+      }, 3000);
+    }
   };
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
