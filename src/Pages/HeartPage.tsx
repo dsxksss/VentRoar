@@ -11,6 +11,7 @@ import {
   AnnotationIcon,
   TrashIcon,
 } from "@heroicons/react/outline";
+import { toast } from "react-toastify";
 import { Menu, Transition } from "@headlessui/react";
 import https from "../services/httpServices";
 
@@ -18,11 +19,6 @@ function PopularPage() {
   const [list, setList] = useState([]);
   const [text, setText] = useState({ textData: "" });
   const { token } = useContext<any>(loginContext);
-  const { setTextBar } = useContext<any>(TextBarContext);
-  const trueBarStyle =
-    "textBar-style rounded-[4px] bg-green-400 text-white w-[40vw] md:w-[20vw]";
-  const falseBarStyle =
-    "textBar-style rounded-[4px] bg-red-400 text-white w-[40vw] md:w-[20vw]";
 
   useEffect(() => {
     getUser(); //因为react不支持导出async函数,小方法是再包裹一个函数来内部执行调用
@@ -40,91 +36,28 @@ function PopularPage() {
 
   //POST
   const POST = async () => {
-    if (token === "")
-      return (
-        setTextBar({
-          isOpen: true,
-          MsgStyle: falseBarStyle,
-          msg: "请先登录!",
-        }),
-        setTimeout(() => {
-          setTextBar((oldData: any) => ({
-            ...oldData,
-            isOpen: false,
-          }));
-        }, 3000)
-      );
+    if (token === "") return toast.warning("请先登录");
     try {
       await https.post(`${https.api.userTextApi}${token}`, text);
-      setTextBar({
-        isOpen: true,
-        MsgStyle: trueBarStyle,
-        msg: "发送成功",
-      });
-      setTimeout(() => {
-        setTextBar((oldData: any) => ({
-          ...oldData,
-          isOpen: false,
-        }));
-      }, 3000);
+      toast.success("发送成功 👌");
       getUser();
     } catch (err) {
-      setTextBar({
-        isOpen: true,
-        MsgStyle: falseBarStyle,
-        msg: "发送失败,网络繁忙!",
-      });
-      setTimeout(() => {
-        setTextBar((oldData: any) => ({
-          ...oldData,
-          isOpen: false,
-        }));
-      }, 3000);
+      toast.error("发送失败,网络繁忙");
     }
   };
 
   //PUT
   const PUT = async (textId: string, smilOrheart: object) => {
     if (token === "")
-      return (
-        setTextBar({
-          isOpen: true,
-          MsgStyle: falseBarStyle,
-          msg: "请先登录!",
-        }),
-        setTimeout(() => {
-          setTextBar((oldData: any) => ({
-            ...oldData,
-            isOpen: false,
-          }));
-        }, 3000)
-      );
+      return toast.warning("请先登录", {
+        autoClose: 2000,
+      });
     try {
       await https.put(`${https.api.userTextApi}${textId}`, smilOrheart);
-      setTextBar({
-        isOpen: true,
-        MsgStyle: trueBarStyle,
-        msg: "+1",
-      });
-      setTimeout(() => {
-        setTextBar((oldData: any) => ({
-          ...oldData,
-          isOpen: false,
-        }));
-      }, 3000);
+      toast.success("+1 👌");
       getUser();
     } catch (err) {
-      setTextBar({
-        isOpen: true,
-        MsgStyle: falseBarStyle,
-        msg: "发送失败,网络繁忙!",
-      });
-      setTimeout(() => {
-        setTextBar((oldData: any) => ({
-          ...oldData,
-          isOpen: false,
-        }));
-      }, 3000);
+      toast.error("网络繁忙");
     }
   };
   const headerSubmit = (e: { preventDefault: () => void }) => {
