@@ -208,7 +208,14 @@
 }
 
 .touch-x {
-  /* 移动端Web界面滚动性能优化 Passive event listeners */
+  /*
+  设置规定的滑动方向,或阻止默认滑动效果 
+  ||
+  移动端Web界面滚动性能优化 Passive event listeners 
+  ||
+  解决[Intervention] Unable to preventDefault inside passive event listener due 
+  to target being treated as passive. See URL报错    
+  */
   touch-action: pan-x;
 }
 
