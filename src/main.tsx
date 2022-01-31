@@ -9,6 +9,7 @@ ReactDOM.render(
   <BrowserRouter>
     {/* 已y轴形势滑动关闭通知draggableDirection="y" */}
     <ToastContainer
+      className={"touch-x"}
       rtl={false} //调换消息栏位置
       closeOnClick={false} //按动关闭
       autoClose={2000} //自动关闭,false为取消自动关闭

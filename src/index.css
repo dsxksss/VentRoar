@@ -179,10 +179,12 @@
   0%,
   100% {
     transform: translateX(-10%);
+    opacity: 1;
     animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
   }
   50% {
     transform: translateX(0);
+    opacity: 0.3;
     animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   }
 }
@@ -203,6 +205,11 @@
 }
 .bg-3 {
   background: linear-gradient(to right, #1fa2ff, #12d8fa, #a6ffcb);
+}
+
+.touch-x {
+  /* 移动端Web界面滚动性能优化 Passive event listeners */
+  touch-action: pan-x;
 }
 
 html,
