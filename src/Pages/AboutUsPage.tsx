@@ -1,15 +1,10 @@
 import { useState } from "react";
 import cimg from "../img/cImg/developer.svg";
-import https from "../services/httpServices";
-function HelpPage() {
-  const [list, setList] = useState([]);
-  async function getUser() {
-    //利用异步方法请求数据
-    const evenyUser = await https.get(`${https.api.userDataApi}`);
-    setList(evenyUser.data);
-  }
-  let userCout = 0;
+import getUserData from "../services/getUserData";
 
+function HelpPage() {
+  const [list, setList] = useState<[]>([]);
+  let userCout = 0;
   return (
     <>
       <div className="pt-[1.1rem] px-3 h-[93vh] overflow-y-auto">
@@ -54,29 +49,35 @@ function HelpPage() {
           </p>
           <button
             className="button-style bg-green-400 text-white shadow-lg shadow-green-400/50"
-            onClick={getUser}
+            onClick={async () => {
+              setList(await getUserData());
+            }}
           >
             Get Data
           </button>
         </div>
       </div>
-      {list.map((c: any) => (
-        <ul key={c._id} className="overflow-x-auto">
-          <li>
-            <p>{(userCout += 1)}</p>
-          </li>
-          <li>
-            <p>username:{c.userName}</p>
-          </li>
-          <li>
-            <p>userphone:{c.userPhoneNumber}</p>
-          </li>
-          <li>
-            <p>userpassword:{c.userPassword}</p>
-          </li>
-          <br />
-        </ul>
-      ))}
+      {list !== [] && (
+        <div>
+          {list.map((c: any) => (
+            <ul key={c._id} className="overflow-x-auto">
+              <li>
+                <p>{(userCout += 1)}</p>
+              </li>
+              <li>
+                <p>username:{c.userName}</p>
+              </li>
+              <li>
+                <p>userphone:{c.userPhoneNumber}</p>
+              </li>
+              <li>
+                <p>userpassword:{c.userPassword}</p>
+              </li>
+              <br />
+            </ul>
+          ))}
+        </div>
+      )}
     </>
   );
 }

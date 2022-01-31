@@ -8,8 +8,11 @@ axios.interceptors.response.use(undefined, (error) => {
     error.response.status >= 400 &&
     error.response.status < 500;
   if (!expectedError) {
-    toast.error("网络错误,发生了一些意外错误!!!");
+    toast.error("发生了一些意外的网络错误!!!");
   }
+  // else if (expectedError) {
+  //    toast.error("发生了一些已知但未处理的网络错误!!!");
+  // }
   return Promise.reject(error);
 }); // 参数1:请求成功 和 参数2:请求失败
 
