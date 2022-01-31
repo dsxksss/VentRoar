@@ -31,6 +31,7 @@ const Login = () => {
       // console.log(res.data);
     } catch (err) {
       toast.warning("登录过期,请重新登录!", {
+        autoClose: false,
         closeButton: CloseButton,
         bodyClassName: "font-bold",
       });

@@ -1,5 +1,6 @@
 //封装axios请求模块
 import axios from "axios";
+import { toast } from "react-toastify";
 
 axios.interceptors.response.use(undefined, (error) => {
   const expectedError =
@@ -7,7 +8,7 @@ axios.interceptors.response.use(undefined, (error) => {
     error.response.status >= 400 &&
     error.response.status < 500;
   if (!expectedError) {
-    console.log("发生了一些意外错误!!!");
+    toast.error("网络错误,发生了一些意外错误!!!");
   }
   return Promise.reject(error);
 }); // 参数1:请求成功 和 参数2:请求失败
