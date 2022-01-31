@@ -2,14 +2,13 @@ import { Link } from "react-router-dom";
 import { UserCircleIcon, LockOpenIcon } from "@heroicons/react/solid";
 import { useEffect, useState, useContext } from "react";
 import { loginContext } from "./../conText/ByLoginDo";
-import { TextBarContext } from "../Components/TextBar";
+import { toast, Flip } from "react-toastify";
 import cimg from "../img/cImg/loginPage.svg";
 import https from "../services/httpServices";
-
+import CloseButton from "./../Components/CloseButton";
 const Login = () => {
   let local = window.localStorage;
   const { setToken, token, toLink } = useContext<any>(loginContext);
-  const { setTextBar } = useContext<any>(TextBarContext);
   const [userData, setUserData] = useState({
     userPassword: "",
     userPhoneNumber: "",
@@ -22,10 +21,6 @@ const Login = () => {
     return;
     // console.log(localStorage.getItem("tokenForServer"));
   }, []);
-  const trueBarStyle =
-    "textBar-style rounded-[4px] bg-green-400 text-white w-[100vw] md:w-[20vw]";
-  const falseBarStyle =
-    "textBar-style rounded-[4px] bg-red-400 text-white w-[100vw] md:w-[20vw]";
 
   const tokenPush = async () => {
     try {
@@ -35,52 +30,32 @@ const Login = () => {
       setToken(local.getItem("tokenForServer"));
       // console.log(res.data);
     } catch (err) {
-      setTextBar({
-        isOpen: true,
-        MsgStyle: falseBarStyle,
-        msg: "登录过期,请重新登录!",
+      toast.warning("登录过期,请重新登录!", {
+        closeButton: CloseButton,
+        bodyClassName: "font-bold",
       });
-      setTimeout(() => {
-        setTextBar((oldData: any) => ({
-          ...oldData,
-          isOpen: false,
-        }));
-      }, 2000);
-      local.clear();
     }
   };
 
   const push = async () => {
     try {
       const { data } = await https.post(`${https.api.userLoginApi}`, userData);
-      setTextBar({
-        isOpen: true,
-        MsgStyle: trueBarStyle,
-        msg: "登录成功...",
+      toast.success("登录成功...", {
+        autoClose: 1500,
+        bodyClassName: "font-bold text-center text-gary-900",
       });
       setToken(data.token);
       local.setItem("tokenForServer", data.token);
       local.setItem("oldTime", data.time);
       console.log(local.getItem("tokenForServer"), local.getItem("oldTime"));
-      setTimeout(() => {
-        setTextBar((oldData: any) => ({
-          ...oldData,
-          isOpen: false,
-        }));
-      }, 1500);
+
       console.log(data);
     } catch (err) {
-      setTextBar({
-        isOpen: true,
-        MsgStyle: falseBarStyle,
-        msg: "登录失败!手机号或密码错误!",
+      toast.error("登录失败!手机号或密码错误!", {
+        autoClose: 1500,
+        transition: Flip,
+        bodyClassName: "font-bold text-red-500",
       });
-      setTimeout(() => {
-        setTextBar((oldData: any) => ({
-          ...oldData,
-          isOpen: false,
-        }));
-      }, 3000);
     }
   };
 
