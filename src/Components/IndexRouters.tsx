@@ -10,7 +10,6 @@ import RegisterPage from "../Pages/RegisterPage";
 import SuPage from "../Pages/Su";
 import ByLoginDo from "../conText/ByLoginDo";
 import FindPswPage from "../Pages/FindPswPage";
-import TextBar from "./CloseButton";
 
 const IndexRouters = () => {
   return (
