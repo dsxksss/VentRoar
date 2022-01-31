@@ -42,6 +42,7 @@ const RegisterPage = () => {
     } catch (err) {
       toast.error("注册失败!数据库已存在相同手机号或网络繁忙!", {
         autoClose: false,
+        toastId: "注册失败",
         closeButton: CloseButton,
       });
     }

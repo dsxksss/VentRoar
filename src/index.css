@@ -207,8 +207,6 @@
 
 html,
 body {
-  touch-action: pan-y;
-  /*pan-y表示启用单指垂直平移手势(上下滑动事件)。 */
   margin: 0;
   padding: 0;
   list-style: none;

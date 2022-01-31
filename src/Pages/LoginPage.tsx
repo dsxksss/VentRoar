@@ -53,6 +53,7 @@ const Login = () => {
     } catch (err) {
       toast.error("登录失败!手机号或密码错误!", {
         autoClose: 1500,
+        toastId: "登录失败",
         transition: Flip,
         bodyClassName: "font-bold text-red-500",
       });

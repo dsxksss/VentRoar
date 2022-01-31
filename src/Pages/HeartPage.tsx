@@ -51,13 +51,15 @@ function PopularPage() {
 
   //POST
   const POST = async () => {
-    if (token === "")
-      return toast.warning("请先登录", {
+    if (token === "") {
+      toast.warning("请先登录", {
         transition: Slide,
         closeButton: CloseButton,
         autoClose: false,
-        toastId: "place Login", //添加id避免出现重复通知
+        toastId: "placeLogin1", //添加id避免出现重复通知
       });
+      return null;
+    }
     try {
       await https.post(`${https.api.userTextApi}${token}`, text);
       toast.promise(
@@ -78,13 +80,15 @@ function PopularPage() {
 
   //PUT
   const PUT = async (textId: string, smilOrheart: object) => {
-    if (token === "")
-      return toast.warning("请先登录", {
+    if (token === "") {
+      toast.warning("请先登录", {
         transition: Slide,
         closeButton: CloseButton,
         autoClose: false,
-        toastId: "place Login", //添加id避免出现重复通知
+        toastId: "placeLogin2", //添加id避免出现重复通知
       });
+      return null;
+    }
     try {
       await https.put(`${https.api.userTextApi}${textId}`, smilOrheart);
       toast.success("+1", {
