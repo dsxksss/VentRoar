@@ -13,6 +13,7 @@ ReactDOM.render(
       autoClose={2000} //自动关闭,false为取消自动关闭
       limit={2} //最大同时显示个数
       draggable //是否启动滑动关闭
+      draggablePercent={40} //滑动多少可以关闭
       hideProgressBar={false} //隐藏进度条
       closeButton={false} //消息框关闭按钮是否显示
     />
