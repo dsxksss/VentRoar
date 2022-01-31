@@ -57,25 +57,27 @@ function HelpPage() {
           </button>
         </div>
       </div>
-      <div>
-        {list.map((c: any) => (
-          <ul key={c._id} className="overflow-x-auto">
-            <li>
-              <p>{(userCout += 1)}</p>
-            </li>
-            <li>
-              <p>username:{c.userName}</p>
-            </li>
-            <li>
-              <p>userphone:{c.userPhoneNumber}</p>
-            </li>
-            <li>
-              <p>userpassword:{c.userPassword}</p>
-            </li>
-            <br />
-          </ul>
-        ))}
-      </div>
+      {list.length >= 1 && (
+        <div>
+          {list.map((c: any) => (
+            <ul key={c._id} className="overflow-x-auto">
+              <li>
+                <p>{(userCout += 1)}</p>
+              </li>
+              <li>
+                <p>username:{c.userName}</p>
+              </li>
+              <li>
+                <p>userphone:{c.userPhoneNumber}</p>
+              </li>
+              <li>
+                <p>userpassword:{c.userPassword}</p>
+              </li>
+              <br />
+            </ul>
+          ))}
+        </div>
+      )}
     </>
   );
 }
