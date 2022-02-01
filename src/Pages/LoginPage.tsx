@@ -6,16 +6,16 @@ import { toast, Flip } from "react-toastify";
 import cimg from "../img/cImg/loginPage.svg";
 import https from "../services/httpServices";
 import CloseButton from "./../Components/CloseButton";
+import login from "../services/login";
 const Login = () => {
-  let local = window.localStorage;
-  const { setToken, token, toLink } = useContext<any>(loginContext);
+  const { toLink } = useContext<any>(loginContext);
   const [userData, setUserData] = useState({
     userPassword: "",
     userPhoneNumber: "",
   });
   useEffect(() => {
-    if (token !== "") toLink("/UserPage");
-    if (local.getItem("tokenForServer") !== "") {
+    if (login.getJWT() !== null) toLink("/UserPage");
+    if (login.getJWT() === null) {
       tokenPush();
     }
     return;
@@ -24,10 +24,7 @@ const Login = () => {
 
   const tokenPush = async () => {
     try {
-      await https.post(
-        `${https.api.userLoginApi}${local.getItem("tokenForServer")}`
-      );
-      setToken(local.getItem("tokenForServer"));
+      await https.post(`${https.api.userLoginApi}${login.getJWT()}`);
       // console.log(res.data);
     } catch (err) {
       toast.warning("登录过期,请重新登录!", {
@@ -40,17 +37,11 @@ const Login = () => {
 
   const push = async () => {
     try {
-      const { data } = await https.post(`${https.api.userLoginApi}`, userData);
+      await login.loginIN(userData);
       toast.success("登录成功...", {
         autoClose: 1500,
         bodyClassName: "font-bold text-center text-gary-900",
       });
-      setToken(data.token);
-      local.setItem("tokenForServer", data.token);
-      local.setItem("oldTime", data.time);
-      console.log(local.getItem("tokenForServer"), local.getItem("oldTime"));
-
-      console.log(data);
     } catch (err) {
       toast.error("登录失败!手机号或密码错误!", {
         autoClose: 1500,
@@ -58,6 +49,7 @@ const Login = () => {
         transition: Flip,
         bodyClassName: "font-bold text-red-500",
       });
+      login.loginOUT();
     }
   };
 

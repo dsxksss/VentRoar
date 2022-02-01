@@ -5,7 +5,7 @@ const loginIN = async (loginData: object) => {
     `${https.api.userLoginApi}`,
     loginData
   );
-  localStorage.setItem("token", JWT);
+  localStorage.setItem("token", JWT.token);
 };
 const loginOUT = (): void => {
   localStorage.removeItem("token");
