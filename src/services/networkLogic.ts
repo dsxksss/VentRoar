@@ -35,6 +35,10 @@ const pushTextAndUpdata = async (textID: string, textData: object) => {
   await https.put(`${https.api.userTextApi}${textID}`, textData);
 };
 
+const deleteUsetText = async (textID: string) => {
+  await https.delete(`${https.api.textDataApi}${textID}/${getJWT()}`);
+};
+
 export default {
   tokenValidation,
   loginIN,
@@ -43,4 +47,5 @@ export default {
   createUser,
   pushText,
   pushTextAndUpdata,
+  deleteUsetText,
 };

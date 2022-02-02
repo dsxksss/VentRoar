@@ -82,10 +82,32 @@ function PopularPage() {
       getUser();
     } catch (err) {
       toast.error("网络繁忙", {
-        toastId: "deleteOne", //添加id避免出现重复通知
+        toastId: "dontOne", //添加id避免出现重复通知
       });
     }
   };
+
+  const textDelete = async (textID: string) => {
+    try {
+      await networkLoginc.deleteUsetText(textID);
+      toast.promise(
+        new Promise((resolve) => setTimeout(resolve, 1000)),
+        {
+          pending: "删除中...",
+          success: "删除成功 👌",
+        },
+        {
+          autoClose: 1000,
+        }
+      );
+      getUser();
+    } catch (error) {
+      toast.error(`删除失败,您没有权限这么做或网络繁忙!`, {
+        closeButton: CloseButton,
+      });
+    }
+  };
+
   const headerSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (text.textData !== "") POST();
@@ -218,16 +240,13 @@ function PopularPage() {
                           leaveTo="transform opacity-0 scale-95"
                         >
                           <Menu.Items className="absolute w-[9rem] outline-none top-full right-0 space-y-2">
-                            <Menu.Item>
-                              <button className="w-full button-style outline-none rounded-full bg-gray-800 text-gray-100">
-                                <span>评论帖子</span>
-                                <AnnotationIcon className="w-5 h-5 inline-block text-slate-100" />
-                              </button>
-                            </Menu.Item>
                             {networkLoginc.getJWT() !== "" &&
                               networkLoginc.getJWT() !== null && (
                                 <Menu.Item>
-                                  <button className="w-full button-style outline-none rounded-full bg-gray-800 text-gray-100">
+                                  <button
+                                    className="w-full button-style outline-none rounded-full bg-gray-800 text-gray-100"
+                                    onClick={() => textDelete(c._id)}
+                                  >
                                     删除帖子
                                     <TrashIcon className="w-5 h-5 inline-block text-slate-100" />
                                   </button>
