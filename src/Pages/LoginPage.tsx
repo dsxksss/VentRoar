@@ -4,7 +4,6 @@ import { useEffect, useState, useContext } from "react";
 import { loginContext } from "./../conText/ByLoginDo";
 import { toast, Flip } from "react-toastify";
 import cimg from "../img/cImg/loginPage.svg";
-import https from "../services/httpServices";
 import CloseButton from "./../Components/CloseButton";
 import login from "../services/login";
 const Login = () => {
@@ -14,23 +13,22 @@ const Login = () => {
     userPhoneNumber: "",
   });
   useEffect(() => {
-    if (login.getJWT() !== null) toLink("/UserPage");
-    if (login.getJWT() === null) {
-      tokenPush();
-    }
+    tokenPush();
     return;
     // console.log(localStorage.getItem("tokenForServer"));
-  }, []);
+  }, [toLink]);
 
   const tokenPush = async () => {
     try {
-      await https.post(`${https.api.userLoginApi}${login.getJWT()}`);
-      // console.log(res.data);
+      await login.tokenValidation();
+      setTimeout(() => {
+        toLink("/UserPage");
+      }, 50);
     } catch (err) {
       toast.warning("登录过期,请重新登录!", {
-        autoClose: false,
+        autoClose: 6000,
         closeButton: CloseButton,
-        bodyClassName: "font-bold",
+        bodyClassName: "font-bold text-yellow-400 text-md",
       });
     }
   };
@@ -42,6 +40,10 @@ const Login = () => {
         autoClose: 1500,
         bodyClassName: "font-bold text-center text-gary-900",
       });
+      setTimeout(() => {
+        toLink("/UserPage");
+        toast.clearWaitingQueue();
+      }, 1500);
     } catch (err) {
       toast.error("登录失败!手机号或密码错误!", {
         autoClose: 1500,
