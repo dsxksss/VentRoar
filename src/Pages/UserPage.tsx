@@ -16,7 +16,7 @@ function UserPage() {
   const getUserData = async () => {
     try {
       await networkLoginc.tokenValidation();
-      const { data } = await getData.getUserTextData(networkLoginc.getJWT());
+      const data = await getData.getUserTextData(networkLoginc.getJWT());
       setUserData(data);
     } catch (err) {
       return toLink("/LoginPage");

@@ -50,7 +50,7 @@ function HelpPage() {
           <button
             className="button-style bg-green-400 text-white shadow-lg shadow-green-400/50"
             onClick={async () => {
-              setList(await (await getData.getUserData()).data);
+              setList(await await getData.getUserData());
             }}
           >
             Get Data
