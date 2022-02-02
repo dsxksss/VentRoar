@@ -38,6 +38,7 @@ const Login = () => {
       await networkLoginc.loginIN(userData);
       toast.success("登录成功...", {
         autoClose: 1500,
+        toastId: "登录成功",
         bodyClassName: "font-bold text-center text-gary-900",
       });
       setTimeout(() => {

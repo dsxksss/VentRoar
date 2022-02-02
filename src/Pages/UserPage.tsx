@@ -1,6 +1,6 @@
 import { useEffect, useContext, useState } from "react";
 import { loginContext } from "./../conText/ByLoginDo";
-import login from "../services/networkLogic";
+import networkLoginc from "../services/networkLogic";
 import getData from "../services/getData";
 
 function UserPage() {
@@ -15,8 +15,8 @@ function UserPage() {
 
   const getUserData = async () => {
     try {
-      await login.tokenValidation();
-      const { data } = await getData.getUserTextData(login.getJWT());
+      await networkLoginc.tokenValidation();
+      const { data } = await getData.getUserTextData(networkLoginc.getJWT());
       setUserData(data);
     } catch (err) {
       return toLink("/LoginPage");
@@ -34,7 +34,7 @@ function UserPage() {
           className="button-style bg-slate-500 text-white"
           onClick={() => {
             toLink("/LoginPage");
-            login.loginOUT();
+            networkLoginc.loginOUT();
           }}
         >
           退出登录
