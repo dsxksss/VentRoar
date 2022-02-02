@@ -8,7 +8,7 @@ import UserPage from "../Pages/UserPage";
 import NotFoundPage from "../Pages/NotFoundPage";
 import RegisterPage from "../Pages/RegisterPage";
 import SuPage from "../Pages/Su";
-import ByLoginDo from "../conText/ByLoginDo";
+import ByLoginDo from "../conText/ToLink";
 import FindPswPage from "../Pages/FindPswPage";
 
 const IndexRouters = () => {

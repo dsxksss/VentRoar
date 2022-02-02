@@ -1,10 +1,10 @@
 import { useEffect, useContext, useState } from "react";
-import { loginContext } from "./../conText/ByLoginDo";
+import { ToLinkContext } from "../conText/ToLink";
 import networkLoginc from "../services/networkLogic";
 import getData from "../services/getData";
 
 function UserPage() {
-  const { toLink } = useContext<any>(loginContext);
+  const { toLink } = useContext<any>(ToLinkContext);
   const [userData, setUserData] = useState<any>([]);
 
   useEffect(() => {

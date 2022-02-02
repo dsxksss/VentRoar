@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { UserCircleIcon, LockOpenIcon } from "@heroicons/react/solid";
 import { useEffect, useState, useContext } from "react";
-import { loginContext } from "./../conText/ByLoginDo";
+import { ToLinkContext } from "../conText/ToLink";
 import { toast, Flip } from "react-toastify";
 import cimg from "../img/cImg/loginPage.svg";
 import CloseButton from "./../Components/CloseButton";
 import networkLoginc from "../services/networkLogic";
 const Login = () => {
-  const { toLink } = useContext<any>(loginContext);
+  const { toLink } = useContext<any>(ToLinkContext);
   const [userData, setUserData] = useState({
     userPassword: "",
     userPhoneNumber: "",

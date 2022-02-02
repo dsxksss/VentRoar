@@ -6,7 +6,7 @@ import {
 } from "@heroicons/react/outline";
 import { RefreshIcon } from "@heroicons/react/solid";
 import { useState, useContext } from "react";
-import { loginContext } from "./../conText/ByLoginDo";
+import { ToLinkContext } from "../conText/ToLink";
 import { toast } from "react-toastify";
 import cimg from "../img/cImg/registerPage.svg";
 import networkLoginc from "../services/networkLogic";
@@ -17,7 +17,7 @@ const RegisterPage = () => {
     userPassword: "",
     userPhoneNumber: "",
   });
-  const { toLink } = useContext<any>(loginContext);
+  const { toLink } = useContext<any>(ToLinkContext);
 
   //POST
   const push = async () => {
