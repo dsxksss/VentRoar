@@ -16,6 +16,8 @@
 
 · 5、<a href="https://react-spring.io/">react-spring</a>:部分动画效果的实现,都是利用 react-spring 完成.
 
+· 6、<a href="https://github.com/fkhadra/react-toastify">React-Toastify</a>:页面消息通知栏功能的实现,都是利用 React-Toastify 完成.
+
 # 1、Quick start🚀🚀🚀
 
 - 1-克隆此项目到本地 ✨
