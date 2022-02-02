@@ -1,6 +1,6 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import timeSCV from "../utils/timeSCV";
-import { loginContext } from "../conText/ByLoginDo";
+
 import {
   ReplyIcon,
   EmojiHappyIcon,
@@ -12,13 +12,13 @@ import {
 } from "@heroicons/react/outline";
 import { toast, Slide } from "react-toastify";
 import { Menu, Transition } from "@headlessui/react";
-import https from "../services/httpServices";
+import networkLoginc from "../services/networkLogic";
+import getData from "../services/getData";
 import CloseButton from "../Components/CloseButton";
 
 function PopularPage() {
   const [list, setList] = useState([]);
   const [text, setText] = useState({ textData: "" });
-  const { token } = useContext<any>(loginContext);
 
   useEffect(() => {
     getUser();
@@ -30,13 +30,13 @@ function PopularPage() {
   //GET
   const getUser = async () => {
     //利用异步方法请求数据
-    const { data } = await https.get(`${https.api.textDataApi}`);
+    const data = await getData.getAllTextData();
     setList(data);
   };
 
   //POST
   const POST = async () => {
-    if (token === "") {
+    if (networkLoginc.getJWT() === null || networkLoginc.getJWT() === "") {
       toast.warning("请先登录", {
         transition: Slide,
         closeButton: CloseButton,
@@ -46,7 +46,7 @@ function PopularPage() {
       return null;
     }
     try {
-      await https.post(`${https.api.userTextApi}${token}`, text);
+      await networkLoginc.pushText(text);
       toast.promise(
         new Promise((resolve) => setTimeout(resolve, 1000)),
         {
@@ -65,7 +65,7 @@ function PopularPage() {
 
   //PUT
   const PUT = async (textId: string, smilOrheart: object) => {
-    if (token === "") {
+    if (networkLoginc.getJWT() === null || networkLoginc.getJWT() === "") {
       toast.warning("请先登录", {
         transition: Slide,
         closeButton: CloseButton,
@@ -75,7 +75,7 @@ function PopularPage() {
       return null;
     }
     try {
-      await https.put(`${https.api.userTextApi}${textId}`, smilOrheart);
+      await networkLoginc.pushTextAndUpdata(textId, smilOrheart);
       toast.success("+1", {
         toastId: "addOne", //添加id避免出现重复通知
       });
@@ -224,14 +224,15 @@ function PopularPage() {
                                 <AnnotationIcon className="w-5 h-5 inline-block text-slate-100" />
                               </button>
                             </Menu.Item>
-                            {token === "" ? null : (
-                              <Menu.Item>
-                                <button className="w-full button-style outline-none rounded-full bg-gray-800 text-gray-100">
-                                  删除帖子
-                                  <TrashIcon className="w-5 h-5 inline-block text-slate-100" />
-                                </button>
-                              </Menu.Item>
-                            )}
+                            {networkLoginc.getJWT() !== "" &&
+                              networkLoginc.getJWT() !== null && (
+                                <Menu.Item>
+                                  <button className="w-full button-style outline-none rounded-full bg-gray-800 text-gray-100">
+                                    删除帖子
+                                    <TrashIcon className="w-5 h-5 inline-block text-slate-100" />
+                                  </button>
+                                </Menu.Item>
+                              )}
                           </Menu.Items>
                         </Transition>
                       </Menu>

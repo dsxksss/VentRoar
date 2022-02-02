@@ -27,10 +27,20 @@ const createUser = async (createData: object) => {
   await https.post(`${https.api.userCreateApi}`, createData);
 };
 
+const pushText = async (textData: object) => {
+  await https.post(`${https.api.userTextApi}${getJWT()}`, textData);
+};
+
+const pushTextAndUpdata = async (textID: string, textData: object) => {
+  await https.put(`${https.api.userTextApi}${textID}`, textData);
+};
+
 export default {
   tokenValidation,
   loginIN,
   loginOUT,
   getJWT,
   createUser,
+  pushText,
+  pushTextAndUpdata,
 };
