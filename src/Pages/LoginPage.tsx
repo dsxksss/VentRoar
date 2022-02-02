@@ -5,7 +5,7 @@ import { loginContext } from "./../conText/ByLoginDo";
 import { toast, Flip } from "react-toastify";
 import cimg from "../img/cImg/loginPage.svg";
 import CloseButton from "./../Components/CloseButton";
-import login from "../services/login";
+import networkLoginc from "../services/networkLogic";
 const Login = () => {
   const { toLink } = useContext<any>(loginContext);
   const [userData, setUserData] = useState({
@@ -20,7 +20,7 @@ const Login = () => {
 
   const tokenPush = async () => {
     try {
-      await login.tokenValidation();
+      await networkLoginc.tokenValidation();
       setTimeout(() => {
         toLink("/UserPage");
       }, 50);
@@ -35,23 +35,22 @@ const Login = () => {
 
   const push = async () => {
     try {
-      await login.loginIN(userData);
+      await networkLoginc.loginIN(userData);
       toast.success("登录成功...", {
         autoClose: 1500,
         bodyClassName: "font-bold text-center text-gary-900",
       });
       setTimeout(() => {
         toLink("/UserPage");
-        toast.clearWaitingQueue();
       }, 1500);
     } catch (err) {
-      toast.error("登录失败!手机号或密码错误!", {
+      toast.error("登录失败,手机号或密码错误!", {
         autoClose: 1500,
         toastId: "登录失败",
         transition: Flip,
         bodyClassName: "font-bold text-red-500",
       });
-      login.loginOUT();
+      networkLoginc.loginOUT();
     }
   };
 

@@ -9,7 +9,6 @@ import {
   DotsHorizontalIcon,
   AnnotationIcon,
   TrashIcon,
-  ArrowNarrowRightIcon,
 } from "@heroicons/react/outline";
 import { toast, Slide } from "react-toastify";
 import { Menu, Transition } from "@headlessui/react";

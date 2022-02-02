@@ -1,25 +1,27 @@
 import { useEffect, useContext, useState } from "react";
 import { loginContext } from "./../conText/ByLoginDo";
-import https from "../services/httpServices";
-import login from "../services/login";
+import login from "../services/networkLogic";
+import getData from "../services/getData";
 
 function UserPage() {
   const { toLink } = useContext<any>(loginContext);
   const [userData, setUserData] = useState<any>([]);
+
   useEffect(() => {
     //利用token获取数据库用户数据
-    const getUserData = async () => {
-      try {
-        const { data } = await https.get(
-          `${https.api.userDataApi}${login.getJWT()}`
-        );
-        setUserData(data);
-      } catch (err) {
-        if (login.getJWT === null) return toLink("/LoginPage");
-      }
-    };
     getUserData();
+    return setUserData([]);
   }, []);
+
+  const getUserData = async () => {
+    try {
+      await login.tokenValidation();
+      const { data } = await getData.getUserTextData(login.getJWT());
+      setUserData(data);
+    } catch (err) {
+      return toLink("/LoginPage");
+    }
+  };
 
   return (
     <>

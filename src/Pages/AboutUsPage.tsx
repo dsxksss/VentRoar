@@ -1,6 +1,6 @@
 import { useState } from "react";
 import cimg from "../img/cImg/developer.svg";
-import getUserData from "../services/getUserData";
+import getData from "../services/getData";
 
 function HelpPage() {
   const [list, setList] = useState<[]>([]);
@@ -50,7 +50,7 @@ function HelpPage() {
           <button
             className="button-style bg-green-400 text-white shadow-lg shadow-green-400/50"
             onClick={async () => {
-              setList(await getUserData());
+              setList(await (await getData.getUserData()).data);
             }}
           >
             Get Data

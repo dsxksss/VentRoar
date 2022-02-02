@@ -7,10 +7,9 @@ import {
 import { RefreshIcon } from "@heroicons/react/solid";
 import { useState, useContext } from "react";
 import { loginContext } from "./../conText/ByLoginDo";
-import cimg from "../img/cImg/registerPage.svg";
-import https from "../services/httpServices";
 import { toast } from "react-toastify";
-import CloseButton from "../Components/CloseButton";
+import cimg from "../img/cImg/registerPage.svg";
+import networkLoginc from "../services/networkLogic";
 
 const RegisterPage = () => {
   const [userData, setUserData] = useState({
@@ -23,27 +22,25 @@ const RegisterPage = () => {
   //POST
   const push = async () => {
     try {
-      await https.post(`${https.api.userCreateApi}`, userData);
-
+      await networkLoginc.createUser(userData);
       toast.promise(
         new Promise((resolve) => setTimeout(resolve, 1000)),
         {
           pending: "注册中...",
-          success: "注 册 成 功 👌",
+          success: "注 册 成 功 👌正在跳转到登录页面...",
         },
         {
-          autoClose: 1000,
+          autoClose: 1400,
         }
       );
-
       setTimeout(() => {
         toLink("/loginPage");
-      }, 1500);
+      }, 2000);
     } catch (err) {
       toast.error("注册失败!数据库已存在相同手机号或网络繁忙!", {
-        autoClose: false,
+        autoClose: 3000,
+        hideProgressBar: false,
         toastId: "注册失败",
-        closeButton: CloseButton,
       });
     }
   };
