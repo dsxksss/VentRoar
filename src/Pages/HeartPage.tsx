@@ -103,7 +103,8 @@ function PopularPage() {
       getUser();
     } catch (error) {
       toast.error(`删除失败,您没有权限这么做或网络繁忙!`, {
-        closeButton: CloseButton,
+        autoClose: 1500,
+        hideProgressBar: false,
       });
     }
   };
