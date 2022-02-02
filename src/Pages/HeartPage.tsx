@@ -100,11 +100,12 @@ function PopularPage() {
           autoClose: 1000,
         }
       );
-      getUser();
+      setTimeout(() => getUser(), 1300);
     } catch (error) {
       toast.error(`删除失败,您没有权限这么做或网络繁忙!`, {
         autoClose: 1500,
         hideProgressBar: false,
+        toastId: "deleteOne",
       });
     }
   };
