@@ -7,7 +7,6 @@ import {
   EmojiSadIcon,
   HeartIcon,
   DotsHorizontalIcon,
-  AnnotationIcon,
   TrashIcon,
 } from "@heroicons/react/outline";
 import { toast, Slide } from "react-toastify";
