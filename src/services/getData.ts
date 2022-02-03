@@ -15,8 +15,14 @@ const getAllTextData = async () => {
   return data;
 };
 
+const getUserAllTextData = async (JWT: string | null) => {
+  const { data } = await https.get(`${https.api.textDataApi}${JWT}`);
+  return data;
+};
+
 export default {
   getUserData,
   getUserTextData,
   getAllTextData,
+  getUserAllTextData,
 };
