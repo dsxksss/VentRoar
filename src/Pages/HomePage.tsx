@@ -16,7 +16,7 @@ const HomePage = () => {
             alt="developerCImg"
           />
           <button
-            className="border-2 bg-gray-50 dark:border-gray-100 border-gray-900 rounded-md button-style dark:text-gray-100 text-gray-900 shadow-lg"
+            className="border-2 dark:bg-[#253446] bg-gray-50 dark:border-gray-100 border-gray-900 rounded-md button-style dark:text-gray-100 text-gray-900 shadow-lg"
             onClick={() => setDark(!isDark)}
           >
             TO Dark
