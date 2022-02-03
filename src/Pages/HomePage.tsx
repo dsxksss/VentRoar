@@ -7,7 +7,7 @@ const HomePage = () => {
   return (
     <div className={`${isDark ? "dark" : " "}`}>
       <div
-        className={`h-[95vh] transform duration-200 ease-in-out dark:bg-[#253446]`}
+        className={`h-[94vh] transform duration-200 ease-in-out dark:bg-[#253446]`}
       >
         <div className="pt-20 flex flex-col justify-center items-center space-y-4">
           <img

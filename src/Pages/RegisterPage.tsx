@@ -54,7 +54,7 @@ const RegisterPage = () => {
     <>
       <div
         style={{ animationDuration: "0.7s" }}
-        className="flex flex-col justify-center items-center h-[93vh] an-4"
+        className="flex flex-col justify-center items-center h-[94vh] an-4"
       >
         <div className="sm:hidden bg-cover mt-[-22vh] w-[92vw]">
           <img src={cimg} alt="Graduation" />

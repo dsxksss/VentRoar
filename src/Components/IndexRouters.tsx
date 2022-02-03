@@ -15,7 +15,7 @@ const IndexRouters = () => {
   return (
     <div className="h-screen">
       <header>
-        <nav className="h-[6vh] z-[999]">
+        <nav className="h-[6vh]">
           <Nav />
         </nav>
       </header>

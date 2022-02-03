@@ -2,7 +2,7 @@ import cimg from "../img/cImg/notFindPage.svg";
 function NotFoundPage() {
   return (
     <>
-      <div className="h-[93vh] flex flex-col  justify-center items-center text-slate-900">
+      <div className="h-[94vh] flex flex-col  justify-center items-center text-slate-900">
         <div className="bg-cover">
           <img src={cimg} alt="notfindpage" />
         </div>

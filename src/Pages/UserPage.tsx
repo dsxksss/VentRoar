@@ -25,20 +25,22 @@ function UserPage() {
 
   return (
     <>
-      <div className="text-center">
-        <p>
-          Hi!👋👋👋 <strong>{userData.userName}</strong>{" "}
-        </p>
-        <p>欢迎来到你的主页!!!</p>
-        <button
-          className="button-style bg-slate-500 text-white"
-          onClick={() => {
-            toLink("/LoginPage");
-            networkLoginc.loginOUT();
-          }}
-        >
-          退出登录
-        </button>
+      <div className="text-center h-[94vh] flex flex-col justify-center items-center">
+        <div className="h-[60vh]">
+          <div>
+            Hi!👋👋👋 <strong>{userData.userName}</strong>{" "}
+          </div>
+          <p>欢迎来到你的主页!!!</p>
+          <button
+            className="button-style bg-slate-500 text-white"
+            onClick={() => {
+              toLink("/LoginPage");
+              networkLoginc.loginOUT();
+            }}
+          >
+            退出登录
+          </button>
+        </div>
       </div>
     </>
   );

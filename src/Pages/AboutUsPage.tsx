@@ -7,7 +7,7 @@ function HelpPage() {
   let userCout = 0;
   return (
     <>
-      <div className="pt-[1.1rem] px-3 h-[93vh] overflow-y-auto">
+      <div className="pt-[1.1rem] px-3 h-[94vh] overflow-y-auto">
         <div
           style={{ animationDuration: "2.5s" }}
           className="an-3 overflow-auto flex flex-col-reverse sm:flex-row items-center justify-center "

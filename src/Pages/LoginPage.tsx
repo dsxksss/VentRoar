@@ -64,7 +64,7 @@ const Login = () => {
     <>
       <div
         style={{ animationDuration: "0.7s" }}
-        className="an-4 flex flex-col justify-center items-center h-[93vh]"
+        className="an-4 flex flex-col justify-center items-center h-[94vh]"
       >
         <div className="sm:hidden bg-cover mt-[-18vh] w-[92vw]">
           <img src={cimg} alt="cat" />
