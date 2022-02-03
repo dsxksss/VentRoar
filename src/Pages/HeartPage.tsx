@@ -57,7 +57,9 @@ function PopularPage() {
           autoClose: 1000,
         }
       );
-      getUser();
+      setTimeout(()=>{
+        getUser();
+      },1300)
     } catch (err) {
       toast.error("发送失败,网络繁忙");
     }
