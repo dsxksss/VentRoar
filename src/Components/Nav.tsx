@@ -23,7 +23,7 @@ const Nav = () => {
       : "bt-style font-bold px-[3rem] py-2";
   const [open, setOpen] = useState(false); //手机导航栏的开合状态
   return (
-    <div className="shadow-md bg-slate-50 z-[999] fixed inset-0 shadow-gray-300/50 h-[6vh] flex flex-row justify-between items-center an-3">
+    <div className="z-[10] shadow-md bg-slate-50 fixed inset-0 shadow-gray-300/50 h-[6vh] flex flex-row justify-between items-center an-3">
       {/* 电脑端的显示设置 */}
       <div className="">
         <Link className="ml-4 text-lg font-bold text-black" to={"/"}>
@@ -59,7 +59,7 @@ const Nav = () => {
       <Transition.Root show={open} as={Fragment}>
         <Dialog
           as="div"
-          className="fixed inset-0 overflow-hidden"
+          className="fixed inset-0 overflow-hidden z-[15]"
           onClose={setOpen}
         >
           <div className="absolute inset-0 overflow-hidden">
