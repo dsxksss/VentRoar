@@ -1,16 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 //导入headlessui组件依赖，来方便的创建可交互样式
-import { ViewListIcon, XIcon } from "@heroicons/react/solid";
+import { MoonIcon, SunIcon, ViewListIcon, XIcon } from "@heroicons/react/solid";
+import { Link, useLocation } from "react-router-dom";
+// useLocation 是获取当前页面路由的一些数据
+import { Fragment } from "react";
+import { ToDarkContext } from "./../conText/ToDark";
 import {
   HeartIcon,
   UserCircleIcon,
   HomeIcon,
   UserGroupIcon,
 } from "@heroicons/react/outline";
-import { Link, useLocation } from "react-router-dom";
-import { Fragment } from "react";
-// useLocation 是获取当前页面路由的一些数据
 
 const Nav = () => {
   const { pathname } = useLocation();
@@ -22,6 +23,8 @@ const Nav = () => {
       ? "transition ease-out duration-150 text-slate-100 active:bg-slate-700 w-[25vh] font-bold bg-slate-700 px-full py-2 rounded-md"
       : "bt-style font-bold px-[3rem] py-2";
   const [open, setOpen] = useState(false); //手机导航栏的开合状态
+  const { isDark, setDark } = useContext<any>(ToDarkContext); //切换夜间模式
+
   return (
     <div className="z-[10] shadow-md bg-slate-50 fixed inset-0 shadow-gray-300/50 h-[6vh] flex flex-row justify-between items-center an-3">
       {/* 电脑端的显示设置 */}
@@ -50,12 +53,36 @@ const Nav = () => {
           <UserCircleIcon className="inline-block h-5 mb-1 w-5" />
           login登录
         </Link>
+        <button className="icon-button-style" onClick={() => setDark(!isDark)}>
+          {isDark ? (
+            <MoonIcon className="text-blue-500 inline-block h-5 w-5 mb-1" />
+          ) : (
+            <SunIcon className="text-yellow-500 inline-block h-5 w-5 mb-1" />
+          )}
+        </button>
       </div>
 
       {/* 手机端的显示设置 */}
-      <button className="mr-3 sm:hidden border-none outline-none">
-        <ViewListIcon onClick={() => setOpen(true)} className="h-5 w-5" />
-      </button>
+
+      <div className="mr-3 sm:hidden border-none outline-none space-x-4">
+        <button
+          type="button"
+          className="icon-button-style border-none outline-none"
+          onClick={() => setDark(!isDark)}
+        >
+          {isDark ? (
+            <MoonIcon className="text-blue-500 inline-block h-5 w-5 mb-1" />
+          ) : (
+            <SunIcon className="text-yellow-500 inline-block h-5 w-5 mb-1" />
+          )}
+        </button>
+        <button className="">
+          <ViewListIcon
+            onClick={() => setOpen(true)}
+            className="inline-block h-5 w-5 mb-1"
+          />
+        </button>
+      </div>
       <Transition.Root show={open} as={Fragment}>
         <Dialog
           as="div"
@@ -96,14 +123,14 @@ const Nav = () => {
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                   >
-                    <div className="absolute top-1 right-1 mr-2 mt-3 active:outline-none">
+                    <div className="absolute top-1 right-1 mr-2 mt-1 active:outline-none">
                       <button
                         type="button"
                         className="border-none outline-none"
                         onClick={() => setOpen(false)}
                       >
                         <span className="sr-only">Close panel</span>
-                        <XIcon className="h-6 w-6" aria-hidden="true" />
+                        <XIcon className="h-5 w-5" aria-hidden="true" />
                       </button>
                     </div>
                   </Transition.Child>
