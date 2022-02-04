@@ -17,27 +17,31 @@ const Nav = () => {
   const { pathname } = useLocation();
   //FUNCTION:动态显示当前点击的网页
   const ShowActive = (pagaName: string) =>
-    pathname === pagaName ? "text-black" : "bt-style";
+    pathname === pagaName || pathname === "/UserPage"
+      ? "text-black dark:text-gray-200"
+      : "bt-style";
   const ShowActiveMi = (pagaName: string) =>
-    pathname === pagaName
-      ? "transition ease-out duration-150 text-slate-100 active:bg-slate-700 w-[25vh] font-bold bg-slate-700 px-full py-2 rounded-md"
-      : "bt-style font-bold px-[3rem] py-2";
+    pathname === pagaName || pathname === "/UserPage"
+      ? `transition transform ease-out duration-150 active:bg-slate-700 w-[25vh] font-bold ${
+          isDark ? `bg-slate-100 text-slate-900` : `bg-slate-700 text-slate-100`
+        } px-full py-2 rounded-md`
+      : `${isDark ? "text-white" : "text-black"} font-bold px-[3rem] py-2`;
   const [open, setOpen] = useState(false); //手机导航栏的开合状态
   const { isDark, setDark } = useContext<any>(ToDarkContext); //切换夜间模式
 
   return (
-    <div className="z-[10] shadow-md bg-slate-50 fixed inset-0 shadow-gray-300/50 h-[6vh] flex flex-row justify-between items-center an-3">
+    <div className="z-[10] shadow-md dark:bg-[#253446] transform duration-200 bg-slate-50 fixed inset-0 dark:shadow-gray-800 shadow-gray-300/50 h-[6vh] flex flex-row justify-between items-center an-3">
       {/* 电脑端的显示设置 */}
       <div className="">
         <Link
-          className="ml-4 text-lg font-bold text-black inline-block mb-1"
+          className="ml-4 text-lg font-bold dark:text-slate-100 text-black inline-block mb-1"
           to={"/"}
         >
           ventroar.xyz
         </Link>
       </div>
 
-      <div className="mr-7 font-bold text-gray-500/60 hidden sm:block space-x-7">
+      <div className="mr-7 font-bold dark:text-blue-500 text-gray-500/60 hidden sm:block space-x-7">
         <Link className={ShowActive("/")} to={"/"}>
           <HomeIcon className="inline-block h-5 mb-1 w-5" />
           主页
@@ -82,7 +86,7 @@ const Nav = () => {
         <button className="outline-none">
           <ViewListIcon
             onClick={() => setOpen(true)}
-            className="outline-none inline-block h-5 w-5 mb-1"
+            className="outline-none dark:text-gray-300 inline-block h-5 w-5 mb-1"
           />
         </button>
       </div>
@@ -137,7 +141,12 @@ const Nav = () => {
                       </button>
                     </div>
                   </Transition.Child>
-                  <div className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
+
+                  <div
+                    className={`h-full flex flex-col py-6 ${
+                      isDark ? "bg-[#304053]" : "bg-white"
+                    } shadow-xl`}
+                  >
                     <div>
                       <Dialog.Title className="mt-[2rem] flex flex-col justify-center rounded-[0.3rem] py-[1rem] mx-[1rem] text-xl text-center font-bold text-white bg-blue-400">
                         <div>V E N T R O A R</div>导 航 栏
