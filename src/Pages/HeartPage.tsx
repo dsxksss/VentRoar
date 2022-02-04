@@ -8,7 +8,7 @@ import {
   HeartIcon,
   DotsHorizontalIcon,
   TrashIcon,
-} from "@heroicons/react/outline";
+} from "@heroicons/react/solid";
 import { toast, Slide } from "react-toastify";
 import { Menu, Transition } from "@headlessui/react";
 import networkLoginc from "../services/networkLogic";

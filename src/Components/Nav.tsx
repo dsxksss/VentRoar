@@ -18,7 +18,7 @@ const Nav = () => {
   //FUNCTION:动态显示当前点击的网页
   const ShowActive = (pagaName: string) =>
     pathname === pagaName || pathname === "/UserPage"
-      ? "text-black dark:text-gray-200"
+      ? "text-black dark:text-blue-400"
       : "bt-style";
   const ShowActiveMi = (pagaName: string) =>
     pathname === pagaName || pathname === "/UserPage"
@@ -41,7 +41,7 @@ const Nav = () => {
         </Link>
       </div>
 
-      <div className="mr-7 font-bold dark:text-blue-500 text-gray-500/60 hidden sm:block space-x-7">
+      <div className="mr-7 font-bold dark:text-slate-100 text-gray-500/60 hidden sm:block space-x-7">
         <Link className={ShowActive("/")} to={"/"}>
           <HomeIcon className="inline-block h-5 mb-1 w-5" />
           主页
