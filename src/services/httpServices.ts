@@ -8,7 +8,7 @@ axios.interceptors.response.use(undefined, (error) => {
     error.response.status >= 400 &&
     error.response.status < 500;
   if (!expectedError) {
-    toast.error("发生了一些意外的网络错误!!!");
+    toast.error("网络繁忙! 发生了一些意外的网络错误!!!");
   }
   // else if (expectedError) {
   //    toast.error("发生了一些已知但未处理的网络错误!!!");

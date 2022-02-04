@@ -103,7 +103,7 @@ function PopularPage() {
       );
       setTimeout(() => getUser(), 1300);
     } catch (error) {
-      toast.error(`删除失败,您没有权限这么做或网络繁忙!`, {
+      toast.error(`删除失败,您没有权限这么做`, {
         autoClose: 1800,
         hideProgressBar: false,
         toastId: "deleteOne",
