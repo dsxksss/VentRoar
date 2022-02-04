@@ -107,7 +107,11 @@ const Nav = () => {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Dialog.Overlay className="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+              <Dialog.Overlay
+                className={`absolute inset-0 ${
+                  isDark ? `bg-gray-800` : `bg-gray-500`
+                }  bg-opacity-75 transition-opacity`}
+              />
             </Transition.Child>
 
             <div className="fixed inset-y-0 right-0 pl-10 max-w-full flex">
