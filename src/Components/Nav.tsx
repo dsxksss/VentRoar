@@ -126,7 +126,7 @@ const Nav = () => {
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                   >
-                    <div className="absolute top-1 right-1 mr-2 mt-1 active:outline-none">
+                    <div className="absolute top-1 right-1 mr-2 mt-2 active:outline-none">
                       <button
                         type="button"
                         className="border-none outline-none"
