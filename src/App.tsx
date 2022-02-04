@@ -7,7 +7,7 @@ const App = () => {
   const { isDark } = useContext<any>(ToDarkContext);
 
   return (
-    <div className={`${isDark ? "dark" : " "}`}>
+    <div className={`${isDark ? "dark" : null}`}>
       {/* 已y轴形势滑动关闭通知draggableDirection="y" 
   //toast网络请求例子,参1:api请求,参2:设置三种状态显示的msg,参3:toast配置
   // toast.promise(
@@ -33,7 +33,7 @@ const App = () => {
         hideProgressBar //隐藏进度条
         closeButton={false} //消息框关闭按钮是否显示
       />
-      <IndexRouters />;
+      <IndexRouters />
     </div>
   );
 };

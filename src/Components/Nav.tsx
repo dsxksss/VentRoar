@@ -29,7 +29,10 @@ const Nav = () => {
     <div className="z-[10] shadow-md bg-slate-50 fixed inset-0 shadow-gray-300/50 h-[6vh] flex flex-row justify-between items-center an-3">
       {/* 电脑端的显示设置 */}
       <div className="">
-        <Link className="ml-4 text-lg font-bold text-black" to={"/"}>
+        <Link
+          className="ml-4 text-lg font-bold text-black inline-block mb-1"
+          to={"/"}
+        >
           ventroar.xyz
         </Link>
       </div>

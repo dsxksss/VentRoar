@@ -158,7 +158,7 @@ function UserPage() {
                                       onClick={() => textDelete(c._id)}
                                     >
                                       删除帖子
-                                      <TrashIcon className="w-5 h-5 inline-block text-slate-100" />
+                                      <TrashIcon className="w-5 h-5 inline-block text-slate-100 mb-1" />
                                     </button>
                                   </Menu.Item>
                                 )}
