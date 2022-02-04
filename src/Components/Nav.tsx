@@ -79,10 +79,10 @@ const Nav = () => {
             <SunIcon className="text-yellow-500 inline-block h-5 w-5 mb-1" />
           )}
         </button>
-        <button className="">
+        <button className="outline-none">
           <ViewListIcon
             onClick={() => setOpen(true)}
-            className="inline-block h-5 w-5 mb-1"
+            className="outline-none inline-block h-5 w-5 mb-1"
           />
         </button>
       </div>
