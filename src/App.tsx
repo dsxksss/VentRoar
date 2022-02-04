@@ -21,8 +21,10 @@ const App = () => {
   //     autoClose: 1000,
   //   }
   // );
-      */}
+         theme:主题,"colored"彩色,"light"白间,"dark"夜间
+  */}
       <ToastContainer
+        theme={`${isDark ? "dark" : "light"}`}
         className={"touch-x"}
         rtl={false} //调换消息栏位置
         closeOnClick={false} //按动关闭
