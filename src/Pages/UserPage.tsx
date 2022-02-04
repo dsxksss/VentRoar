@@ -75,17 +75,17 @@ function UserPage() {
 
   return (
     <>
-      <div className="text-center h-[94vh] flex flex-col justify-center items-center">
+      <div className="text-center h-[94vh] flex flex-col justify-center items-center duration-200 dark:bg-[#253446]">
         <div>
           <div className="flex justify-center items-center space-x-2">
-            <div>
+            <div className="text-black dark:text-slate-100">
               Hi!👋👋👋 <strong>{userData.userName}</strong>{" "}
               <p>欢迎来到你的主页!!!</p>
               <p>以下这些是你的</p>
               <p>宣泄历史⬇️</p>
             </div>
             <button
-              className="button-style border-2 bg-gray-50  border-gray-900 rounded-md button-style text-gray-900 shadow-lg"
+              className="button-style bg-blue-500 text-slate-100 rounded-md shadow-[#253446] shadow-sm"
               onClick={() => {
                 toLink("/LoginPage");
                 networkLoginc.loginOUT();
@@ -118,28 +118,36 @@ function UserPage() {
                         </div>
                       }
                     </div>
-                    <div className="bg-slate-50/50 h-full flex justify-cente md:items-center text-[15px] px-4 indent-8 pt-1 text-slate-700 ">
+                    <div className="bg-slate-50/50 dark:bg-[#304053] h-full flex justify-cente md:items-center text-[15px] px-4 indent-8 pt-1 text-slate-700 dark:text-slate-200">
                       <p className="break-all">{c.textData}</p>
                     </div>
                     <div className="mx-5 my-1 h-[4vh] flex justify-between items-center py-2">
                       <div className="flex justify-start items-center space-x-3">
-                        <HeartIcon
-                          className={`w-7 h-7 text-${
-                            c.heart > 0 ? "red-500" : "slate-400"
-                          }`}
-                        />
-                        {c.heart}
-                        {c.smil > 0 ? (
-                          <EmojiHappyIcon className="w-7 h-7 text-yellow-500" />
-                        ) : (
-                          <EmojiSadIcon className="w-7 h-7 text-slate-400" />
-                        )}
-                        {c.smil}
+                        <div className="flex justify-center items-center">
+                          <HeartIcon
+                            className={`w-7 h-7 text-${
+                              c.heart > 0 ? "red-500" : "slate-400"
+                            }`}
+                          />
+                          <span className="text-slate-900 dark:text-slate-100">
+                            {c.heart}
+                          </span>
+                        </div>
+                        <div className="flex justify-center items-center">
+                          {c.smil > 0 ? (
+                            <EmojiHappyIcon className="w-7 h-7 text-yellow-500" />
+                          ) : (
+                            <EmojiSadIcon className="w-7 h-7 text-slate-400" />
+                          )}
+                          <span className="text-slate-900 dark:text-slate-100">
+                            {c.smil}
+                          </span>
+                        </div>
                       </div>
                       <div className="relative">
                         <Menu>
                           <Menu.Button className="outline-none">
-                            <DotsHorizontalIcon className="icon-button-style w-7 h-7 text-slate-600" />
+                            <DotsHorizontalIcon className="icon-button-style w-7 h-7 text-slate-600 dark:text-slate-300" />
                           </Menu.Button>
                           <Transition
                             enter="transition ease-out duration-100"
@@ -154,11 +162,11 @@ function UserPage() {
                                 networkLoginc.getJWT() !== null && (
                                   <Menu.Item>
                                     <button
-                                      className="w-full button-style outline-none rounded-full bg-gray-800 text-gray-100"
+                                      className="w-full button-style outline-none rounded-full dark:bg-gray-100 dark:text-black bg-gray-800 text-gray-100"
                                       onClick={() => textDelete(c._id)}
                                     >
                                       删除帖子
-                                      <TrashIcon className="w-5 h-5 inline-block text-slate-100 mb-1" />
+                                      <TrashIcon className="w-5 h-5 inline-block text-slate-100 dark:text-gray-900 mb-1" />
                                     </button>
                                   </Menu.Item>
                                 )}

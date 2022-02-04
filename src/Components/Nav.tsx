@@ -62,7 +62,7 @@ const Nav = () => {
         </Link>
         <button className="icon-button-style" onClick={() => setDark(!isDark)}>
           {isDark ? (
-            <MoonIcon className="text-blue-500 inline-block h-5 w-5 mb-1" />
+            <MoonIcon className="text-yellow-300 inline-block h-5 w-5 mb-1" />
           ) : (
             <SunIcon className="text-yellow-500 inline-block h-5 w-5 mb-1" />
           )}
@@ -78,7 +78,7 @@ const Nav = () => {
           onClick={() => setDark(!isDark)}
         >
           {isDark ? (
-            <MoonIcon className="text-blue-500 inline-block h-5 w-5 mb-1" />
+            <MoonIcon className="text-yellow-300 inline-block h-5 w-5 mb-1" />
           ) : (
             <SunIcon className="text-yellow-500 inline-block h-5 w-5 mb-1" />
           )}

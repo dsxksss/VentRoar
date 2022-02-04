@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
-import timeSCV from "../utils/timeSCV";
-
+import { useContext, useEffect, useState } from "react";
 import {
   ReplyIcon,
   EmojiHappyIcon,
@@ -11,13 +9,16 @@ import {
 } from "@heroicons/react/solid";
 import { toast, Slide } from "react-toastify";
 import { Menu, Transition } from "@headlessui/react";
+import timeSCV from "../utils/timeSCV";
 import networkLoginc from "../services/networkLogic";
 import getData from "../services/getData";
 import CloseButton from "../Components/CloseButton";
+import { ToDarkContext } from "./../conText/ToDark";
 
 function PopularPage() {
   const [list, setList] = useState([]);
   const [text, setText] = useState({ textData: "" });
+  const { isDark, setDark } = useContext<any>(ToDarkContext);
 
   useEffect(() => {
     getUser();
@@ -119,8 +120,14 @@ function PopularPage() {
 
   return (
     <>
-      <div className={`bg-all`}>
-        <div className="h-[83vh] mt-3 z-[-1] space-y-[2.3rem] snap-y scroll-smooth overflow-y-scroll">
+      <div
+        className={`${
+          isDark
+            ? "duration-200 ease-in-out heartBg-dark"
+            : "duration-200 ease-in-out heartBg"
+        }`}
+      >
+        <div className="h-[86vh] z-[-1] space-y-[2.3rem] snap-y scroll-smooth overflow-y-scroll">
           <div className="snap-start showText-BoxStyle mx-5 sm:mx-[3rem] md:mx-[7rem] lg:mx-[15rem] mt-5 flex flex-col">
             <div>
               {
@@ -139,7 +146,7 @@ function PopularPage() {
                 </div>
               }
             </div>
-            <div className="bg-slate-50/50 h-full flex justify-cente md:items-center text-[15px] px-4 pt-1 text-slate-700 ">
+            <div className="bg-slate-50/50  dark:bg-[#304053] h-full flex justify-cente md:items-center text-[15px] px-4 pt-1 text-slate-700 dark:text-slate-200 ">
               <div className="break-all">
                 <p className="text-center font-bold text-[1.2rem]">
                   Hi👋~!欢迎来到发泄墙
@@ -186,13 +193,13 @@ function PopularPage() {
                       </div>
                     }
                   </div>
-                  <div className="bg-slate-50/50 h-full flex justify-cente md:items-center text-[15px] px-4 indent-8 pt-1 text-slate-700 ">
+                  <div className="bg-slate-50/50 dark:bg-[#304053] h-full flex justify-cente md:items-center text-[15px] px-4 indent-8 pt-1 text-slate-700 dark:text-slate-200 ">
                     <p className="break-all">{c.textData}</p>
                   </div>
                   <div className="mx-5 my-1 h-[4vh] flex justify-between items-center py-2">
                     <div className="flex justify-start items-center space-x-3">
                       <button
-                        className="icon-button-style"
+                        className="icon-button-style flex justify-center items-center"
                         onClick={() => PUT(c._id, { heart: true })}
                       >
                         <HeartIcon
@@ -200,29 +207,36 @@ function PopularPage() {
                             c.heart > 0 ? "red-500" : "slate-400"
                           }`}
                         />
+                        <span className="text-slate-900 dark:text-slate-100">
+                          {c.heart}
+                        </span>
                       </button>
-                      {c.heart}
                       {c.smil > 0 ? (
                         <button
-                          className="icon-button-style"
+                          className="icon-button-style flex justify-center items-center"
                           onClick={() => PUT(c._id, { smil: true })}
                         >
                           <EmojiHappyIcon className="w-7 h-7 text-yellow-500" />
+                          <span className="text-slate-900 dark:text-slate-100">
+                            {c.smil}
+                          </span>
                         </button>
                       ) : (
                         <button
-                          className="icon-button-style"
+                          className="icon-button-style flex justify-center items-center"
                           onClick={() => PUT(c._id, { smil: true })}
                         >
                           <EmojiSadIcon className="w-7 h-7 text-slate-400" />
+                          <span className="text-slate-900 dark:text-slate-100">
+                            {c.smil}
+                          </span>
                         </button>
                       )}
-                      {c.smil}
                     </div>
                     <div className="relative">
                       <Menu>
                         <Menu.Button className="outline-none">
-                          <DotsHorizontalIcon className="icon-button-style w-7 h-7 text-slate-600" />
+                          <DotsHorizontalIcon className="icon-button-style w-7 h-7 text-slate-600 dark:text-slate-300" />
                         </Menu.Button>
                         <Transition
                           enter="transition ease-out duration-100"
@@ -237,11 +251,11 @@ function PopularPage() {
                               networkLoginc.getJWT() !== null && (
                                 <Menu.Item>
                                   <button
-                                    className="w-full button-style outline-none rounded-full bg-gray-800 text-gray-100"
+                                    className="w-full button-style outline-none rounded-full dark:bg-gray-100 dark:text-black bg-gray-800 text-gray-100"
                                     onClick={() => textDelete(c._id)}
                                   >
                                     删除帖子
-                                    <TrashIcon className="w-5 h-5 inline-block text-slate-100 mb-1" />
+                                    <TrashIcon className="w-5 h-5 inline-block text-slate-100 dark:text-gray-900 mb-1" />
                                   </button>
                                 </Menu.Item>
                               )}
@@ -257,7 +271,7 @@ function PopularPage() {
         </div>
         <form
           onSubmit={headerSubmit}
-          className="fixed border-t-[2px] right-0 left-0 bottom-0 h-[8vh] flex justify-center items-center"
+          className="fixed right-0 left-0 bottom-0 h-[8vh] flex justify-center items-center bg-slate-50 dark:bg-[#304053]"
         >
           <input
             type="text"
@@ -265,12 +279,12 @@ function PopularPage() {
             minLength={3}
             maxLength={295}
             value={text.textData}
-            className="icon-input-Style pl-2 w-[75vw] mr-5 sm:mr-10 overflow-x-auto"
+            className="icon-input-Style dark:caret-slate-100 dark:bg-slate-700 pl-2 w-[75vw] mr-5 sm:mr-10 overflow-x-auto"
             required={true}
             onChange={(e: any) => setText({ textData: e.target.value })}
           ></input>
           <button type="submit" className="icon-button-style">
-            <ReplyIcon className="w-7 h-7" />
+            <ReplyIcon className="text-black dark:text-slate-100 w-7 h-7" />
           </button>
         </form>
       </div>
