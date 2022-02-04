@@ -8,7 +8,20 @@ const App = () => {
 
   return (
     <div className={`${isDark ? "dark" : " "}`}>
-      {/* 已y轴形势滑动关闭通知draggableDirection="y" */}
+      {/* 已y轴形势滑动关闭通知draggableDirection="y" 
+  //toast网络请求例子,参1:api请求,参2:设置三种状态显示的msg,参3:toast配置
+  // toast.promise(
+  //   new Promise((resolve) => setTimeout(resolve, 3000)),
+  //   {
+  //     pending: "发送中...",
+  //     success: "发送成功 👌",
+  //     error: "发送失败 网络繁忙 🤯",
+  //   },
+  //   {
+  //     autoClose: 1000,
+  //   }
+  // );
+      */}
       <ToastContainer
         className={"touch-x"}
         rtl={false} //调换消息栏位置
