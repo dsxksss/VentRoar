@@ -162,17 +162,7 @@ function PopularPage() {
                 </ul>
               </div>
             </div>
-            <div className="mx-5 my-1 h-[4vh] flex justify-between items-center py-2">
-              <div className="flex justify-start items-center space-x-3">
-                <HeartIcon className="w-7 h-7 text-red-500" />
-                999+
-                <EmojiHappyIcon className="text-yellow-500 w-7 h-7" />
-                999+
-              </div>
-              <div>
-                <DotsHorizontalIcon className="w-7 h-7 text-slate-600" />
-              </div>
-            </div>
+            <br />
           </div>
           {list.map((c: any) => (
             <div key={c._id} className="my-5 snap-start">
