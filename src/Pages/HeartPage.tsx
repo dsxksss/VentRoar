@@ -18,7 +18,7 @@ import { ToDarkContext } from "./../conText/ToDark";
 function PopularPage() {
   const [list, setList] = useState([]);
   const [text, setText] = useState({ textData: "" });
-  const { isDark, setDark } = useContext<any>(ToDarkContext);
+  const { isDark } = useContext<any>(ToDarkContext);
 
   useEffect(() => {
     getUser();

@@ -141,7 +141,12 @@ const Nav = () => {
                         onClick={() => setOpen(false)}
                       >
                         <span className="sr-only">Close panel</span>
-                        <XIcon className="h-5 w-5" aria-hidden="true" />
+                        <XIcon
+                          className={`h-5 w-5 ${
+                            isDark ? "text-slate-100" : "text-slate-900 "
+                          }`}
+                          aria-hidden="true"
+                        />
                       </button>
                     </div>
                   </Transition.Child>
