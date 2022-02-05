@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { ToLinkContext } from "../conText/ToLink";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 import networkLoginc from "../services/networkLogic";
 import {
   DeviceMobileIcon,
@@ -133,13 +134,17 @@ const FindPswPage = () => {
                 />
               </div>
             </div>
-            <div id="inputButton" className="mt-[2rem]">
+            <div id="inputButton" className="mt-[1.2rem]">
               <button
                 type="submit"
                 className="button-style rounded-[4px] bg-red-500 font-bold text-[1rem] text-slate-100 dark:text-slate-900 shadow-sm shadow-gray-400 dark:shadow-gray-700 active:shadow-red-400"
               >
                 修 改 密 码
               </button>
+            </div>
+            <div className="mt-[1.3rem] sm:mt-[1.5rem] text-sm md:text-[1.25rem] font-bold text-red-500 space-x-[2rem]">
+              <Link to={"/LoginPage"}>登录账号</Link>
+              <Link to={"/RegisterPage"}>注册账号</Link>
             </div>
           </form>
         </div>
