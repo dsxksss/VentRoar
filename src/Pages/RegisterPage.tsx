@@ -5,7 +5,7 @@ import {
   DeviceMobileIcon,
 } from "@heroicons/react/outline";
 import { RefreshIcon } from "@heroicons/react/solid";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { ToLinkContext } from "../conText/ToLink";
 import { toast } from "react-toastify";
 import networkLoginc from "../services/networkLogic";
@@ -19,6 +19,18 @@ const RegisterPage = () => {
   });
   const { toLink } = useContext<any>(ToLinkContext);
 
+  useEffect(() => {
+    tokenPush();
+    return;
+    // console.log(localStorage.getItem("tokenForServer"));
+  }, [toLink]);
+
+  const tokenPush = async () => {
+    try {
+      await networkLoginc.tokenValidation();
+      toLink("/UserPage");
+    } catch (err) {}
+  };
   //POST
   const push = async () => {
     try {
@@ -27,7 +39,7 @@ const RegisterPage = () => {
         new Promise((resolve) => setTimeout(resolve, 1000)),
         {
           pending: "注册中...",
-          success: "注 册 成 功 👌正在跳转到登录页面...",
+          success: "注册成功👌正在跳转到登录页面...",
         },
         {
           autoClose: 1400,

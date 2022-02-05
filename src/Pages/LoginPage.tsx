@@ -20,9 +20,7 @@ const Login = () => {
   const tokenPush = async () => {
     try {
       await networkLoginc.tokenValidation();
-      setTimeout(() => {
-        toLink("/UserPage");
-      }, 50);
+      toLink("/UserPage");
     } catch (err) {
       toast.warning("登录过期,请重新登录!", {
         autoClose: 6000,

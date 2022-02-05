@@ -27,6 +27,10 @@ const createUser = async (createData: object) => {
   await https.post(`${https.api.userCreateApi}`, createData);
 };
 
+const changeUserPassword = async (createData: object) => {
+  await https.put(`${https.api.userCreateApi}`, createData);
+};
+
 const pushText = async (textData: object) => {
   await https.post(`${https.api.userTextApi}${getJWT()}`, textData);
 };
@@ -48,4 +52,5 @@ export default {
   pushText,
   pushTextAndUpdata,
   deleteUsetText,
+  changeUserPassword,
 };
