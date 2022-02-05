@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { UserCircleIcon, LockOpenIcon } from "@heroicons/react/solid";
+import { DeviceMobileIcon, LockOpenIcon } from "@heroicons/react/outline";
 import { useEffect, useState, useContext } from "react";
 import { ToLinkContext } from "../conText/ToLink";
 import { toast, Flip } from "react-toastify";
@@ -77,7 +77,7 @@ const Login = () => {
           <form onSubmit={handleSubmit}>
             <div className="space-y-6 flex flex-col items-center lg:space-y-8">
               <div id="uesrText" className="loginPage-input">
-                <UserCircleIcon className="w-5 h-5 mr-1 dark:text-slate-50" />
+                <DeviceMobileIcon className="w-5 h-5 mr-1 dark:text-slate-50" />
                 <input
                   className="input-Style"
                   type="text"

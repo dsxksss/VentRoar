@@ -5,7 +5,7 @@ import networkLoginc from "../services/networkLogic";
 import {
   DeviceMobileIcon,
   LockClosedIcon,
-  LockOpenIcon,
+  KeyIcon,
 } from "@heroicons/react/outline";
 
 const FindPswPage = () => {
@@ -114,7 +114,7 @@ const FindPswPage = () => {
                 />
               </div>
               <div id="userPassword2" className="registerPage-input">
-                <LockOpenIcon className="w-5 h-5 mr-1 text-slate-900 dark:text-slate-100" />
+                <KeyIcon className="w-5 h-5 mr-1 text-slate-900 dark:text-slate-100" />
                 <input
                   className="input-Style"
                   type="password"

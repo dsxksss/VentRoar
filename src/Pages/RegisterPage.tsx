@@ -3,8 +3,8 @@ import {
   UserIcon,
   LockClosedIcon,
   DeviceMobileIcon,
+  KeyIcon,
 } from "@heroicons/react/outline";
-import { RefreshIcon } from "@heroicons/react/solid";
 import { useState, useContext, useEffect } from "react";
 import { ToLinkContext } from "../conText/ToLink";
 import { toast } from "react-toastify";
@@ -135,7 +135,7 @@ const RegisterPage = () => {
                 />
               </div>
               <div id="userPassword2" className="registerPage-input">
-                <RefreshIcon className="w-5 h-5 mr-1 text-slate-900 dark:text-slate-100" />
+                <KeyIcon className="w-5 h-5 mr-1 text-slate-900 dark:text-slate-100" />
                 <input
                   className="input-Style"
                   type="password"
