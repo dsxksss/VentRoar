@@ -3,7 +3,6 @@ import { UserCircleIcon, LockOpenIcon } from "@heroicons/react/solid";
 import { useEffect, useState, useContext } from "react";
 import { ToLinkContext } from "../conText/ToLink";
 import { toast, Flip } from "react-toastify";
-import cimg from "../img/cImg/loginPage.svg";
 import CloseButton from "./../Components/CloseButton";
 import networkLoginc from "../services/networkLogic";
 const Login = () => {

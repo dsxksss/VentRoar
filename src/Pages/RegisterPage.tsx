@@ -8,7 +8,6 @@ import { RefreshIcon } from "@heroicons/react/solid";
 import { useState, useContext } from "react";
 import { ToLinkContext } from "../conText/ToLink";
 import { toast } from "react-toastify";
-import cimg from "../img/cImg/registerPage.svg";
 import networkLoginc from "../services/networkLogic";
 
 const RegisterPage = () => {
@@ -16,6 +15,7 @@ const RegisterPage = () => {
     userName: "",
     userPassword: "",
     userPhoneNumber: "",
+    userKey: "",
   });
   const { toLink } = useContext<any>(ToLinkContext);
 
@@ -129,9 +129,16 @@ const RegisterPage = () => {
                   type="password"
                   // SM:必填项
                   required
-                  pattern="^[a-zA-Z]\w{5,17}$"
-                  placeholder="输入验证码:暂未开发"
-                  readOnly
+                  minLength={4}
+                  maxLength={8}
+                  placeholder="密钥4-8位(用于找回密码)"
+                  //SM:实时接收输入框里的值
+                  onChange={(e) =>
+                    setUserData((data) => ({
+                      ...data,
+                      userKey: e.target.value,
+                    }))
+                  }
                 />
               </div>
               <div id="inputButton">
