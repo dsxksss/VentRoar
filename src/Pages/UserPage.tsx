@@ -95,7 +95,7 @@ function UserPage() {
             </button>
           </div>
 
-          <div className="h-[70vh] mt-5 overflow-y-scroll">
+          <div className="scroll-smooth snap-y h-[70vh] mt-5 overflow-y-scroll">
             {list.map((c: any) => (
               <div key={c._id} className="my-5 snap-start">
                 {(c.textData === "" || c.textData === undefined) &&
