@@ -7,7 +7,7 @@ function HelpPage() {
   let userCout = 0;
   return (
     <>
-      <div className="pt-[1.1rem] px-3 h-[94vh] overflow-y-auto">
+      <div className="pt-[1.1rem] px-3 h-[94vh] overflow-y-auto duration-200 dark:bg-[#253446]">
         <div
           style={{ animationDuration: "2.5s" }}
           className="an-3 overflow-auto flex flex-col-reverse sm:flex-row items-center justify-center "
@@ -16,10 +16,10 @@ function HelpPage() {
             <img src={cimg} alt="developerCImg" />
           </div>
           <div>
-            <h1 className="text-[2.3rem] md:text-[2.7rem] lg:text-[3rem] text-center mb-3">
+            <h1 className="text-[2.3rem] dark:text-slate-50 md:text-[2.7rem] lg:text-[3rem] text-center mb-3">
               网站介绍
             </h1>
-            <p className="text-[1rem] md:text-[1.3rem] lg:text-[1.6rem]  font-bold indent-4 text-center">
+            <p className="text-[1rem] md:text-[1.3rem] lg:text-[1.6rem]  font-bold indent-4 text-center dark:text-slate-50">
               倾诉最近遇到的不开心的事情，发泄到这上面，此网站用匿名的方式可以和别人交流倾诉最近遇到的不开心
             </p>
             <br />
@@ -34,14 +34,14 @@ function HelpPage() {
         </div>
         <div className="md:text-[1.7rem]">
           <p>
-            待开发🚧 :
+            <span className="dark:text-slate-50">待开发🚧 :</span>
             <br />
             <b className="text-yellow-400">
               网站主页样式、关于页面样式、Heart页面样式、Heart页面交互优化、用户主页样式及后台逻辑、优化页面交互、优化交互动画等、修复部分BUG......
             </b>
           </p>
           <p>
-            已完成✅ :
+            <span className="dark:text-slate-50">已完成✅ :</span>
             <br />
             <b className="text-green-500">
               登入页面样式、注册页面样式、从数据库获取数据、登入和注册的后端逻辑、前后端数据库链接

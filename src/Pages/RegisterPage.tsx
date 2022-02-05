@@ -54,14 +54,11 @@ const RegisterPage = () => {
     <>
       <div
         style={{ animationDuration: "0.7s" }}
-        className="flex flex-col justify-center items-center h-[94vh] an-4"
+        className="flex flex-col justify-center items-center h-[94vh] duration-200 dark:bg-[#253446]"
       >
-        <div className="sm:hidden bg-cover mt-[-22vh] w-[92vw]">
-          <img src={cimg} alt="Graduation" />
-        </div>
         <div
           id="all"
-          className="login-And-Register-PageStyle lg:flex-row border-l-green-400 space-y-5"
+          className="login-And-Register-PageStyle lg:flex-row an-4 border-l-green-400 space-y-5"
         >
           <div id="title">
             <p className="ventroar-size text-green-400">VentRoar</p>
@@ -69,7 +66,7 @@ const RegisterPage = () => {
           <form onSubmit={handleSubmit}>
             <div id="input" className="space-y-4 lg:space-y-7">
               <div id="uesrText" className="registerPage-input">
-                <UserIcon className="w-5 h-5 mr-1" />
+                <UserIcon className="w-5 h-5 mr-1 text-slate-900 dark:text-slate-100" />
                 <input
                   className="input-Style"
                   type="text"
@@ -88,7 +85,7 @@ const RegisterPage = () => {
                 />
               </div>
               <div id="uesrPhone" className="registerPage-input">
-                <DeviceMobileIcon className="w-5 h-5 mr-1" />
+                <DeviceMobileIcon className="w-5 h-5 mr-1 text-slate-900 dark:text-slate-100" />
                 <input
                   className="input-Style"
                   type="text"
@@ -107,7 +104,7 @@ const RegisterPage = () => {
                 />
               </div>
               <div id="userPassword1" className="registerPage-input">
-                <LockClosedIcon className="w-5 h-5 mr-1" />
+                <LockClosedIcon className="w-5 h-5 mr-1 text-slate-900 dark:text-slate-100" />
                 <input
                   className="input-Style"
                   type="password"
@@ -126,7 +123,7 @@ const RegisterPage = () => {
                 />
               </div>
               <div id="userPassword2" className="registerPage-input">
-                <RefreshIcon className="w-5 h-5 mr-1" />
+                <RefreshIcon className="w-5 h-5 mr-1 text-slate-900 dark:text-slate-100" />
                 <input
                   className="input-Style"
                   type="password"
@@ -140,7 +137,7 @@ const RegisterPage = () => {
               <div id="inputButton">
                 <button
                   type="submit"
-                  className="button-style rounded-[4px] bg-green-400 text-white shadow-sm shadow-gray-400 active:shadow-green-400"
+                  className="button-style rounded-[4px] bg-green-400 font-bold text-[1rem] text-slate-100 dark:text-slate-900 shadow-sm shadow-gray-400 dark:shadow-gray-700 active:shadow-green-400"
                 >
                   注 册
                 </button>

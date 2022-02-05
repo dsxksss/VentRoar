@@ -27,6 +27,7 @@ const Login = () => {
     } catch (err) {
       toast.warning("登录过期,请重新登录!", {
         autoClose: 6000,
+        toastId: "登录过期",
         closeButton: CloseButton,
         bodyClassName: "font-bold text-yellow-400 text-md",
       });
@@ -64,23 +65,22 @@ const Login = () => {
     <>
       <div
         style={{ animationDuration: "0.7s" }}
-        className="an-4 flex flex-col justify-center items-center h-[94vh]"
+        className="flex flex-col justify-center items-center h-[94vh] duration-200 dark:bg-[#253446]"
       >
-        <div className="sm:hidden bg-cover mt-[-18vh] w-[92vw]">
-          <img src={cimg} alt="cat" />
-        </div>
         <div
           id="all"
-          className="login-And-Register-PageStyle lg:flex-row border-l-blue-500 space-y-4"
+          className="an-4 login-And-Register-PageStyle lg:flex-row border-l-blue-500 space-y-4"
         >
           <div id="title">
-            <p className="ventroar-size text-blue-500">VentRoar</p>
+            <p className="ventroar-size text-blue-500 dark:text-blue-400">
+              VentRoar
+            </p>
           </div>
 
           <form onSubmit={handleSubmit}>
             <div className="space-y-6 flex flex-col items-center lg:space-y-8">
               <div id="uesrText" className="loginPage-input">
-                <UserCircleIcon className="w-5 h-5 mr-1" />
+                <UserCircleIcon className="w-5 h-5 mr-1 dark:text-slate-50" />
                 <input
                   className="input-Style"
                   type="text"
@@ -98,7 +98,7 @@ const Login = () => {
                 />
               </div>
               <div id="userPassword" className="loginPage-input">
-                <LockOpenIcon className="w-5 h-5 mr-1" />
+                <LockOpenIcon className="w-5 h-5 mr-1 dark:text-slate-50" />
                 <input
                   className="input-Style"
                   type="password"
@@ -117,7 +117,7 @@ const Login = () => {
               </div>
               <button
                 type="submit"
-                className="button-style rounded-[4px] text-white bg-blue-500 shadow-lg shadow-gray-300"
+                className="button-style rounded-[4px] text-white bg-blue-500 shadow-sm shadow-gray-400 dark:shadow-gray-800"
               >
                 L O G I N
               </button>
