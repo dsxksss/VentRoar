@@ -64,12 +64,10 @@ const RegisterPage = () => {
 
   return (
     <>
-      <div
-        style={{ animationDuration: "0.7s" }}
-        className="flex flex-col justify-center items-center h-[94vh] duration-200 dark:bg-[#253446]"
-      >
+      <div className="flex flex-col justify-center items-center h-[94vh] duration-200 dark:bg-[#253446]">
         <div
           id="all"
+          style={{ animationDuration: "0.7s" }}
           className="login-And-Register-PageStyle lg:flex-row an-4 border-l-green-400 space-y-5"
         >
           <div id="title">

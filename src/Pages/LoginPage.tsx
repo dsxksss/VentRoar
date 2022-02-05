@@ -60,12 +60,10 @@ const Login = () => {
 
   return (
     <>
-      <div
-        style={{ animationDuration: "0.7s" }}
-        className="flex flex-col justify-center items-center h-[94vh] duration-200 dark:bg-[#253446]"
-      >
+      <div className="flex flex-col justify-center items-center h-[94vh] duration-200 dark:bg-[#253446]">
         <div
           id="all"
+          style={{ animationDuration: "0.7s" }}
           className="an-4 login-And-Register-PageStyle lg:flex-row border-l-blue-500 space-y-4"
         >
           <div id="title">

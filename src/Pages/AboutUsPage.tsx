@@ -1,16 +1,12 @@
-import { useState } from "react";
 import cimg from "../img/cImg/developer.svg";
-import getData from "../services/getData";
 
 function HelpPage() {
-  const [list, setList] = useState<[]>([]);
-  let userCout = 0;
   return (
     <>
-      <div className="pt-[1.1rem] px-3 h-[94vh] overflow-y-auto duration-200 dark:bg-[#253446]">
+      <div className="pt-[1.1rem] px-3 h-[94vh] duration-200 dark:bg-[#253446]">
         <div
           style={{ animationDuration: "2.5s" }}
-          className="an-3 overflow-auto flex flex-col-reverse sm:flex-row items-center justify-center "
+          className="an-3 flex flex-col-reverse sm:flex-row items-center justify-center "
         >
           <div className="bg-cover">
             <img src={cimg} alt="developerCImg" />
@@ -47,37 +43,8 @@ function HelpPage() {
               登入页面样式、Heart页面样式、注册页面样式、找回密码页面样式及功能、用户主页样式及后台逻辑、从数据库获取数据、登入和注册的后端逻辑、关于页面样式、前后端数据库链接、自动登录功能、夜间模式、
             </b>
           </p>
-          <button
-            className="button-style bg-green-400 text-white shadow-lg shadow-green-400/50"
-            onClick={async () => {
-              setList(await await getData.getUserData());
-            }}
-          >
-            Get Data
-          </button>
         </div>
       </div>
-      {list.length >= 1 && (
-        <div>
-          {list.map((c: any) => (
-            <ul key={c._id} className="overflow-x-auto">
-              <li>
-                <p>{(userCout += 1)}</p>
-              </li>
-              <li>
-                <p>username:{c.userName}</p>
-              </li>
-              <li>
-                <p>userphone:{c.userPhoneNumber}</p>
-              </li>
-              <li>
-                <p>userpassword:{c.userPassword}</p>
-              </li>
-              <br />
-            </ul>
-          ))}
-        </div>
-      )}
     </>
   );
 }
