@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ReplyIcon,
   EmojiHappyIcon,
@@ -13,12 +13,10 @@ import timeSCV from "../utils/timeSCV";
 import networkLoginc from "../services/networkLogic";
 import getData from "../services/getData";
 import CloseButton from "../Components/CloseButton";
-import { ToDarkContext } from "./../conText/ToDark";
 
 function PopularPage() {
   const [list, setList] = useState([]);
   const [text, setText] = useState({ textData: "" });
-  const { isDark } = useContext<any>(ToDarkContext);
 
   useEffect(() => {
     getUser();

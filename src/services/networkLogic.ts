@@ -15,8 +15,7 @@ const loginIN = async (loginData?: object) => {
 };
 
 const loginOUT = (): void => {
-  localStorage.removeItem("token");
-  localStorage.removeItem("oldTime");
+  localStorage.clear();
 };
 
 const getJWT = (): string | null => {
