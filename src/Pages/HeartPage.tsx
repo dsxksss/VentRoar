@@ -120,15 +120,9 @@ function PopularPage() {
 
   return (
     <>
-      <div
-        className={`${
-          isDark
-            ? "duration-200 ease-in-out heartBg-dark"
-            : "duration-200 ease-in-out heartBg"
-        }`}
-      >
+      <div className="heartBg duration-200 ease-in-out dark:bg-[#253446]">
         <div className="h-[86vh] z-[-1] space-y-[2.3rem] snap-y scroll-smooth overflow-y-scroll">
-          <div className="snap-start showText-BoxStyle mx-5 sm:mx-[3rem] md:mx-[7rem] lg:mx-[15rem] mt-5 flex flex-col">
+          <div className="snap-start duration-200 ease-in-out showText-BoxStyle mx-5 sm:mx-[3rem] md:mx-[7rem] lg:mx-[15rem] mt-5 flex flex-col">
             <div>
               {
                 <div className="mr-6 ml-2 mt-3 flex justify-between items-center">
@@ -146,7 +140,7 @@ function PopularPage() {
                 </div>
               }
             </div>
-            <div className="bg-slate-50/50  dark:bg-[#304053] h-full flex justify-cente md:items-center text-[15px] px-4 pt-1 text-slate-700 dark:text-slate-200 ">
+            <div className="h-full flex justify-cente md:items-center text-[15px] px-4 pt-1 text-slate-700 dark:text-slate-200 ">
               <div className="break-all">
                 <p className="text-center font-bold text-[1.2rem]">
                   Hi👋~!欢迎来到发泄墙
@@ -193,7 +187,7 @@ function PopularPage() {
                       </div>
                     }
                   </div>
-                  <div className="bg-slate-50/50 dark:bg-[#304053] h-full flex justify-cente md:items-center text-[15px] px-4 indent-8 pt-1 text-slate-700 dark:text-slate-200 ">
+                  <div className="h-full flex justify-cente md:items-center text-[15px] px-4 indent-8 pt-1 text-slate-900 dark:text-slate-200 ">
                     <p className="break-all">{c.textData}</p>
                   </div>
                   <div className="mx-5 my-1 h-[4vh] flex justify-between items-center py-2">
@@ -271,7 +265,7 @@ function PopularPage() {
         </div>
         <form
           onSubmit={headerSubmit}
-          className="fixed right-0 left-0 bottom-0 h-[8vh] flex justify-center items-center bg-slate-50 dark:bg-[#304053]"
+          className="fixed right-0 left-0 bottom-0 h-[8vh] flex justify-center items-center duration-200 ease-in-out dark:bg-[#304053]"
         >
           <input
             type="text"
@@ -279,7 +273,7 @@ function PopularPage() {
             minLength={3}
             maxLength={295}
             value={text.textData}
-            className="icon-input-Style dark:caret-slate-100 dark:bg-slate-700 pl-2 w-[75vw] mr-5 sm:mr-10 overflow-x-auto"
+            className="icon-input-Style duration-200 ease-in-out dark:caret-slate-100 dark:bg-slate-700 pl-2 w-[75vw] mr-5 sm:mr-10 overflow-x-auto"
             required={true}
             onChange={(e: any) => setText({ textData: e.target.value })}
           ></input>

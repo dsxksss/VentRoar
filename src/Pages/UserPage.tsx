@@ -118,7 +118,7 @@ function UserPage() {
                         </div>
                       }
                     </div>
-                    <div className="bg-slate-50/50 dark:bg-[#304053] h-full flex justify-cente md:items-center text-[15px] px-4 indent-8 pt-1 text-slate-700 dark:text-slate-200">
+                    <div className="h-full flex justify-cente md:items-center text-[15px] px-4 indent-8 pt-1 text-slate-700 dark:text-slate-200">
                       <p className="break-all">{c.textData}</p>
                     </div>
                     <div className="mx-5 my-1 h-[4vh] flex justify-between items-center py-2">
