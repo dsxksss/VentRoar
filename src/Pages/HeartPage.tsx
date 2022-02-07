@@ -7,6 +7,7 @@ import {
   DotsHorizontalIcon,
   TrashIcon,
 } from "@heroicons/react/solid";
+import { ArrowCircleDownIcon } from "@heroicons/react/outline";
 import { toast, Slide } from "react-toastify";
 import { Menu, Transition } from "@headlessui/react";
 import timeSCV from "../utils/timeSCV";
@@ -161,7 +162,9 @@ function PopularPage() {
                 </ul>
               </div>
             </div>
-            <br />
+            <div className="flex justify-center sm:justify-end items-center">
+              <ArrowCircleDownIcon className="animate-bounce h-10 w-10 text-blue-500 dark:text-green-500" />
+            </div>
           </div>
           {list.map((c: any) => (
             <div key={c._id} className="my-5 snap-start">
@@ -263,15 +266,15 @@ function PopularPage() {
         </div>
         <form
           onSubmit={headerSubmit}
-          className="fixed right-0 left-0 bottom-0 h-[8vh] flex justify-center items-center duration-200 ease-in-out dark:bg-[#304053]"
+          className="fixed dark:h-[50vh] right-0 left-0 bottom-0 h-[8vh] flex justify-center items-center duration-200 ease-in-out dark:bg-[#304053]"
         >
           <input
-            type="text"
+            type="textarea"
             placeholder="在这里输入,宣泄情绪..."
             minLength={3}
-            maxLength={295}
+            maxLength={300}
             value={text.textData}
-            className="icon-input-Style duration-200 ease-in-out dark:caret-slate-100 dark:bg-slate-700 pl-2 w-[75vw] mr-5 sm:mr-10 overflow-x-auto"
+            className="icon-input-Style dark:h-[50vh] duration-200 ease-in-out dark:caret-slate-100 dark:bg-slate-700 pl-2 w-[75vw] mr-5 sm:mr-10 overflow-x-auto dark:overflow-auto"
             required={true}
             onChange={(e: any) => setText({ textData: e.target.value })}
           ></input>

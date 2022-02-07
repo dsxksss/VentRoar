@@ -341,7 +341,7 @@ body {
   /* 字体边框等样式 */
   @apply ease-in-out focus:outline-none;
   /* 动画设置 -translate-y:向y轴移动，duration:动画播放时长*/
-  @apply active:-translate-y-[-0.2rem] active:scale-90 duration-100 
+  @apply active:scale-90 duration-100 
     active:outline-none focus:outline-none active:border-none focus:border-none;
 }
 
