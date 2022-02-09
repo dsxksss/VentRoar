@@ -1,17 +1,17 @@
 import https from "./httpServices";
 
 const tokenValidation = async () => {
+  https.setHeaderJWT(getJWT());
   if (getJWT() !== null || getJWT() !== "")
-    await https.post(`${https.api.userLoginApi}${getJWT()}`);
+    await https.post(`${https.api.userLoginApi}autoLogin`);
 };
 
 const loginIN = async (loginData?: object) => {
-  const { data: JWT } = await https.post(
-    `${https.api.userLoginApi}`,
-    loginData
-  );
-  localStorage.setItem("token", JWT.token);
-  localStorage.setItem("oldTime", JWT.time);
+  const response = await https.post(`${https.api.userLoginApi}`, loginData);
+  console.log(response);
+  localStorage.setItem("token", response.headers["x-auth-token"]);
+  https.setHeaderJWT(getJWT());
+  localStorage.setItem("oldTime", response.data);
 };
 
 const loginOUT = (): void => {
@@ -31,15 +31,18 @@ const changeUserPassword = async (createData: object) => {
 };
 
 const pushText = async (textData: object) => {
-  await https.post(`${https.api.userTextApi}${getJWT()}`, textData);
+  https.setHeaderJWT(getJWT());
+  await https.post(`${https.api.userTextApi}`, textData);
 };
 
 const pushTextAndUpdata = async (textID: string, textData: object) => {
+  https.setHeaderJWT(getJWT());
   await https.put(`${https.api.userTextApi}${textID}`, textData);
 };
 
 const deleteUsetText = async (textID: string) => {
-  await https.delete(`${https.api.textDataApi}${textID}/${getJWT()}`);
+  https.setHeaderJWT(getJWT());
+  await https.delete(`${https.api.textDataApi}${textID}`);
 };
 
 export default {

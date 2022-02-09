@@ -2,6 +2,8 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
+//设置请求头部内容
+
 axios.interceptors.response.use(undefined, (error) => {
   const expectedError =
     error.response &&
@@ -25,10 +27,15 @@ const apiName = {
   userTextApi: `${apiPath}userTextApi/`, //用户提交文本类型等功能的一个集合
 };
 
+const setHeaderJWT = (JWT: any) => {
+  axios.defaults.headers.common["x-auth-token"] = JWT;
+};
+
 export default {
   api: apiName,
   get: axios.get,
   post: axios.post,
   put: axios.put,
   delete: axios.delete,
+  setHeaderJWT,
 };

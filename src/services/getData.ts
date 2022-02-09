@@ -1,12 +1,15 @@
 import https from "./httpServices";
 
+//获取已注册的全部用户基本数据
 const getUserData = async () => {
   const { data } = await https.get(`${https.api.userDataApi}`);
   return data;
 };
 
-const getUserTextData = async (JWT: string | null) => {
-  const { data } = await https.get(`${https.api.userDataApi}${JWT}`);
+//获取用户
+const getUserTextData = async (HeaderJWT: any) => {
+  https.setHeaderJWT(HeaderJWT);
+  const { data } = await https.get(`${https.api.userDataApi}me`);
   return data;
 };
 
@@ -15,8 +18,9 @@ const getAllTextData = async () => {
   return data;
 };
 
-const getUserAllTextData = async (JWT: string | null) => {
-  const { data } = await https.get(`${https.api.textDataApi}${JWT}`);
+const getUserAllTextData = async (HeaderJWT: any) => {
+  https.setHeaderJWT(HeaderJWT);
+  const { data } = await https.get(`${https.api.textDataApi}me`);
   return data;
 };
 

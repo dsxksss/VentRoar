@@ -82,7 +82,7 @@ function PopularPage() {
       });
       getUser();
     } catch (err) {
-      toast.error("网络繁忙", {
+      toast.error("你已经表达了温暖,请勿重复点击", {
         toastId: "dontOne", //添加id避免出现重复通知
       });
     }
