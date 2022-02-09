@@ -8,7 +8,6 @@ const tokenValidation = async () => {
 
 const loginIN = async (loginData?: object) => {
   const response = await https.post(`${https.api.userLoginApi}`, loginData);
-  console.log(response);
   localStorage.setItem("token", response.headers["x-auth-token"]);
   https.setHeaderJWT(getJWT());
   localStorage.setItem("oldTime", response.data);
