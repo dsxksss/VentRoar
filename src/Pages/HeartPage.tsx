@@ -162,7 +162,7 @@ function PopularPage() {
                 </ul>
               </div>
             </div>
-            <div className="flex py-3 justify-center sm:justify-end items-center">
+            <div className="flex py-3 justify-center sm:justify-end sm:mr-8 items-center">
               <ArrowCircleDownIcon className="animate-bounce h-10 w-10 text-blue-500 dark:text-green-500" />
             </div>
           </div>
