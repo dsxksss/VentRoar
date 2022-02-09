@@ -272,7 +272,7 @@ function PopularPage() {
             type="textarea"
             placeholder="在这里输入,宣泄情绪..."
             minLength={3}
-            maxLength={300}
+            maxLength={550}
             value={text.textData}
             className="icon-input-Style duration-200 ease-in-out dark:caret-slate-100 dark:bg-slate-700 pl-2 w-[75vw] mr-5 sm:mr-10 overflow-x-auto dark:overflow-auto"
             required={true}
