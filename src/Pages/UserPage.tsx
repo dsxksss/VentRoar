@@ -79,7 +79,7 @@ function UserPage() {
         <div>
           <div className="flex justify-center items-center space-x-2">
             <div className="text-black dark:text-slate-100">
-              Hi!👋👋👋 <strong>{userData.userName}</strong>{" "}
+              {userData && <strong>{userData.userName}</strong>}
               <p>欢迎来到你的主页!!!</p>
               <p>以下这些是你的</p>
               <p>宣泄历史⬇️</p>

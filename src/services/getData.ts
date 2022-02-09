@@ -20,7 +20,7 @@ const getAllTextData = async () => {
 
 const getUserAllTextData = async (HeaderJWT: any) => {
   https.setHeaderJWT(HeaderJWT);
-  const { data } = await https.get(`${https.api.textDataApi}me`);
+  const { data } = await https.get(`${https.api.textDataApi}myText`);
   return data;
 };
 

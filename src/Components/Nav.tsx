@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 //导入headlessui组件依赖，来方便的创建可交互样式
 import { MoonIcon, SunIcon, ViewListIcon, XIcon } from "@heroicons/react/solid";
@@ -12,6 +12,8 @@ import {
   HomeIcon,
   UserGroupIcon,
 } from "@heroicons/react/outline";
+import getData from "../services/getData";
+import networkLoginc from "../services/networkLogic";
 
 const Nav = () => {
   const { pathname } = useLocation();
@@ -27,7 +29,25 @@ const Nav = () => {
         } px-full py-2 rounded-md`
       : `${isDark ? "text-white" : "text-black"} font-bold px-[3rem] py-2`;
   const [open, setOpen] = useState(false); //手机导航栏的开合状态
+  const [user, setUser] = useState<any>([]);
   const { isDark, setDark } = useContext<any>(ToDarkContext); //切换夜间模式
+
+  useEffect(() => {
+    //利用token获取数据库用户数据
+    getUserName();
+    return () => {
+      setUser([]);
+    };
+  }, [localStorage.getItem("token")]);
+
+  //GET
+  const getUserName = async () => {
+    //获取用户发送过的全部宣泄语句
+    try {
+      const data = await getData.getUserTextData(networkLoginc.getJWT());
+      setUser(data);
+    } catch (e) {}
+  };
 
   return (
     <div className="z-[10] shadow-md dark:bg-[#253446] transform duration-200 bg-slate-50 fixed inset-0 dark:shadow-gray-800 shadow-gray-300/50 h-[6vh] flex flex-row justify-between items-center an-3">
@@ -54,11 +74,12 @@ const Nav = () => {
           关于我们
         </Link>
         <Link
-          className=" text-gray-100 bg-blue-500 px-2 py-1 shadow-lg rounded-[0.3rem]"
+          className="text-gray-100 bg-blue-500 px-2 py-1 shadow-lg rounded-[0.3rem]"
           to={"/LoginPage"}
         >
           <UserCircleIcon className="inline-block h-5 mb-1 w-5" />
-          login登录
+          {user.userName && <span>{user.userName}</span>}
+          {!user.userName && <span>Login登录</span>}
         </Link>
         <button className="icon-button-style" onClick={() => setDark(!isDark)}>
           {isDark ? (
@@ -196,7 +217,8 @@ const Nav = () => {
                             onClick={() => setOpen(false)}
                           >
                             <UserCircleIcon className="inline-block h-5 mb-1 w-5" />
-                            login登录
+                            {user.userName && <span>{user.userName}</span>}
+                            {!user.userName && <span>Login登录</span>}
                           </Link>
                         </div>
                       </div>
