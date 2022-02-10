@@ -10,6 +10,7 @@ import RegisterPage from "../Pages/RegisterPage";
 import SuPage from "../Pages/Su";
 import ByLoginDo from "../conText/ToLink";
 import FindPswPage from "../Pages/FindPswPage";
+import ChangeTextPage from "../Pages/ChangeTextPage";
 
 const IndexRouters = () => {
   return (
@@ -29,7 +30,9 @@ const IndexRouters = () => {
             <Route path="/HeartPage" element={<HeartPage />}></Route>
             {/* 用户主页 */}
             <Route path="/UserPage" element={<UserPage />}></Route>
-            {/* 用户主页 */}
+            {/* 修改帖子页 */}
+            <Route path="/ChangeTextPage" element={<ChangeTextPage />}></Route>
+            {/* 查找密码页 */}
             <Route path="/FindPswPage" element={<FindPswPage />}></Route>
             {/* 关于与帮助页 */}
             <Route path="/AboutUsPage" element={<AboutUsPage />}></Route>
