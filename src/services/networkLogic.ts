@@ -34,6 +34,11 @@ const pushText = async (textData: object) => {
   await https.post(`${https.api.userTextApi}`, textData);
 };
 
+const changeUserText = async (textId: string, textData: object) => {
+  https.setHeaderJWT(getJWT());
+  await https.post(`${https.api.userTextApi}${textId}`, textData);
+};
+
 const pushTextAndUpdata = async (textID: string, textData: object) => {
   https.setHeaderJWT(getJWT());
   await https.put(`${https.api.userTextApi}${textID}`, textData);
@@ -54,4 +59,5 @@ export default {
   pushTextAndUpdata,
   deleteUsetText,
   changeUserPassword,
+  changeUserText,
 };

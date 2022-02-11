@@ -6,6 +6,7 @@ import {
   HeartIcon,
   DotsHorizontalIcon,
   TrashIcon,
+  LogoutIcon,
 } from "@heroicons/react/solid";
 import { ArrowCircleDownIcon } from "@heroicons/react/outline";
 import { toast, Slide } from "react-toastify";
@@ -18,7 +19,7 @@ import CloseButton from "../Components/CloseButton";
 function PopularPage() {
   const [list, setList] = useState([]);
   const [text, setText] = useState({ textData: "" });
-
+  const [textId, setTextId] = useState("");
   useEffect(() => {
     getUser();
     return () => {
@@ -34,7 +35,7 @@ function PopularPage() {
   };
 
   //POST
-  const POST = async () => {
+  const userPushText = async () => {
     if (networkLoginc.getJWT() === null || networkLoginc.getJWT() === "") {
       toast.warning("请先登录", {
         transition: Slide,
@@ -111,9 +112,44 @@ function PopularPage() {
     }
   };
 
+  const changeUserText = async () => {
+    if (networkLoginc.getJWT() === null || networkLoginc.getJWT() === "") {
+      toast.warning("请先登录", {
+        transition: Slide,
+        closeButton: CloseButton,
+        autoClose: false,
+        toastId: "placeLogin1", //添加id避免出现重复通知
+      });
+      return null;
+    }
+    try {
+      await networkLoginc.changeUserText(textId, text);
+      toast.promise(
+        new Promise((resolve) => setTimeout(resolve, 1000)),
+        {
+          pending: "更改中...",
+          success: "编辑成功 👌",
+        },
+        {
+          autoClose: 1000,
+        }
+      );
+      setTimeout(() => {
+        getUser();
+      }, 1300);
+    } catch (error) {
+      toast.error("编辑失败,这不是您的帖子!");
+    }
+  };
+
   const headerSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    if (text.textData !== "") POST();
+    if (text.textData !== "") userPushText();
+    setText({ textData: "" });
+  };
+  const headerSubmit2 = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    if (text.textData !== "") changeUserText();
     setText({ textData: "" });
   };
 
@@ -244,15 +280,26 @@ function PopularPage() {
                           <Menu.Items className="absolute w-[9rem] outline-none top-full right-0 space-y-2">
                             {networkLoginc.getJWT() !== "" &&
                               networkLoginc.getJWT() !== null && (
-                                <Menu.Item>
-                                  <button
-                                    className="w-full button-style outline-none rounded-full dark:bg-gray-100 dark:text-black bg-gray-800 text-gray-100"
-                                    onClick={() => textDelete(c._id)}
-                                  >
-                                    删除帖子
-                                    <TrashIcon className="w-5 h-5 inline-block text-slate-100 dark:text-gray-900 mb-1" />
-                                  </button>
-                                </Menu.Item>
+                                <>
+                                  <Menu.Item>
+                                    <button
+                                      className="w-full button-style outline-none rounded-full dark:bg-gray-100 dark:text-black bg-gray-800 text-gray-100"
+                                      onClick={() => setTextId(c._id)}
+                                    >
+                                      编辑帖子
+                                      <TrashIcon className="w-5 h-5 inline-block text-slate-100 dark:text-gray-900 mb-1" />
+                                    </button>
+                                  </Menu.Item>
+                                  <Menu.Item>
+                                    <button
+                                      className="w-full button-style outline-none rounded-full dark:bg-gray-100 dark:text-black bg-gray-800 text-gray-100"
+                                      onClick={() => textDelete(c._id)}
+                                    >
+                                      删除帖子
+                                      <TrashIcon className="w-5 h-5 inline-block text-slate-100 dark:text-gray-900 mb-1" />
+                                    </button>
+                                  </Menu.Item>
+                                </>
                               )}
                           </Menu.Items>
                         </Transition>
@@ -264,24 +311,53 @@ function PopularPage() {
             </div>
           ))}
         </div>
-        <form
-          onSubmit={headerSubmit}
-          className="fixed right-0 left-0 bottom-0 h-[8vh] flex justify-center items-center duration-200 ease-in-out dark:bg-[#304053]"
-        >
-          <input
-            type="textarea"
-            placeholder="在这里输入,宣泄情绪..."
-            minLength={3}
-            maxLength={550}
-            value={text.textData}
-            className="icon-input-Style duration-200 ease-in-out dark:caret-slate-100 dark:bg-slate-700 pl-2 w-[75vw] mr-5 sm:mr-10 overflow-x-auto dark:overflow-auto"
-            required={true}
-            onChange={(e: any) => setText({ textData: e.target.value })}
-          ></input>
-          <button type="submit" className="icon-button-style">
-            <ReplyIcon className="text-black dark:text-slate-100 w-7 h-7" />
-          </button>
-        </form>
+
+        {textId === "" && (
+          <form
+            onSubmit={headerSubmit}
+            className="fixed right-0 left-0 bottom-0 h-[8vh] flex justify-center items-center duration-200 ease-in-out dark:bg-[#304053]"
+          >
+            <input
+              type="textarea"
+              placeholder="在这里输入,宣泄情绪..."
+              minLength={3}
+              maxLength={550}
+              value={text.textData}
+              className="icon-input-Style duration-200 ease-in-out dark:caret-slate-100 dark:bg-slate-700 pl-2 w-[75vw] mr-5 sm:mr-10 overflow-x-auto dark:overflow-auto"
+              required={true}
+              onChange={(e: any) => setText({ textData: e.target.value })}
+            ></input>
+            <button type="submit" className="icon-button-style">
+              <ReplyIcon className="text-black dark:text-slate-100 w-7 h-7" />
+            </button>
+          </form>
+        )}
+        {textId !== "" && (
+          <form
+            onSubmit={headerSubmit2}
+            className="fixed right-0 left-0 bottom-0 h-[8vh] flex justify-center items-center duration-200 ease-in-out dark:bg-[#304053]"
+          >
+            <input
+              type="textarea"
+              placeholder="编辑你的内容..."
+              minLength={3}
+              maxLength={550}
+              value={text.textData}
+              className="icon-input-Style duration-200 ease-in-out dark:caret-slate-100 dark:bg-slate-700 pl-2 w-[75vw] mr-2 sm:mr-10 overflow-x-auto dark:overflow-auto"
+              required={true}
+              onChange={(e: any) => setText({ textData: e.target.value })}
+            ></input>
+            <button type="submit" className="icon-button-style">
+              <ReplyIcon className="text-black dark:text-slate-100 w-7 h-7" />
+            </button>
+            <button
+              onClick={() => setTextId("")}
+              className="ml-1 sm:ml-5 icon-button-style outline-none text-black dark:text-gray-100"
+            >
+              <LogoutIcon className="w-7 h-7 inline-block dark:text-slate-100 text-gray-900" />
+            </button>
+          </form>
+        )}
       </div>
     </>
   );
