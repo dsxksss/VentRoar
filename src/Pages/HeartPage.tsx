@@ -7,6 +7,7 @@ import {
   DotsHorizontalIcon,
   TrashIcon,
   LogoutIcon,
+  PencilAltIcon,
 } from "@heroicons/react/solid";
 import { ArrowCircleDownIcon } from "@heroicons/react/outline";
 import { toast, Slide } from "react-toastify";
@@ -287,7 +288,7 @@ function PopularPage() {
                                       onClick={() => setTextId(c._id)}
                                     >
                                       编辑帖子
-                                      <TrashIcon className="w-5 h-5 inline-block text-slate-100 dark:text-gray-900 mb-1" />
+                                      <PencilAltIcon className="w-5 h-5 inline-block text-slate-100 dark:text-gray-900 mb-1" />
                                     </button>
                                   </Menu.Item>
                                   <Menu.Item>

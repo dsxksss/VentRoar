@@ -10,6 +10,7 @@ import {
   HeartIcon,
   TrashIcon,
 } from "@heroicons/react/solid";
+import { LogoutIcon } from "@heroicons/react/outline";
 import { Menu, Transition } from "@headlessui/react";
 import { toast } from "react-toastify";
 
@@ -75,27 +76,38 @@ function UserPage() {
 
   return (
     <>
+      <button
+        className="fixed top-[9rem] right-5 button-style outline-none rounded-full dark:bg-gray-100 dark:text-black bg-gray-800 text-gray-100"
+        onClick={() => {
+          toLink("/LoginPage");
+          networkLoginc.loginOUT();
+        }}
+      >
+        <span>
+          退出
+          <LogoutIcon className="inline-block w-5 h-5 mb-1 text-slate-600 dark:text-slate-300" />
+        </span>
+      </button>
       <div className="text-center h-[94vh] flex flex-col justify-center items-center duration-200 dark:bg-[#253446]">
         <div>
+          <p className="font-bold  dark:text-slate-50 mb-3">
+            🎉欢迎来到你的主页🎉
+          </p>
           <div className="flex justify-center items-center space-x-2">
-            <div className="text-black dark:text-slate-100">
-              {userData && <strong>{userData.userName}</strong>}
-              <p>欢迎来到你的主页!!!</p>
-              <p>以下这些是你的</p>
-              <p>宣泄历史⬇️</p>
+            <div className="flex flex-col justify-center items-center font-bold h-[7vh] overflow-hidden duration-200 ease-in-out  bg-slate-50 dark:bg-[#304053] rounded-2xl shadow-md px-3 py-4 text-center text-gray-900 dark:text-gray-300">
+              {userData && (
+                <strong
+                  className={`${
+                    userData.isAdmin ? "bg-green-500" : "bg-slate-900"
+                  } button-style text-slate-100 rounded-md shadow-[#253446] shadow-sm`}
+                >
+                  {userData.userName}
+                </strong>
+              )}
             </div>
-            <button
-              className="button-style bg-blue-500 text-slate-100 rounded-md shadow-[#253446] shadow-sm"
-              onClick={() => {
-                toLink("/LoginPage");
-                networkLoginc.loginOUT();
-              }}
-            >
-              退出登录
-            </button>
           </div>
-
-          <div className="scroll-smooth snap-y h-[70vh] mt-5 overflow-y-scroll">
+          <p className="text-center">宣泄历史⬇️</p>
+          <div className="scroll-smooth snap-y h-[70vh] mt-1 overflow-y-scroll">
             {list.map((c: any) => (
               <div key={c._id} className="my-5 snap-start">
                 {(c.textData === "" || c.textData === undefined) &&
