@@ -77,7 +77,7 @@ function UserPage() {
   return (
     <>
       <button
-        className="fixed top-[9rem] right-5 button-style outline-none rounded-full dark:bg-slate-300 dark:text-black bg-gray-800 text-gray-100"
+        className="fixed top-[9rem] right-5 button-style outline-none rounded-full bg-gray-900 text-gray-100"
         onClick={() => {
           toLink("/LoginPage");
           networkLoginc.loginOUT();
@@ -85,7 +85,7 @@ function UserPage() {
       >
         <span>
           退出
-          <LogoutIcon className="inline-block w-5 h-5 mb-1 text-slate-200 dark:text-slate-900" />
+          <LogoutIcon className="inline-block w-5 h-5 mb-1 text-slate-200" />
         </span>
       </button>
       <div className="text-center h-[94vh] flex flex-col justify-center items-center duration-200 dark:bg-[#253446]">
