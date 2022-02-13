@@ -109,10 +109,10 @@ function UserPage() {
                   networkLoginc.loginOUT();
                 }}
               >
-                <div className="animate-[cloes_2s_ease-in-out_infinite]">
+                <span>
                   退出
-                  <LogoutIcon className="inline-block w-5 h-5 mb-1 text-slate-200" />
-                </div>
+                  <LogoutIcon className="inline-block w-5 h-5 ml-1 mb-1 text-slate-200 animate-[cloes_1.7s_ease-in-out_infinite]" />
+                </span>
               </button>
             </div>
           </div>
