@@ -96,23 +96,25 @@ function UserPage() {
               )}
             </div>
           </div>
-          <div className="flex py-1 ml-20 items-center">
-            <ArrowCircleDownIcon className="animate-bounce h-8 w-8 text-blue-500 dark:text-green-500" />
-            <span className="font-bold ml-4 dark:text-slate-100 mt-2 pb-3">
-              宣泄历史
-            </span>
-            <button
-              className="ml-2 button-style outline-none rounded-full bg-gray-900 text-gray-100"
-              onClick={() => {
-                toLink("/LoginPage");
-                networkLoginc.loginOUT();
-              }}
-            >
-              <span>
-                退出
-                <LogoutIcon className="inline-block w-5 h-5 mb-1 text-slate-200" />
+          <div className="flex justify-center items-center">
+            <div className="flex py-1 ml-16 items-center">
+              <ArrowCircleDownIcon className="animate-bounce h-8 w-8 text-blue-500 dark:text-green-500" />
+              <span className="font-bold ml-2 dark:text-slate-100 mt-2 pb-3">
+                宣泄历史
               </span>
-            </button>
+              <button
+                className="ml-4 button-style outline-none rounded-full bg-gray-900 text-gray-100"
+                onClick={() => {
+                  toLink("/LoginPage");
+                  networkLoginc.loginOUT();
+                }}
+              >
+                <span>
+                  退出
+                  <LogoutIcon className="inline-block w-5 h-5 mb-1 text-slate-200" />
+                </span>
+              </button>
+            </div>
           </div>
           <div className="snap-y h-[70vh] overflow-y-scroll">
             {list.map((c: any) => (
