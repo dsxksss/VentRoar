@@ -7,7 +7,6 @@ import HeartPage from "../Pages/HeartPage";
 import UserPage from "../Pages/UserPage";
 import NotFoundPage from "../Pages/NotFoundPage";
 import RegisterPage from "../Pages/RegisterPage";
-import SuPage from "../Pages/Su";
 import ByLoginDo from "../conText/ToLink";
 import FindPswPage from "../Pages/FindPswPage";
 import ChangeTextPage from "../Pages/ChangeTextPage";
@@ -42,8 +41,6 @@ const IndexRouters = () => {
             <Route path="/RegisterPage" element={<RegisterPage />}></Route>
             {/* 404NOTFOUND */}
             <Route path="*" element={<NotFoundPage />}></Route>
-            {/* 隐藏页 */}
-            <Route path="/Su" element={<SuPage />}></Route>
           </Routes>
         </ByLoginDo>
       </main>
