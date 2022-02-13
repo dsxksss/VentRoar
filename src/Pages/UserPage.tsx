@@ -9,8 +9,9 @@ import {
   EmojiSadIcon,
   HeartIcon,
   TrashIcon,
+  UserCircleIcon,
 } from "@heroicons/react/solid";
-import { LogoutIcon } from "@heroicons/react/outline";
+import { ArrowCircleDownIcon, LogoutIcon } from "@heroicons/react/outline";
 import { Menu, Transition } from "@headlessui/react";
 import { toast } from "react-toastify";
 
@@ -101,17 +102,21 @@ function UserPage() {
                     userData.isAdmin ? "bg-green-500" : "bg-slate-900"
                   } button-style text-slate-100 rounded-md shadow-[#253446] shadow-sm`}
                 >
+                  <UserCircleIcon className="inline-block w-5 h-5 mb-1 text-slate-200 mr-3" />
                   {userData.userName}
                 </strong>
               )}
             </div>
           </div>
-          <p className="text-center font-bold dark:text-slate-100 mt-2 pb-3">
-            ⬇️宣泄历史
-          </p>
-          <div className="scroll-smooth snap-y h-[70vh] mt-1 overflow-y-scroll">
+          <div className="flex py-1 ml-20 items-center">
+            <ArrowCircleDownIcon className="animate-bounce h-8 w-8 text-blue-500 dark:text-green-500" />
+            <span className="font-bold ml-4 dark:text-slate-100 mt-2 pb-3">
+              宣泄历史
+            </span>
+          </div>
+          <div className="snap-y h-[70vh] overflow-y-scroll">
             {list.map((c: any) => (
-              <div key={c._id} className="my-5 snap-start">
+              <div key={c._id} className="my-5">
                 {(c.textData === "" || c.textData === undefined) &&
                 (c.textDate === "" || c.textDate === undefined) ? null : (
                   <div className="showText-BoxStyle mx-5 sm:mx-[3rem] md:mx-[7rem] lg:mx-[15rem] mt-5 flex flex-col">
