@@ -77,18 +77,6 @@ function UserPage() {
 
   return (
     <>
-      <button
-        className="fixed top-[8.25rem] right-5 button-style outline-none rounded-full bg-gray-900 text-gray-100"
-        onClick={() => {
-          toLink("/LoginPage");
-          networkLoginc.loginOUT();
-        }}
-      >
-        <span>
-          退出
-          <LogoutIcon className="inline-block w-5 h-5 mb-1 text-slate-200" />
-        </span>
-      </button>
       <div className="text-center h-[94vh] flex flex-col justify-center items-center duration-200 dark:bg-[#253446]">
         <div>
           <p className="font-bold  dark:text-slate-50 mb-3">
@@ -113,6 +101,18 @@ function UserPage() {
             <span className="font-bold ml-4 dark:text-slate-100 mt-2 pb-3">
               宣泄历史
             </span>
+            <button
+              className="ml-2 button-style outline-none rounded-full bg-gray-900 text-gray-100"
+              onClick={() => {
+                toLink("/LoginPage");
+                networkLoginc.loginOUT();
+              }}
+            >
+              <span>
+                退出
+                <LogoutIcon className="inline-block w-5 h-5 mb-1 text-slate-200" />
+              </span>
+            </button>
           </div>
           <div className="snap-y h-[70vh] overflow-y-scroll">
             {list.map((c: any) => (
