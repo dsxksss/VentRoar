@@ -3,7 +3,7 @@ import cimg from "../img/cImg/developer.svg";
 function HelpPage() {
   return (
     <>
-      <div className="pt-[1.1rem] px-3 h-[94vh] duration-200 dark:bg-[#253446]">
+      <div className="pt-[1.1rem] px-3 h-[94vh] duration-200 dark:bg-[#253446] overflow-y-scroll">
         <div
           style={{ animationDuration: "2.5s" }}
           className="an-3 flex flex-col-reverse sm:flex-row items-center justify-center "
@@ -28,17 +28,17 @@ function HelpPage() {
             <br />
           </div>
         </div>
-        <div className="md:text-[1.7rem]">
+        <div className="px-2 md:text-[1.7rem]">
           <p>
             <span className="dark:text-slate-50">待开发🚧 :</span>
-            <br />
+
             <b className="text-yellow-400">
               网站主页样式、Heart页面交互优化、优化页面交互、优化交互动画等、修复部分BUG......
             </b>
           </p>
           <p>
             <span className="dark:text-slate-50">已完成✅ :</span>
-            <br />
+
             <b className="text-green-500">
               登入页面样式、Heart页面样式、注册页面样式、找回密码页面样式及功能、用户主页样式及后台逻辑、从数据库获取数据、登入和注册的后端逻辑、关于页面样式、前后端数据库链接、自动登录功能、夜间模式、
             </b>
