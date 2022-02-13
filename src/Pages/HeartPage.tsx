@@ -45,7 +45,7 @@ function PopularPage() {
       const data = await getData.getUserTextData(networkLoginc.getJWT());
       setUserData(data);
     } catch (err) {
-      toast.error("获取用户信息失败!");
+      setUserData([]);
     }
   };
 
