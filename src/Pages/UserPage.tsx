@@ -77,7 +77,7 @@ function UserPage() {
   return (
     <>
       <button
-        className="fixed top-[9rem] right-5 button-style outline-none rounded-full dark:bg-gray-100 dark:text-black bg-gray-800 text-gray-100"
+        className="fixed top-[9rem] right-5 button-style outline-none rounded-full dark:bg-slate-300 dark:text-black bg-gray-800 text-gray-100"
         onClick={() => {
           toLink("/LoginPage");
           networkLoginc.loginOUT();
@@ -85,7 +85,7 @@ function UserPage() {
       >
         <span>
           退出
-          <LogoutIcon className="inline-block w-5 h-5 mb-1 text-slate-600 dark:text-slate-300" />
+          <LogoutIcon className="inline-block w-5 h-5 mb-1 text-slate-200 dark:text-slate-900" />
         </span>
       </button>
       <div className="text-center h-[94vh] flex flex-col justify-center items-center duration-200 dark:bg-[#253446]">
@@ -106,7 +106,7 @@ function UserPage() {
               )}
             </div>
           </div>
-          <p className="text-center">宣泄历史⬇️</p>
+          <p className="text-center dark:text-slate-100">宣泄历史⬇️</p>
           <div className="scroll-smooth snap-y h-[70vh] mt-1 overflow-y-scroll">
             {list.map((c: any) => (
               <div key={c._id} className="my-5 snap-start">
