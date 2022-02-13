@@ -77,7 +77,7 @@ function UserPage() {
   return (
     <>
       <button
-        className="fixed top-[9rem] right-5 button-style outline-none rounded-full bg-gray-900 text-gray-100"
+        className="fixed top-[8.25rem] right-5 button-style outline-none rounded-full bg-gray-900 text-gray-100"
         onClick={() => {
           toLink("/LoginPage");
           networkLoginc.loginOUT();
@@ -106,7 +106,9 @@ function UserPage() {
               )}
             </div>
           </div>
-          <p className="text-center dark:text-slate-100">宣泄历史⬇️</p>
+          <p className="text-center font-bold dark:text-slate-100 mt-2 pb-3">
+            ⬇️宣泄历史
+          </p>
           <div className="scroll-smooth snap-y h-[70vh] mt-1 overflow-y-scroll">
             {list.map((c: any) => (
               <div key={c._id} className="my-5 snap-start">
