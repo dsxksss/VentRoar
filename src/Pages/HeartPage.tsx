@@ -21,10 +21,14 @@ function PopularPage() {
   const [list, setList] = useState([]);
   const [text, setText] = useState({ textData: "" });
   const [textId, setTextId] = useState("");
+  const [userData, setUserData] = useState<any>([]);
+
   useEffect(() => {
     getUser();
+    getUserData();
     return () => {
       setList([]);
+      setUserData([]);
     };
   }, []);
 
@@ -33,6 +37,16 @@ function PopularPage() {
     //利用异步方法请求数据
     const data = await getData.getAllTextData();
     setList(data);
+  };
+
+  const getUserData = async () => {
+    try {
+      await networkLoginc.tokenValidation();
+      const data = await getData.getUserTextData(networkLoginc.getJWT());
+      setUserData(data);
+    } catch (err) {
+      toast.error("获取用户信息失败!");
+    }
   };
 
   //POST
@@ -67,7 +81,7 @@ function PopularPage() {
   };
 
   //PUT
-  const PUT = async (textId: string, smilOrheart: object) => {
+  const addSmilAndHeart = async (textId: string, smilOrheart: object) => {
     if (networkLoginc.getJWT() === null || networkLoginc.getJWT() === "") {
       toast.warning("请先登录", {
         transition: Slide,
@@ -98,6 +112,29 @@ function PopularPage() {
         {
           pending: "删除中...",
           success: "删除成功 👌",
+        },
+        {
+          autoClose: 1000,
+        }
+      );
+      setTimeout(() => getUser(), 1300);
+    } catch (error) {
+      toast.error(`删除失败,您没有权限这么做`, {
+        autoClose: 1800,
+        hideProgressBar: false,
+        toastId: "deleteOne",
+      });
+    }
+  };
+
+  const adminTextDelete = async (textID: string) => {
+    try {
+      await networkLoginc.adminDeleteUsetText(textID);
+      toast.promise(
+        new Promise((resolve) => setTimeout(resolve, 1000)),
+        {
+          pending: "检查权限...",
+          success: "管理员删除成功 👌",
         },
         {
           autoClose: 1000,
@@ -232,7 +269,7 @@ function PopularPage() {
                     <div className="flex justify-start items-center space-x-3">
                       <button
                         className="icon-button-style flex justify-center items-center"
-                        onClick={() => PUT(c._id, { heart: true })}
+                        onClick={() => addSmilAndHeart(c._id, { heart: true })}
                       >
                         <HeartIcon
                           className={`w-7 h-7 text-${
@@ -246,7 +283,7 @@ function PopularPage() {
                       {c.smil > 0 ? (
                         <button
                           className="icon-button-style flex justify-center items-center"
-                          onClick={() => PUT(c._id, { smil: true })}
+                          onClick={() => addSmilAndHeart(c._id, { smil: true })}
                         >
                           <EmojiHappyIcon className="w-7 h-7 text-yellow-500" />
                           <span className="text-slate-900 dark:text-slate-100">
@@ -256,7 +293,7 @@ function PopularPage() {
                       ) : (
                         <button
                           className="icon-button-style flex justify-center items-center"
-                          onClick={() => PUT(c._id, { smil: true })}
+                          onClick={() => addSmilAndHeart(c._id, { smil: true })}
                         >
                           <EmojiSadIcon className="w-7 h-7 text-slate-400" />
                           <span className="text-slate-900 dark:text-slate-100">
@@ -294,7 +331,11 @@ function PopularPage() {
                                   <Menu.Item>
                                     <button
                                       className="w-full button-style outline-none rounded-full dark:bg-gray-100 dark:text-black bg-gray-800 text-gray-100"
-                                      onClick={() => textDelete(c._id)}
+                                      onClick={
+                                        userData.isAdmin
+                                          ? () => adminTextDelete(c._id)
+                                          : () => textDelete(c._id)
+                                      }
                                     >
                                       删除帖子
                                       <TrashIcon className="w-5 h-5 inline-block text-slate-100 dark:text-gray-900 mb-1" />

@@ -49,6 +49,11 @@ const deleteUsetText = async (textID: string) => {
   await https.delete(`${https.api.textDataApi}${textID}`);
 };
 
+const adminDeleteUsetText = async (textID: string) => {
+  https.setHeaderJWT(getJWT());
+  await https.delete(`${https.api.textDataApi}${textID}/admin`);
+};
+
 export default {
   tokenValidation,
   loginIN,
@@ -58,6 +63,7 @@ export default {
   pushText,
   pushTextAndUpdata,
   deleteUsetText,
+  adminDeleteUsetText,
   changeUserPassword,
   changeUserText,
 };
