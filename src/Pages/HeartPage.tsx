@@ -126,7 +126,7 @@ function PopularPage() {
           success: "删除成功 👌",
         },
         {
-          autoClose: 1000,
+          autoClose: 1200,
           position: "top-center",
         }
       );
@@ -150,7 +150,7 @@ function PopularPage() {
           success: "管理员删除成功 👌",
         },
         {
-          autoClose: 1000,
+          autoClose: 1200,
           position: "top-center",
         }
       );

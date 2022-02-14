@@ -57,6 +57,7 @@ function UserPage() {
       closeOnClick: true,
       closeButton: ConfirmationButton(FCref, null, {}),
       autoClose: false,
+      position: "bottom-center",
       toastId: "doDelete", //添加id避免出现重复通知
     });
   };
@@ -71,7 +72,8 @@ function UserPage() {
           success: "删除成功 👌",
         },
         {
-          autoClose: 1000,
+          autoClose: 1200,
+          position: "top-center",
         }
       );
       setTimeout(() => {
@@ -79,29 +81,6 @@ function UserPage() {
       }, 1300);
     } catch (error) {
       toast.error(`删除失败,您没有权限这么做!`, {
-        autoClose: 1800,
-        hideProgressBar: false,
-        toastId: "deleteOne",
-      });
-    }
-  };
-
-  const adminTextDelete = async (textID: string) => {
-    try {
-      await networkLoginc.adminDeleteUsetText(textID);
-      toast.promise(
-        new Promise((resolve) => setTimeout(resolve, 1000)),
-        {
-          pending: "检查权限...",
-          success: "管理员删除成功 👌",
-        },
-        {
-          autoClose: 1000,
-        }
-      );
-      setTimeout(() => getUser(), 1300);
-    } catch (error) {
-      toast.error(`删除失败,您没有权限这么做`, {
         autoClose: 1800,
         hideProgressBar: false,
         toastId: "deleteOne",
