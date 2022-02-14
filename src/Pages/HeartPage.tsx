@@ -16,6 +16,7 @@ import timeSCV from "../utils/timeSCV";
 import networkLoginc from "../services/networkLogic";
 import getData from "../services/getData";
 import CloseButton from "../Components/CloseButton";
+import ConfirmationButton from "./../Components/ConfirmationButton";
 
 function PopularPage() {
   const [list, setList] = useState([]);
@@ -102,6 +103,16 @@ function PopularPage() {
         toastId: "dontOne", //添加id避免出现重复通知
       });
     }
+  };
+
+  const doDelete = async (FCref: any) => {
+    toast.error("确定要删除吗?", {
+      transition: Slide,
+      closeOnClick: true,
+      closeButton: ConfirmationButton(FCref, null, {}),
+      autoClose: false,
+      toastId: "doDelete", //添加id避免出现重复通知
+    });
   };
 
   const textDelete = async (textID: string) => {
@@ -194,8 +205,8 @@ function PopularPage() {
   return (
     <>
       <div className="heartBg duration-200 ease-in-out dark:bg-[#253446]">
-        <div className="h-[86vh] z-[-1] space-y-[2.3rem] snap-y scroll-smooth overflow-y-scroll">
-          <div className="snap-start duration-200 ease-in-out showText-BoxStyle mx-5 sm:mx-[3rem] md:mx-[7rem] lg:mx-[15rem] mt-5 flex flex-col">
+        <div className="h-[86vh] z-[-1] space-y-[2.3rem] scroll-smooth overflow-y-scroll">
+          <div className=" duration-200 ease-in-out showText-BoxStyle mx-5 sm:mx-[3rem] md:mx-[7rem] lg:mx-[15rem] mt-5 flex flex-col">
             <div>
               {
                 <div className="mr-6 ml-2 mt-3 flex justify-between items-center">
@@ -331,10 +342,17 @@ function PopularPage() {
                                   <Menu.Item>
                                     <button
                                       className="w-full button-style outline-none rounded-full dark:bg-gray-100 dark:text-black bg-gray-800 text-gray-100"
-                                      onClick={
-                                        userData.isAdmin
-                                          ? () => adminTextDelete(c._id)
-                                          : () => textDelete(c._id)
+                                      // onClick={
+                                      //   userData.isAdmin
+                                      //     ? () => adminTextDelete(c._id)
+                                      //     : () => textDelete(c._id)
+                                      // }
+                                      onClick={() =>
+                                        doDelete(
+                                          userData.isAdmin
+                                            ? () => adminTextDelete(c._id)
+                                            : () => textDelete(c._id)
+                                        )
                                       }
                                     >
                                       删除帖子

@@ -13,7 +13,8 @@ import {
 } from "@heroicons/react/solid";
 import { ArrowCircleDownIcon, LogoutIcon } from "@heroicons/react/outline";
 import { Menu, Transition } from "@headlessui/react";
-import { toast } from "react-toastify";
+import { Slide, toast } from "react-toastify";
+import ConfirmationButton from "../Components/ConfirmationButton";
 
 function UserPage() {
   const { toLink } = useContext<any>(ToLinkContext);
@@ -50,6 +51,16 @@ function UserPage() {
     }
   };
 
+  const doDelete = async (FCref: any) => {
+    toast.error("确定要删除吗?", {
+      transition: Slide,
+      closeOnClick: true,
+      closeButton: ConfirmationButton(FCref, null, {}),
+      autoClose: false,
+      toastId: "doDelete", //添加id避免出现重复通知
+    });
+  };
+
   const textDelete = async (textID: string) => {
     try {
       await networkLoginc.deleteUsetText(textID);
@@ -68,6 +79,29 @@ function UserPage() {
       }, 1300);
     } catch (error) {
       toast.error(`删除失败,您没有权限这么做!`, {
+        autoClose: 1800,
+        hideProgressBar: false,
+        toastId: "deleteOne",
+      });
+    }
+  };
+
+  const adminTextDelete = async (textID: string) => {
+    try {
+      await networkLoginc.adminDeleteUsetText(textID);
+      toast.promise(
+        new Promise((resolve) => setTimeout(resolve, 1000)),
+        {
+          pending: "检查权限...",
+          success: "管理员删除成功 👌",
+        },
+        {
+          autoClose: 1000,
+        }
+      );
+      setTimeout(() => getUser(), 1300);
+    } catch (error) {
+      toast.error(`删除失败,您没有权限这么做`, {
         autoClose: 1800,
         hideProgressBar: false,
         toastId: "deleteOne",
@@ -184,7 +218,9 @@ function UserPage() {
                                   <Menu.Item>
                                     <button
                                       className="w-full button-style outline-none rounded-full dark:bg-gray-100 dark:text-black bg-gray-800 text-gray-100"
-                                      onClick={() => textDelete(c._id)}
+                                      onClick={() =>
+                                        doDelete(() => textDelete(c._id))
+                                      }
                                     >
                                       删除帖子
                                       <TrashIcon className="w-5 h-5 inline-block text-slate-100 dark:text-gray-900 mb-1" />
