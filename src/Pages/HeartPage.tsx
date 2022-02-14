@@ -111,6 +111,7 @@ function PopularPage() {
       closeOnClick: true,
       closeButton: ConfirmationButton(FCref, null, {}),
       autoClose: false,
+      position: "bottom-center",
       toastId: "doDelete", //添加id避免出现重复通知
     });
   };
@@ -126,6 +127,7 @@ function PopularPage() {
         },
         {
           autoClose: 1000,
+          position: "top-center",
         }
       );
       setTimeout(() => getUser(), 1300);
@@ -149,6 +151,7 @@ function PopularPage() {
         },
         {
           autoClose: 1000,
+          position: "top-center",
         }
       );
       setTimeout(() => getUser(), 1300);
