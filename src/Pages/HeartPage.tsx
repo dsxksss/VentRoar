@@ -33,7 +33,6 @@ function PopularPage() {
     };
   }, []);
 
-  //GET
   const getUser = async () => {
     //利用异步方法请求数据
     const data = await getData.getAllTextData();
@@ -50,7 +49,6 @@ function PopularPage() {
     }
   };
 
-  //POST
   const userPushText = async () => {
     if (networkLoginc.getJWT() === null || networkLoginc.getJWT() === "") {
       toast.warning("请先登录", {
@@ -81,7 +79,6 @@ function PopularPage() {
     }
   };
 
-  //PUT
   const addSmilAndHeart = async (textId: string, smilOrheart: object) => {
     if (networkLoginc.getJWT() === null || networkLoginc.getJWT() === "") {
       toast.warning("请先登录", {
