@@ -50,71 +50,71 @@ const Nav = () => {
   };
 
   return (
-    <div className="z-[10] shadow-md dark:bg-[#253446] transform duration-200 bg-slate-50 fixed inset-0 dark:shadow-gray-800 shadow-gray-300/50 h-[6vh] flex flex-row justify-between items-center an-3">
+    <div className="an-3 fixed inset-0 z-[10] flex h-[6vh] transform flex-row items-center justify-between bg-slate-50 shadow-md shadow-gray-300/50 duration-200 dark:bg-[#253446] dark:shadow-gray-800">
       {/* 电脑端的显示设置 */}
       <div className="">
         <Link
-          className="ml-4 text-lg font-bold dark:text-slate-100 text-black inline-block mb-1"
+          className="ml-4 mb-1 inline-block text-lg font-bold text-black dark:text-slate-100"
           to={"/"}
         >
           ventroar.xyz
         </Link>
       </div>
 
-      <div className="mr-7 font-bold dark:text-slate-100 text-gray-500/60 hidden sm:block space-x-7">
+      <div className="mr-7 hidden space-x-7 font-bold text-gray-500/60 dark:text-slate-100 sm:block">
         <Link className={ShowActive("/")} to={"/"}>
-          <HomeIcon className="inline-block h-5 mb-1 w-5" />
+          <HomeIcon className="mb-1 inline-block h-5 w-5" />
           主页
         </Link>
         <Link className={ShowActive("/HeartPage")} to={"/HeartPage"}>
-          <HeartIcon className="inline-block h-5 mb-1 w-5" />墙
+          <HeartIcon className="mb-1 inline-block h-5 w-5" />墙
         </Link>
         <Link className={ShowActive("/AboutUsPage")} to={"/AboutUsPage"}>
-          <UserGroupIcon className="inline-block h-5 mb-1 w-5" />
+          <UserGroupIcon className="mb-1 inline-block h-5 w-5" />
           关于我们
         </Link>
         <Link
-          className="text-gray-100 bg-blue-500 px-2 py-1 shadow-lg rounded-[0.3rem]"
+          className="rounded-[0.3rem] bg-blue-500 px-2 py-1 text-gray-100 shadow-lg"
           to={"/LoginPage"}
         >
-          <UserCircleIcon className="inline-block h-5 mb-1 w-5" />
+          <UserCircleIcon className="mb-1 inline-block h-5 w-5" />
           {user.userName && <span>{user.userName}</span>}
           {!user.userName && <span>Login登录</span>}
         </Link>
         <button className="icon-button-style" onClick={() => setDark(!isDark)}>
           {isDark ? (
-            <MoonIcon className="text-yellow-300 inline-block h-5 w-5 mb-1" />
+            <MoonIcon className="mb-1 inline-block h-5 w-5 text-yellow-300" />
           ) : (
-            <SunIcon className="text-yellow-500 inline-block h-5 w-5 mb-1" />
+            <SunIcon className="mb-1 inline-block h-5 w-5 text-yellow-500" />
           )}
         </button>
       </div>
 
       {/* 手机端的显示设置 */}
 
-      <div className="mr-3 sm:hidden border-none outline-none space-x-4">
+      <div className="mr-3 space-x-4 border-none outline-none sm:hidden">
         <button
           type="button"
           className="icon-button-style border-none outline-none"
           onClick={() => setDark(!isDark)}
         >
           {isDark ? (
-            <MoonIcon className="text-yellow-300 inline-block h-5 w-5 mb-1" />
+            <MoonIcon className="mb-1 inline-block h-5 w-5 text-yellow-300" />
           ) : (
-            <SunIcon className="text-yellow-500 inline-block h-5 w-5 mb-1" />
+            <SunIcon className="mb-1 inline-block h-5 w-5 text-yellow-500" />
           )}
         </button>
         <button className="outline-none">
           <ViewListIcon
             onClick={() => setOpen(true)}
-            className="outline-none dark:text-gray-300 inline-block h-5 w-5 mb-1"
+            className="mb-1 inline-block h-5 w-5 outline-none dark:text-gray-300"
           />
         </button>
       </div>
       <Transition.Root show={open} as={Fragment}>
         <Dialog
           as="div"
-          className="fixed inset-0 overflow-hidden z-[15]"
+          className="fixed inset-0 z-[15] overflow-hidden"
           onClose={setOpen}
         >
           <div className="absolute inset-0 overflow-hidden">
@@ -135,7 +135,7 @@ const Nav = () => {
               />
             </Transition.Child>
 
-            <div className="fixed inset-y-0 right-0 pl-10 max-w-full flex">
+            <div className="fixed inset-y-0 right-0 flex max-w-full pl-10">
               <Transition.Child
                 as={Fragment}
                 enter="transform transition ease-in-out duration-500"
@@ -173,25 +173,25 @@ const Nav = () => {
                   </Transition.Child>
 
                   <div
-                    className={`h-full flex flex-col py-6 ${
+                    className={`flex h-full flex-col py-6 ${
                       isDark ? "bg-[#304053]" : "bg-white"
                     } shadow-xl`}
                   >
                     <div>
-                      <Dialog.Title className="mt-[2rem] flex flex-col justify-center rounded-[0.3rem] py-[1rem] mx-[1rem] text-xl text-center font-bold text-white bg-blue-400">
+                      <Dialog.Title className="mx-[1rem] mt-[2rem] flex flex-col justify-center rounded-[0.3rem] bg-blue-400 py-[1rem] text-center text-xl font-bold text-white">
                         <div>V E N T R O A R</div>导 航 栏
                       </Dialog.Title>
                     </div>
-                    <div className="mt-5 relative flex-1 px-4 sm:px-6">
+                    <div className="relative mt-5 flex-1 px-4 sm:px-6">
                       {/* Replace with your content */}
-                      <div className="absolute text-center inset-0 sm:px-6">
-                        <div className="flex flex-col mt-[3.5rem] h-[60vh] space-y-[3rem] items-center">
+                      <div className="absolute inset-0 text-center sm:px-6">
+                        <div className="mt-[3.5rem] flex h-[60vh] flex-col items-center space-y-[3rem]">
                           <Link
                             className={ShowActiveMi("/")}
                             to={"/"}
                             onClick={() => setOpen(false)}
                           >
-                            <HomeIcon className="inline-block h-5 mb-1 w-5" />
+                            <HomeIcon className="mb-1 inline-block h-5 w-5" />
                             主页
                           </Link>
                           <Link
@@ -200,7 +200,7 @@ const Nav = () => {
                             onClick={() => setOpen(false)}
                           >
                             查看
-                            <HeartIcon className="inline-block h-5 mb-1 w-5" />
+                            <HeartIcon className="mb-1 inline-block h-5 w-5" />
                             墙
                           </Link>
                           <Link
@@ -208,7 +208,7 @@ const Nav = () => {
                             to={"/AboutUsPage"}
                             onClick={() => setOpen(false)}
                           >
-                            <UserGroupIcon className="inline-block h-5 mb-1 w-5" />
+                            <UserGroupIcon className="mb-1 inline-block h-5 w-5" />
                             关于我们
                           </Link>
                           <Link
@@ -216,7 +216,7 @@ const Nav = () => {
                             to={"/LoginPage"}
                             onClick={() => setOpen(false)}
                           >
-                            <UserCircleIcon className="inline-block h-5 mb-1 w-5" />
+                            <UserCircleIcon className="mb-1 inline-block h-5 w-5" />
                             {user.userName && <span>{user.userName}</span>}
                             {!user.userName && <span>Login登录</span>}
                           </Link>

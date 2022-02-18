@@ -3,25 +3,25 @@ import cimg from "../img/cImg/developer.svg";
 function HelpPage() {
   return (
     <>
-      <div className="pt-[1.1rem] px-3 h-[94vh] duration-200 dark:bg-[#253446] overflow-y-scroll">
+      <div className="h-[94vh] overflow-y-scroll px-3 pt-[1.1rem] duration-200 dark:bg-[#253446]">
         <div
           style={{ animationDuration: "2.5s" }}
-          className="an-3 flex flex-col-reverse sm:flex-row items-center justify-center "
+          className="an-3 flex flex-col-reverse items-center justify-center sm:flex-row "
         >
           <div className="bg-cover">
             <img src={cimg} alt="developerCImg" />
           </div>
           <div>
-            <h1 className="text-[2.3rem] dark:text-slate-50 md:text-[2.7rem] lg:text-[3rem] text-center mb-3">
+            <h1 className="mb-3 text-center text-[2.3rem] dark:text-slate-50 md:text-[2.7rem] lg:text-[3rem]">
               网站介绍
             </h1>
-            <p className="text-[1rem] md:text-[1.3rem] lg:text-[1.6rem]  font-bold indent-4 text-center dark:text-slate-50">
+            <p className="text-center indent-4 text-[1rem]  font-bold dark:text-slate-50 md:text-[1.3rem] lg:text-[1.6rem]">
               倾诉最近遇到的不开心的事情，发泄到这上面，此网站用匿名的方式可以和别人交流倾诉最近遇到的不开心
             </p>
             <br />
             <p
               className="
-        text-center text-[1.2rem] md:text-[1.5rem] lg:text-[1.8rem] font-bold text-red-500"
+        text-center text-[1.2rem] font-bold text-red-500 md:text-[1.5rem] lg:text-[1.8rem]"
             >
               网站还在火速开发中🚀🚀🚀 版本V:0.7.0
             </p>

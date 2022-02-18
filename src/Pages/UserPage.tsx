@@ -90,33 +90,33 @@ function UserPage() {
 
   return (
     <>
-      <div className="text-center h-[94vh] flex flex-col justify-center items-center duration-200 dark:bg-[#253446]">
+      <div className="flex h-[94vh] flex-col items-center justify-center text-center duration-200 dark:bg-[#253446]">
         <div>
-          <p className="font-bold  dark:text-slate-50 mb-3">
+          <p className="mb-3  font-bold dark:text-slate-50">
             🎉欢迎来到你的主页🎉
           </p>
-          <div className="flex justify-center items-center space-x-2">
-            <div className="flex flex-col justify-center items-center font-bold h-[7vh] overflow-hidden duration-200 ease-in-out  bg-slate-50 dark:bg-[#304053] rounded-2xl shadow-md px-3 py-4 text-center text-gray-900 dark:text-gray-300">
+          <div className="flex items-center justify-center space-x-2">
+            <div className="flex h-[7vh] flex-col items-center justify-center overflow-hidden rounded-2xl bg-slate-50 px-3  py-4 text-center font-bold text-gray-900 shadow-md duration-200 ease-in-out dark:bg-[#304053] dark:text-gray-300">
               {userData && (
                 <strong
                   className={`${
                     userData.isAdmin ? "bg-green-500" : "bg-slate-900"
-                  } button-style text-slate-100 rounded-md shadow-[#253446] shadow-sm`}
+                  } button-style rounded-md text-slate-100 shadow-sm shadow-[#253446]`}
                 >
-                  <UserCircleIcon className="inline-block w-5 h-5 mb-1 text-slate-200 mr-3" />
+                  <UserCircleIcon className="mb-1 mr-3 inline-block h-5 w-5 text-slate-200" />
                   {userData.userName}
                 </strong>
               )}
             </div>
           </div>
-          <div className="flex justify-center items-center">
-            <div className="flex py-1 ml-16 items-center">
-              <ArrowCircleDownIcon className="animate-bounce h-8 w-8 text-blue-500 dark:text-green-500" />
-              <span className="font-bold ml-2 dark:text-slate-100 mt-2 pb-3">
+          <div className="flex items-center justify-center">
+            <div className="ml-16 flex items-center py-1">
+              <ArrowCircleDownIcon className="h-8 w-8 animate-bounce text-blue-500 dark:text-green-500" />
+              <span className="ml-2 mt-2 pb-3 font-bold dark:text-slate-100">
                 宣泄历史
               </span>
               <button
-                className="ml-4 button-style outline-none rounded-full bg-gray-900 text-gray-100"
+                className="button-style ml-4 rounded-full bg-gray-900 text-gray-100 outline-none"
                 onClick={() => {
                   toLink("/LoginPage");
                   networkLoginc.loginOUT();
@@ -124,42 +124,42 @@ function UserPage() {
               >
                 <span>
                   退出
-                  <LogoutIcon className="inline-block w-5 h-5 ml-1 mb-1 text-slate-200 animate-[cloes_1.7s_ease-in-out_infinite]" />
+                  <LogoutIcon className="ml-1 mb-1 inline-block h-5 w-5 animate-[cloes_1.7s_ease-in-out_infinite] text-slate-200" />
                 </span>
               </button>
             </div>
           </div>
-          <div className="snap-y h-[70vh] overflow-y-scroll">
+          <div className="h-[70vh] snap-y overflow-y-scroll">
             {list.map((c: any) => (
               <div key={c._id} className="my-5">
                 {(c.textData === "" || c.textData === undefined) &&
                 (c.textDate === "" || c.textDate === undefined) ? null : (
-                  <div className="showText-BoxStyle mx-5 sm:mx-[3rem] md:mx-[7rem] lg:mx-[15rem] mt-5 flex flex-col">
+                  <div className="showText-BoxStyle mx-5 mt-5 flex flex-col sm:mx-[3rem] md:mx-[7rem] lg:mx-[15rem]">
                     <div>
                       {
-                        <div className="mr-6 ml-2 mt-3 flex justify-between items-center">
-                          <div className="flex justify-center items-end">
+                        <div className="mr-6 ml-2 mt-3 flex items-center justify-between">
+                          <div className="flex items-end justify-center">
                             <span
-                              className={`w-10 h-10 md:w-13 md:h-13 icon-${c.img}`}
+                              className={`md:w-13 md:h-13 h-10 w-10 icon-${c.img}`}
                             ></span>
                             <span className="text-[1.3rem] font-bold text-blue-400">
                               匿名者:
                             </span>
                           </div>
-                          <span className="text-blue-500 select-none text-right pt-2">
+                          <span className="select-none pt-2 text-right text-blue-500">
                             {timeSCV(c.textDate)}
                           </span>
                         </div>
                       }
                     </div>
-                    <div className="h-full flex justify-cente md:items-center text-[15px] px-4 indent-8 pt-1 text-slate-700 dark:text-slate-200">
+                    <div className="justify-cente flex h-full px-4 pt-1 indent-8 text-[15px] text-slate-700 dark:text-slate-200 md:items-center">
                       <p className="break-all">{c.textData}</p>
                     </div>
-                    <div className="mx-5 my-1 h-[4vh] flex justify-between items-center py-2">
-                      <div className="flex justify-start items-center space-x-3">
-                        <div className="flex justify-center items-center">
+                    <div className="mx-5 my-1 flex h-[4vh] items-center justify-between py-2">
+                      <div className="flex items-center justify-start space-x-3">
+                        <div className="flex items-center justify-center">
                           <HeartIcon
-                            className={`w-7 h-7 text-${
+                            className={`h-7 w-7 text-${
                               c.heart > 0 ? "red-500" : "slate-400"
                             }`}
                           />
@@ -167,11 +167,11 @@ function UserPage() {
                             {c.heart}
                           </span>
                         </div>
-                        <div className="flex justify-center items-center">
+                        <div className="flex items-center justify-center">
                           {c.smil > 0 ? (
-                            <EmojiHappyIcon className="w-7 h-7 text-yellow-500" />
+                            <EmojiHappyIcon className="h-7 w-7 text-yellow-500" />
                           ) : (
-                            <EmojiSadIcon className="w-7 h-7 text-slate-400" />
+                            <EmojiSadIcon className="h-7 w-7 text-slate-400" />
                           )}
                           <span className="text-slate-900 dark:text-slate-100">
                             {c.smil}
@@ -181,7 +181,7 @@ function UserPage() {
                       <div className="relative">
                         <Menu>
                           <Menu.Button className="outline-none">
-                            <DotsHorizontalIcon className="icon-button-style w-7 h-7 text-slate-600 dark:text-slate-300" />
+                            <DotsHorizontalIcon className="icon-button-style h-7 w-7 text-slate-600 dark:text-slate-300" />
                           </Menu.Button>
                           <Transition
                             enter="transition ease-out duration-100"
@@ -191,18 +191,18 @@ function UserPage() {
                             leaveFrom="transform opacity-100 scale-100"
                             leaveTo="transform opacity-0 scale-95"
                           >
-                            <Menu.Items className="absolute w-[9rem] outline-none top-full right-0 space-y-2">
+                            <Menu.Items className="absolute top-full right-0 w-[9rem] space-y-2 outline-none">
                               {networkLoginc.getJWT() !== "" &&
                                 networkLoginc.getJWT() !== null && (
                                   <Menu.Item>
                                     <button
-                                      className="w-full button-style outline-none rounded-full dark:bg-gray-100 dark:text-black bg-gray-800 text-gray-100"
+                                      className="button-style w-full rounded-full bg-gray-800 text-gray-100 outline-none dark:bg-gray-100 dark:text-black"
                                       onClick={() =>
                                         doDelete(() => textDelete(c._id))
                                       }
                                     >
                                       删除帖子
-                                      <TrashIcon className="w-5 h-5 inline-block text-slate-100 dark:text-gray-900 mb-1" />
+                                      <TrashIcon className="mb-1 inline-block h-5 w-5 text-slate-100 dark:text-gray-900" />
                                     </button>
                                   </Menu.Item>
                                 )}

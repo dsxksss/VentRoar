@@ -60,11 +60,11 @@ const Login = () => {
 
   return (
     <>
-      <div className="flex flex-col justify-center items-center h-[94vh] duration-200 dark:bg-[#253446]">
+      <div className="flex h-[94vh] flex-col items-center justify-center duration-200 dark:bg-[#253446]">
         <div
           id="all"
           style={{ animationDuration: "0.7s" }}
-          className="an-4 login-And-Register-PageStyle lg:flex-row border-l-blue-500 space-y-4"
+          className="an-4 login-And-Register-PageStyle space-y-4 border-l-blue-500 lg:flex-row"
         >
           <div id="title">
             <p className="ventroar-size text-blue-500 dark:text-blue-400">
@@ -73,9 +73,9 @@ const Login = () => {
           </div>
 
           <form onSubmit={handleSubmit}>
-            <div className="space-y-6 flex flex-col items-center lg:space-y-8">
+            <div className="flex flex-col items-center space-y-6 lg:space-y-8">
               <div id="uesrText" className="loginPage-input">
-                <DeviceMobileIcon className="w-5 h-5 mr-1 dark:text-slate-50" />
+                <DeviceMobileIcon className="mr-1 h-5 w-5 dark:text-slate-50" />
                 <input
                   className="input-Style"
                   type="text"
@@ -93,7 +93,7 @@ const Login = () => {
                 />
               </div>
               <div id="userPassword" className="loginPage-input">
-                <LockOpenIcon className="w-5 h-5 mr-1 dark:text-slate-50" />
+                <LockOpenIcon className="mr-1 h-5 w-5 dark:text-slate-50" />
                 <input
                   className="input-Style"
                   type="password"
@@ -112,11 +112,11 @@ const Login = () => {
               </div>
               <button
                 type="submit"
-                className="button-style rounded-[4px] text-white bg-blue-500 shadow-sm shadow-gray-400 dark:shadow-gray-800"
+                className="button-style rounded-[4px] bg-blue-500 text-white shadow-sm shadow-gray-400 dark:shadow-gray-800"
               >
                 L O G I N
               </button>
-              <div className="text-sm md:text-[1.25rem] font-bold text-blue-400 space-x-[2rem]">
+              <div className="space-x-[2rem] text-sm font-bold text-blue-400 md:text-[1.25rem]">
                 <Link to={"/FindPswPage"}>忘记密码</Link>
                 <Link to={"/RegisterPage"}>注册账号</Link>
               </div>

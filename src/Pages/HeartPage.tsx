@@ -205,28 +205,28 @@ function PopularPage() {
   return (
     <>
       <div className="heartBg duration-200 ease-in-out dark:bg-[#253446]">
-        <div className="h-[86vh] z-[-1] space-y-[2.3rem] snap-y scroll-smooth overflow-y-scroll">
-          <div className="snap-start duration-200 ease-in-out showText-BoxStyle mx-5 sm:mx-[3rem] md:mx-[7rem] lg:mx-[15rem] mt-5 flex flex-col">
+        <div className="z-[-1] h-[86vh] snap-y space-y-[2.3rem] overflow-y-scroll scroll-smooth">
+          <div className="showText-BoxStyle mx-5 mt-5 flex snap-start flex-col duration-200 ease-in-out sm:mx-[3rem] md:mx-[7rem] lg:mx-[15rem]">
             <div>
               {
-                <div className="mr-6 ml-2 mt-3 flex justify-between items-center">
-                  <div className="flex justify-center items-end">
+                <div className="mr-6 ml-2 mt-3 flex items-center justify-between">
+                  <div className="flex items-end justify-center">
                     <span
-                      className={`w-10 h-10 md:w-13 md:h-13 icon-999`}
+                      className={`md:w-13 md:h-13 icon-999 h-10 w-10`}
                     ></span>
                     <span className="text-[1.3rem] font-bold text-green-500">
                       建设者:
                     </span>
                   </div>
-                  <span className="text-blue-500 select-none text-right pt-2">
+                  <span className="select-none pt-2 text-right text-blue-500">
                     {timeSCV(1642525759)}
                   </span>
                 </div>
               }
             </div>
-            <div className="h-full flex justify-cente md:items-center text-[15px] px-4 pt-1 text-slate-700 dark:text-slate-200 ">
+            <div className="justify-cente flex h-full px-4 pt-1 text-[15px] text-slate-700 dark:text-slate-200 md:items-center ">
               <div className="break-all">
-                <p className="text-center font-bold text-[1.2rem]">
+                <p className="text-center text-[1.2rem] font-bold">
                   Hi👋~!欢迎来到发泄墙
                 </p>
                 <p className="indent-6 font-extrabold">
@@ -234,7 +234,7 @@ function PopularPage() {
                 </p>
                 <br />
                 <p className="font-bold">注意事项❗❗❗</p>
-                <ul className="font-bold list-decimal indent-8 list-inside">
+                <ul className="list-inside list-decimal indent-8 font-bold">
                   <li>
                     不允许发表任何带有政治言论,如辱骂国家、民族、职业工作者等有关的政治性言论,如出现有关内容:发表账号所有数据删除、注册手机号禁止注册并且上交公安部检举!
                   </li>
@@ -247,43 +247,43 @@ function PopularPage() {
                 </ul>
               </div>
             </div>
-            <div className="flex py-3 justify-center sm:justify-end sm:mr-8 items-center">
-              <ArrowCircleDownIcon className="animate-bounce h-10 w-10 text-blue-500 dark:text-green-500" />
+            <div className="flex items-center justify-center py-3 sm:mr-8 sm:justify-end">
+              <ArrowCircleDownIcon className="h-10 w-10 animate-bounce text-blue-500 dark:text-green-500" />
             </div>
           </div>
           {list.map((c: any) => (
             <div key={c._id} className="my-5 snap-start">
               {(c.textData === "" || c.textData === undefined) &&
               (c.textDate === "" || c.textDate === undefined) ? null : (
-                <div className="showText-BoxStyle mx-5 sm:mx-[3rem] md:mx-[7rem] lg:mx-[15rem] mt-5 flex flex-col">
+                <div className="showText-BoxStyle mx-5 mt-5 flex flex-col sm:mx-[3rem] md:mx-[7rem] lg:mx-[15rem]">
                   <div>
                     {
-                      <div className="mr-6 ml-2 mt-3 flex justify-between items-center">
-                        <div className="flex justify-center items-end">
+                      <div className="mr-6 ml-2 mt-3 flex items-center justify-between">
+                        <div className="flex items-end justify-center">
                           <span
-                            className={`w-10 h-10 md:w-13 md:h-13 icon-${c.img}`}
+                            className={`md:w-13 md:h-13 h-10 w-10 icon-${c.img}`}
                           ></span>
                           <span className="text-[1.3rem] font-bold text-blue-400">
                             匿名者:
                           </span>
                         </div>
-                        <span className="text-blue-500 select-none text-right pt-2">
+                        <span className="select-none pt-2 text-right text-blue-500">
                           {timeSCV(c.textDate)}
                         </span>
                       </div>
                     }
                   </div>
-                  <div className="h-full flex justify-cente md:items-center text-[15px] px-4 indent-8 pt-1 text-slate-900 dark:text-slate-200 ">
+                  <div className="justify-cente flex h-full px-4 pt-1 indent-8 text-[15px] text-slate-900 dark:text-slate-200 md:items-center ">
                     <p className="break-all">{c.textData}</p>
                   </div>
-                  <div className="mx-5 my-1 h-[4vh] flex justify-between items-center py-2">
-                    <div className="flex justify-start items-center space-x-3">
+                  <div className="mx-5 my-1 flex h-[4vh] items-center justify-between py-2">
+                    <div className="flex items-center justify-start space-x-3">
                       <button
-                        className="icon-button-style flex justify-center items-center"
+                        className="icon-button-style flex items-center justify-center"
                         onClick={() => addSmilAndHeart(c._id, { heart: true })}
                       >
                         <HeartIcon
-                          className={`w-7 h-7 text-${
+                          className={`h-7 w-7 text-${
                             c.heart > 0 ? "red-500" : "slate-400"
                           }`}
                         />
@@ -293,20 +293,20 @@ function PopularPage() {
                       </button>
                       {c.smil > 0 ? (
                         <button
-                          className="icon-button-style flex justify-center items-center"
+                          className="icon-button-style flex items-center justify-center"
                           onClick={() => addSmilAndHeart(c._id, { smil: true })}
                         >
-                          <EmojiHappyIcon className="w-7 h-7 text-yellow-500" />
+                          <EmojiHappyIcon className="h-7 w-7 text-yellow-500" />
                           <span className="text-slate-900 dark:text-slate-100">
                             {c.smil}
                           </span>
                         </button>
                       ) : (
                         <button
-                          className="icon-button-style flex justify-center items-center"
+                          className="icon-button-style flex items-center justify-center"
                           onClick={() => addSmilAndHeart(c._id, { smil: true })}
                         >
-                          <EmojiSadIcon className="w-7 h-7 text-slate-400" />
+                          <EmojiSadIcon className="h-7 w-7 text-slate-400" />
                           <span className="text-slate-900 dark:text-slate-100">
                             {c.smil}
                           </span>
@@ -316,7 +316,7 @@ function PopularPage() {
                     <div className="relative">
                       <Menu>
                         <Menu.Button className="outline-none">
-                          <DotsHorizontalIcon className="icon-button-style w-7 h-7 text-slate-600 dark:text-slate-300" />
+                          <DotsHorizontalIcon className="icon-button-style h-7 w-7 text-slate-600 dark:text-slate-300" />
                         </Menu.Button>
                         <Transition
                           enter="transition ease-out duration-100"
@@ -326,22 +326,22 @@ function PopularPage() {
                           leaveFrom="transform opacity-100 scale-100"
                           leaveTo="transform opacity-0 scale-95"
                         >
-                          <Menu.Items className="absolute w-[9rem] outline-none top-full right-0 space-y-2">
+                          <Menu.Items className="absolute top-full right-0 w-[9rem] space-y-2 outline-none">
                             {networkLoginc.getJWT() !== "" &&
                               networkLoginc.getJWT() !== null && (
                                 <>
                                   <Menu.Item>
                                     <button
-                                      className="w-full button-style outline-none rounded-full dark:bg-gray-100 dark:text-black bg-gray-800 text-gray-100"
+                                      className="button-style w-full rounded-full bg-gray-800 text-gray-100 outline-none dark:bg-gray-100 dark:text-black"
                                       onClick={() => setTextId(c._id)}
                                     >
                                       编辑帖子
-                                      <PencilAltIcon className="w-5 h-5 inline-block text-slate-100 dark:text-gray-900 mb-1" />
+                                      <PencilAltIcon className="mb-1 inline-block h-5 w-5 text-slate-100 dark:text-gray-900" />
                                     </button>
                                   </Menu.Item>
                                   <Menu.Item>
                                     <button
-                                      className="w-full button-style outline-none rounded-full dark:bg-gray-100 dark:text-black bg-gray-800 text-gray-100"
+                                      className="button-style w-full rounded-full bg-gray-800 text-gray-100 outline-none dark:bg-gray-100 dark:text-black"
                                       // onClick={
                                       //   userData.isAdmin
                                       //     ? () => adminTextDelete(c._id)
@@ -356,7 +356,7 @@ function PopularPage() {
                                       }
                                     >
                                       删除帖子
-                                      <TrashIcon className="w-5 h-5 inline-block text-slate-100 dark:text-gray-900 mb-1" />
+                                      <TrashIcon className="mb-1 inline-block h-5 w-5 text-slate-100 dark:text-gray-900" />
                                     </button>
                                   </Menu.Item>
                                 </>
@@ -375,7 +375,7 @@ function PopularPage() {
         {textId === "" && (
           <form
             onSubmit={headerSubmit}
-            className="fixed right-0 left-0 bottom-0 h-[8vh] flex justify-center items-center duration-200 ease-in-out dark:bg-[#304053]"
+            className="fixed right-0 left-0 bottom-0 flex h-[8vh] items-center justify-center duration-200 ease-in-out dark:bg-[#304053]"
           >
             <input
               type="textarea"
@@ -383,19 +383,19 @@ function PopularPage() {
               minLength={3}
               maxLength={550}
               value={text.textData}
-              className="icon-input-Style duration-200 ease-in-out dark:caret-slate-100 dark:bg-slate-700 pl-2 w-[75vw] mr-5 sm:mr-10 overflow-x-auto dark:overflow-auto"
+              className="icon-input-Style mr-5 w-[75vw] overflow-x-auto pl-2 duration-200 ease-in-out dark:overflow-auto dark:bg-slate-700 dark:caret-slate-100 sm:mr-10"
               required={true}
               onChange={(e: any) => setText({ textData: e.target.value })}
             ></input>
             <button type="submit" className="icon-button-style">
-              <ReplyIcon className="text-black dark:text-slate-100 w-7 h-7" />
+              <ReplyIcon className="h-7 w-7 text-black dark:text-slate-100" />
             </button>
           </form>
         )}
         {textId !== "" && (
           <form
             onSubmit={headerSubmit2}
-            className="fixed right-0 left-0 bottom-0 h-[8vh] flex justify-center items-center duration-200 ease-in-out dark:bg-[#304053]"
+            className="fixed right-0 left-0 bottom-0 flex h-[8vh] items-center justify-center duration-200 ease-in-out dark:bg-[#304053]"
           >
             <input
               type="textarea"
@@ -403,18 +403,18 @@ function PopularPage() {
               minLength={3}
               maxLength={550}
               value={text.textData}
-              className="icon-input-Style duration-200 ease-in-out dark:caret-slate-100 dark:bg-slate-700 pl-2 w-[75vw] mr-2 sm:mr-10 overflow-x-auto dark:overflow-auto"
+              className="icon-input-Style mr-2 w-[75vw] overflow-x-auto pl-2 duration-200 ease-in-out dark:overflow-auto dark:bg-slate-700 dark:caret-slate-100 sm:mr-10"
               required={true}
               onChange={(e: any) => setText({ textData: e.target.value })}
             ></input>
             <button type="submit" className="icon-button-style">
-              <ReplyIcon className="text-black dark:text-slate-100 w-7 h-7" />
+              <ReplyIcon className="h-7 w-7 text-black dark:text-slate-100" />
             </button>
             <button
               onClick={() => setTextId("")}
-              className="ml-1 sm:ml-5 icon-button-style outline-none text-black dark:text-gray-100"
+              className="icon-button-style ml-1 text-black outline-none dark:text-gray-100 sm:ml-5"
             >
-              <LogoutIcon className="w-7 h-7 inline-block dark:text-slate-100 text-gray-900" />
+              <LogoutIcon className="inline-block h-7 w-7 text-gray-900 dark:text-slate-100" />
             </button>
           </form>
         )}

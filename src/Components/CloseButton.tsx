@@ -1,8 +1,8 @@
 import { ArrowNarrowRightIcon } from "@heroicons/react/solid";
 const CloseButton = () => (
-  <div className="flex justify-center text-sm items-center animate-[cloes_1.5s_ease-in-out_infinite]">
+  <div className="flex animate-[cloes_1.5s_ease-in-out_infinite] items-center justify-center text-sm">
     滑动关闭
-    <ArrowNarrowRightIcon className="dark:text-gray-100 text-gray-900 w-7 h-5" />
+    <ArrowNarrowRightIcon className="h-5 w-7 text-gray-900 dark:text-gray-100" />
   </div>
 );
 export default CloseButton;
