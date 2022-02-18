@@ -405,7 +405,7 @@ function PopularPage() {
               minLength={3}
               maxLength={550}
               value={text.textData}
-              className="icon-input-Style mr-2 w-[65vw] overflow-x-auto pl-2 duration-200 ease-in-out dark:overflow-auto dark:bg-slate-700 dark:caret-slate-100 sm:mr-10"
+              className="icon-input-Style mr-4 w-[65vw] overflow-x-auto pl-2 duration-200 ease-in-out dark:overflow-auto dark:bg-slate-700 dark:caret-slate-100 sm:mr-10"
               required={true}
               onChange={(e: any) => setText({ textData: e.target.value })}
             ></input>
