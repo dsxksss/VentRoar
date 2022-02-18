@@ -8,7 +8,7 @@ module.exports = {
       },
       keyframes: {
         tilt: {
-          "0%,50%,100": {
+          "0%,50%,100%": {
             transform: "rotate(0deg)",
           },
           "25%": {
