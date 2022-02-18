@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import {
-  ReplyIcon,
   EmojiHappyIcon,
   EmojiSadIcon,
   HeartIcon,
@@ -9,7 +8,10 @@ import {
   LogoutIcon,
   PencilAltIcon,
 } from "@heroicons/react/solid";
-import { ArrowCircleDownIcon } from "@heroicons/react/outline";
+import {
+  PaperAirplaneIcon,
+  ArrowCircleDownIcon,
+} from "@heroicons/react/outline";
 import { toast, Slide } from "react-toastify";
 import { Menu, Transition } from "@headlessui/react";
 import timeSCV from "../utils/timeSCV";
@@ -388,7 +390,7 @@ function PopularPage() {
               onChange={(e: any) => setText({ textData: e.target.value })}
             ></input>
             <button type="submit" className="icon-button-style">
-              <ReplyIcon className="h-7 w-7 text-black dark:text-slate-100" />
+              <PaperAirplaneIcon className="h-7 w-7 text-black dark:text-slate-100" />
             </button>
           </form>
         )}
@@ -403,16 +405,16 @@ function PopularPage() {
               minLength={3}
               maxLength={550}
               value={text.textData}
-              className="icon-input-Style mr-2 w-[75vw] overflow-x-auto pl-2 duration-200 ease-in-out dark:overflow-auto dark:bg-slate-700 dark:caret-slate-100 sm:mr-10"
+              className="icon-input-Style mr-2 w-[65vw] overflow-x-auto pl-2 duration-200 ease-in-out dark:overflow-auto dark:bg-slate-700 dark:caret-slate-100 sm:mr-10"
               required={true}
               onChange={(e: any) => setText({ textData: e.target.value })}
             ></input>
             <button type="submit" className="icon-button-style">
-              <ReplyIcon className="h-7 w-7 text-black dark:text-slate-100" />
+              <PaperAirplaneIcon className="h-7 w-7 text-black dark:text-slate-100" />
             </button>
             <button
               onClick={() => setTextId("")}
-              className="icon-button-style ml-1 text-black outline-none dark:text-gray-100 sm:ml-5"
+              className="icon-button-style ml-3 text-black outline-none dark:text-gray-100 sm:ml-5"
             >
               <LogoutIcon className="inline-block h-7 w-7 text-gray-900 dark:text-slate-100" />
             </button>
