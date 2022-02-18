@@ -1,5 +1,11 @@
 import Footer from "../Components/Footer";
-
+import {
+  HeartIcon,
+  UserIcon,
+  CodeIcon,
+  ArrowNarrowRightIcon,
+} from "@heroicons/react/outline";
+import { Link } from "react-router-dom";
 const HomePage = () => {
   return (
     <>
@@ -12,20 +18,61 @@ const HomePage = () => {
           <p className="text-center">意志才在道路上设下重重的障碍</p>
           <p className="text-right">———泰戈尔</p>
         </div>
-
-        <div className="flex h-[28vh] w-[90vw] items-center justify-center space-x-3 sm:m-[10vh]">
-          <div className="flex flex-col justify-center space-y-5 text-[1.1rem] font-bold text-gray-100 sm:text-gray-50">
-            <div className="flex h-[8vh] flex-col items-center justify-start rounded-2xl px-3 py-4 text-left font-bold duration-200 ease-in-out">
-              <span>用户信息全加密</span>
-            </div>
-            <div className="flex h-[13vh] flex-col items-center justify-start rounded-2xl px-3 py-4 text-left font-bold">
-              <span>以匿名的方式公布...</span>
+        {/* 发光按钮 s*/}
+        <div className="mt-14 space-y-10">
+          <div className="grid items-start justify-center gap-8">
+            <div className="group relative">
+              <div className="animate-tilt absolute -inset-0.5 transform rounded-lg bg-gradient-to-r from-pink-600 to-purple-600 opacity-75 blur duration-1000 ease-in-out group-hover:opacity-100 group-hover:duration-200"></div>
+              <Link
+                to={"/HeartPage"}
+                className="relative flex w-56 items-center justify-between rounded-lg bg-gray-100 px-4 py-2 font-bold leading-none dark:bg-black sm:w-72 sm:px-7 sm:py-4"
+              >
+                <span className="flex space-x-1 text-zinc-800 dark:text-zinc-50 sm:items-center">
+                  <HeartIcon className="h-6 w-6" />
+                </span>
+                <span className="flex items-center pl-1 text-gray-800 transition duration-500 ease-in-out group-hover:text-zinc-400 dark:text-zinc-50 dark:group-hover:text-zinc-500 sm:pl-2">
+                  进入发泄墙
+                </span>
+                <ArrowNarrowRightIcon className="ml-3 h-6 w-7 animate-[cloes_1.5s_ease-in-out_infinite] text-zinc-900 dark:text-zinc-100" />
+              </Link>
             </div>
           </div>
-          <div className="h-[26vh] transform duration-300 ease-in-out ">
-            <div className="bg-t7 sm:bg-t7 dark:bg-t4 sm:dark:bg-t5 h-[13rem] w-[10rem] rounded-2xl bg-cover object-bottom sm:h-[50vh] sm:w-[26vw] sm:bg-center" />
+          <div className="grid items-start justify-center gap-8">
+            <div className="group relative">
+              <div className="animate-tilt absolute -inset-0.5 transform rounded-lg bg-gradient-to-r from-pink-600 to-purple-600 opacity-75 blur duration-1000 ease-in-out group-hover:opacity-100 group-hover:duration-200"></div>
+              <Link
+                to={"/LoginPage"}
+                className="relative flex w-56 items-center justify-between rounded-lg bg-gray-100 px-4 py-2 font-bold leading-none dark:bg-black sm:w-72 sm:px-7 sm:py-4"
+              >
+                <span className="flex space-x-1 text-zinc-800 dark:text-zinc-50 sm:items-center">
+                  <UserIcon className="h-6 w-6" />
+                </span>
+                <span className="flex items-center pl-1 text-gray-800 transition duration-500 ease-in-out group-hover:text-zinc-400 dark:text-zinc-50 dark:group-hover:text-zinc-500 sm:pl-2">
+                  注册/登录账号
+                </span>
+                <ArrowNarrowRightIcon className="ml-3 h-6 w-7 animate-[cloes_1.5s_ease-in-out_infinite] text-zinc-900 dark:text-zinc-100" />
+              </Link>
+            </div>
+          </div>
+          <div className="grid items-start justify-center gap-8">
+            <div className="group relative">
+              <div className="animate-tilt absolute -inset-0.5 transform rounded-lg bg-gradient-to-r from-pink-600 to-purple-600 opacity-75 blur duration-1000 ease-in-out group-hover:opacity-100 group-hover:duration-200"></div>
+              <Link
+                to={"/AboutUsPage"}
+                className="relative flex w-56 items-center justify-between rounded-lg bg-gray-100 px-4 py-2 font-bold leading-none dark:bg-black sm:w-72 sm:px-7 sm:py-4"
+              >
+                <span className="flex space-x-1 text-zinc-800 dark:text-zinc-50 sm:items-center">
+                  <CodeIcon className="h-6 w-6" />
+                </span>
+                <span className="flex items-center pl-1 text-gray-800 transition duration-500 ease-in-out group-hover:text-zinc-400 dark:text-zinc-50 dark:group-hover:text-zinc-500 sm:pl-2">
+                  了解我们
+                </span>
+                <ArrowNarrowRightIcon className="ml-3 h-6 w-7 animate-[cloes_1.5s_ease-in-out_infinite] text-zinc-900 dark:text-zinc-100" />
+              </Link>
+            </div>
           </div>
         </div>
+        {/* 发光按钮 e*/}
         <div className="fixed bottom-0">
           <Footer />
         </div>

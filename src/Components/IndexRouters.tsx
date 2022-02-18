@@ -13,7 +13,7 @@ import ChangeTextPage from "../Pages/ChangeTextPage";
 
 const IndexRouters = () => {
   return (
-    <div className="h-screen">
+    <div className="min-h-screen">
       <header>
         <nav className="h-[6vh]">
           <Nav />

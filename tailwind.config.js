@@ -3,6 +3,22 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      animation: {
+        tilt: "tilt 4s infinite linear",
+      },
+      keyframes: {
+        tilt: {
+          "0%,50%,100": {
+            transform: "rotate(0deg)",
+          },
+          "25%": {
+            transform: "rotate(4deg)",
+          },
+          "75%": {
+            transform: "rotate(-4deg)",
+          },
+        },
+      },
       backgroundImage: {
         t1: "url('./src/img/t1.png')",
         t2: "url('./src/img/t2.jpg')",
