@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 const HomePage = () => {
   return (
     <>
-      <div className="bg-t10 dark:bg-t3 flex h-[94vh] flex-col items-center bg-cover bg-fixed bg-center dark:bg-top dark:saturate-150 sm:bg-bottom dark:sm:bg-center">
+      <div className="bg-t2 dark:bg-t3 flex h-[94vh] flex-col items-center bg-cover bg-fixed bg-center dark:saturate-150 sm:bg-bottom dark:sm:bg-center">
         <div id="title">
           <p className="font-serif text-[4rem] text-gray-100">VentRoar</p>
         </div>
