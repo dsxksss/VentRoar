@@ -22,7 +22,7 @@ const HomePage = () => {
         <div className="mt-14 space-y-10">
           <div className="grid items-start justify-center gap-8">
             <div className="group relative">
-              <div className="animate-tilt opacity-85 absolute -inset-[0.145rem] transform rounded-lg bg-gradient-to-r from-pink-400 to-purple-400 blur duration-1000 ease-in-out group-hover:opacity-100 group-hover:duration-200 dark:-inset-0.5 dark:from-pink-600 dark:to-purple-600 dark:opacity-75"></div>
+              <div className="animate-tilt opacity-85 absolute -inset-[0.145rem] transform rounded-lg bg-gradient-to-r from-pink-400 to-purple-400 blur duration-1000 ease-in-out group-hover:opacity-100 group-hover:duration-200 dark:-inset-0.5 dark:from-blue-400 dark:to-green-400 dark:opacity-75"></div>
               <Link
                 to={"/HeartPage"}
                 className="relative flex w-56 items-center justify-between rounded-lg bg-gray-100 px-4 py-2 font-bold leading-none dark:bg-black sm:w-72 sm:px-7 sm:py-4"
@@ -39,7 +39,7 @@ const HomePage = () => {
           </div>
           <div className="grid items-start justify-center gap-8">
             <div className="group relative">
-              <div className="animate-tilt opacity-85 absolute -inset-[0.145rem] transform rounded-lg bg-gradient-to-r from-pink-400 to-purple-400 blur duration-1000 ease-in-out group-hover:opacity-100 group-hover:duration-200 dark:-inset-0.5 dark:from-pink-600 dark:to-purple-600 dark:opacity-75"></div>
+              <div className="animate-tilt opacity-85 absolute -inset-[0.145rem] transform rounded-lg bg-gradient-to-r from-pink-400 to-purple-400 blur duration-1000 ease-in-out group-hover:opacity-100 group-hover:duration-200 dark:-inset-0.5 dark:from-blue-400 dark:to-green-400 dark:opacity-75"></div>
               <Link
                 to={"/LoginPage"}
                 className="relative flex w-56 items-center justify-between rounded-lg bg-gray-100 px-4 py-2 font-bold leading-none dark:bg-black sm:w-72 sm:px-7 sm:py-4"
@@ -56,7 +56,7 @@ const HomePage = () => {
           </div>
           <div className="grid items-start justify-center gap-8">
             <div className="group relative">
-              <div className="animate-tilt opacity-85 absolute -inset-[0.145rem] transform rounded-lg bg-gradient-to-r from-pink-400 to-purple-400 blur duration-1000 ease-in-out group-hover:opacity-100 group-hover:duration-200 dark:-inset-0.5 dark:from-pink-600 dark:to-purple-600 dark:opacity-75"></div>
+              <div className="animate-tilt opacity-85 absolute -inset-[0.145rem] transform rounded-lg bg-gradient-to-r from-pink-400 to-purple-400 blur duration-1000 ease-in-out group-hover:opacity-100 group-hover:duration-200 dark:-inset-0.5 dark:from-blue-400 dark:to-green-400 dark:opacity-75"></div>
               <Link
                 to={"/AboutUsPage"}
                 className="relative flex w-56 items-center justify-between rounded-lg bg-gray-100 px-4 py-2 font-bold leading-none dark:bg-black sm:w-72 sm:px-7 sm:py-4"
