@@ -72,7 +72,7 @@ function UserPage() {
           success: "删除成功 👌",
         },
         {
-          autoClose: 1200,
+          autoClose: 800,
           position: "top-center",
         }
       );
