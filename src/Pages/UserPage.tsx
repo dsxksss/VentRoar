@@ -78,7 +78,7 @@ function UserPage() {
       );
       setTimeout(() => {
         getUser();
-      }, 1300);
+      }, 200);
     } catch (error) {
       toast.error(`删除失败,您没有权限这么做!`, {
         autoClose: 1800,

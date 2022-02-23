@@ -129,7 +129,7 @@ function PopularPage() {
           position: "top-center",
         }
       );
-      setTimeout(() => getUser(), 1300);
+      setTimeout(() => getUser(), 200);
     } catch (error) {
       toast.error(`删除失败,您没有权限这么做`, {
         autoClose: 1800,
@@ -153,7 +153,7 @@ function PopularPage() {
           position: "top-center",
         }
       );
-      setTimeout(() => getUser(), 1300);
+      setTimeout(() => getUser(), 200);
     } catch (error) {
       toast.error(`删除失败,您没有权限这么做`, {
         autoClose: 1800,
