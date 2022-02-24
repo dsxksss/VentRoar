@@ -4,17 +4,20 @@ import networkLoginc from "../services/networkLogic";
 import getData from "../services/getData";
 import timeSCV from "../utils/timeSCV";
 import {
+  ArrowNarrowRightIcon,
   DotsHorizontalIcon,
   EmojiHappyIcon,
   EmojiSadIcon,
   HeartIcon,
   TrashIcon,
   UserCircleIcon,
+  ChatIcon,
 } from "@heroicons/react/solid";
 import { ArrowCircleDownIcon, LogoutIcon } from "@heroicons/react/outline";
 import { Menu, Transition } from "@headlessui/react";
 import { Slide, toast } from "react-toastify";
 import ConfirmationButton from "../Components/ConfirmationButton";
+import { Link } from "react-router-dom";
 
 function UserPage() {
   const { toLink } = useContext<any>(ToLinkContext);
@@ -130,91 +133,129 @@ function UserPage() {
             </div>
           </div>
           <div className="h-[70vh] snap-y overflow-y-scroll">
-            {list.map((c: any) => (
-              <div key={c._id} className="my-5">
-                {(c.textData === "" || c.textData === undefined) &&
-                (c.textDate === "" || c.textDate === undefined) ? null : (
-                  <div className="showText-BoxStyle mx-5 mt-5 flex flex-col sm:mx-[3rem] md:mx-[7rem] lg:mx-[15rem]">
-                    <div>
-                      {
-                        <div className="mr-6 ml-2 mt-3 flex items-center justify-between">
-                          <div className="flex items-end justify-center">
-                            <span
-                              className={`md:w-13 md:h-13 h-10 w-10 icon-${c.img}`}
-                            ></span>
-                            <span className="text-[1.3rem] font-bold text-blue-400">
-                              匿名者:
+            {list.length >= 0 &&
+              list.map((c: any) => (
+                <div key={c._id} className="my-5">
+                  {(c.textData === "" || c.textData === undefined) &&
+                  (c.textDate === "" || c.textDate === undefined) ? null : (
+                    <div className="showText-BoxStyle mx-5 mt-5 flex flex-col sm:mx-[3rem] md:mx-[7rem] lg:mx-[15rem]">
+                      <div>
+                        {
+                          <div className="mr-6 ml-2 mt-3 flex items-center justify-between">
+                            <div className="flex items-end justify-center">
+                              <span
+                                className={`md:w-13 md:h-13 h-10 w-10 icon-${c.img}`}
+                              ></span>
+                              <span className="text-[1.3rem] font-bold text-blue-400">
+                                匿名者:
+                              </span>
+                            </div>
+                            <span className="select-none pt-2 text-right text-blue-500">
+                              {timeSCV(c.textDate)}
                             </span>
                           </div>
-                          <span className="select-none pt-2 text-right text-blue-500">
-                            {timeSCV(c.textDate)}
-                          </span>
+                        }
+                      </div>
+                      <div className="justify-cente flex h-full px-4 pt-1 indent-8 text-[15px] text-slate-700 dark:text-slate-200 md:items-center">
+                        <p className="break-all">{c.textData}</p>
+                      </div>
+                      <div className="mx-5 my-1 flex h-[4vh] items-center justify-between py-2">
+                        <div className="flex items-center justify-start space-x-3">
+                          <div className="flex items-center justify-center">
+                            <HeartIcon
+                              className={`h-7 w-7 text-${
+                                c.heart > 0 ? "red-500" : "slate-400"
+                              }`}
+                            />
+                            <span className="text-slate-900 dark:text-slate-100">
+                              {c.heart}
+                            </span>
+                          </div>
+                          <div className="flex items-center justify-center">
+                            {c.smil > 0 ? (
+                              <EmojiHappyIcon className="h-7 w-7 text-yellow-500" />
+                            ) : (
+                              <EmojiSadIcon className="h-7 w-7 text-slate-400" />
+                            )}
+                            <span className="text-slate-900 dark:text-slate-100">
+                              {c.smil}
+                            </span>
+                          </div>
                         </div>
-                      }
-                    </div>
-                    <div className="justify-cente flex h-full px-4 pt-1 indent-8 text-[15px] text-slate-700 dark:text-slate-200 md:items-center">
-                      <p className="break-all">{c.textData}</p>
-                    </div>
-                    <div className="mx-5 my-1 flex h-[4vh] items-center justify-between py-2">
-                      <div className="flex items-center justify-start space-x-3">
-                        <div className="flex items-center justify-center">
-                          <HeartIcon
-                            className={`h-7 w-7 text-${
-                              c.heart > 0 ? "red-500" : "slate-400"
-                            }`}
-                          />
-                          <span className="text-slate-900 dark:text-slate-100">
-                            {c.heart}
-                          </span>
-                        </div>
-                        <div className="flex items-center justify-center">
-                          {c.smil > 0 ? (
-                            <EmojiHappyIcon className="h-7 w-7 text-yellow-500" />
-                          ) : (
-                            <EmojiSadIcon className="h-7 w-7 text-slate-400" />
-                          )}
-                          <span className="text-slate-900 dark:text-slate-100">
-                            {c.smil}
-                          </span>
+                        <div className="relative">
+                          <Menu>
+                            <Menu.Button className="outline-none">
+                              <DotsHorizontalIcon className="icon-button-style h-7 w-7 text-slate-600 dark:text-slate-300" />
+                            </Menu.Button>
+                            <Transition
+                              enter="transition ease-out duration-100"
+                              enterFrom="transform opacity-0 scale-95"
+                              enterTo="transform opacity-100 scale-100"
+                              leave="transition ease-in duration-75"
+                              leaveFrom="transform opacity-100 scale-100"
+                              leaveTo="transform opacity-0 scale-95"
+                            >
+                              <Menu.Items className="absolute top-full right-0 w-[9rem] space-y-2 outline-none">
+                                {networkLoginc.getJWT() !== "" &&
+                                  networkLoginc.getJWT() !== null && (
+                                    <Menu.Item>
+                                      <button
+                                        className="button-style w-full rounded-full bg-gray-800 text-gray-100 outline-none dark:bg-gray-100 dark:text-black"
+                                        onClick={() =>
+                                          doDelete(() => textDelete(c._id))
+                                        }
+                                      >
+                                        删除帖子
+                                        <TrashIcon className="mb-1 inline-block h-5 w-5 text-slate-100 dark:text-gray-900" />
+                                      </button>
+                                    </Menu.Item>
+                                  )}
+                              </Menu.Items>
+                            </Transition>
+                          </Menu>
                         </div>
                       </div>
-                      <div className="relative">
-                        <Menu>
-                          <Menu.Button className="outline-none">
-                            <DotsHorizontalIcon className="icon-button-style h-7 w-7 text-slate-600 dark:text-slate-300" />
-                          </Menu.Button>
-                          <Transition
-                            enter="transition ease-out duration-100"
-                            enterFrom="transform opacity-0 scale-95"
-                            enterTo="transform opacity-100 scale-100"
-                            leave="transition ease-in duration-75"
-                            leaveFrom="transform opacity-100 scale-100"
-                            leaveTo="transform opacity-0 scale-95"
-                          >
-                            <Menu.Items className="absolute top-full right-0 w-[9rem] space-y-2 outline-none">
-                              {networkLoginc.getJWT() !== "" &&
-                                networkLoginc.getJWT() !== null && (
-                                  <Menu.Item>
-                                    <button
-                                      className="button-style w-full rounded-full bg-gray-800 text-gray-100 outline-none dark:bg-gray-100 dark:text-black"
-                                      onClick={() =>
-                                        doDelete(() => textDelete(c._id))
-                                      }
-                                    >
-                                      删除帖子
-                                      <TrashIcon className="mb-1 inline-block h-5 w-5 text-slate-100 dark:text-gray-900" />
-                                    </button>
-                                  </Menu.Item>
-                                )}
-                            </Menu.Items>
-                          </Transition>
-                        </Menu>
-                      </div>
                     </div>
+                  )}
+                </div>
+              ))}
+            {list.length <= 0 && (
+              <div className="showText-BoxStyle mx-5 mt-20 flex snap-start flex-col duration-200 ease-in-out sm:mx-[3rem] md:mx-[7rem] lg:mx-[15rem]">
+                <div>
+                  {
+                    <div className="ml-6 mr-6 mt-3 flex items-center justify-around text-slate-700 dark:text-slate-200 sm:justify-center">
+                      <span className="text-[1.3rem] font-bold">
+                        暂未存在宣泄历史
+                      </span>
+                      <span className="md:w-13 md:h-13 ml-6 h-10 w-10">
+                        <ChatIcon />
+                      </span>
+                    </div>
+                  }
+                </div>
+                <div className="justify-cente flex h-full px-4 pt-1 text-[15px] text-slate-700 dark:text-slate-200 md:items-center ">
+                  <div className="break-all">
+                    <p className="text-[1.3rem] font-bold">
+                      去发泄墙发泄一下试试吧.
+                    </p>
                   </div>
-                )}
+                </div>
+                <div className="my-5 grid items-start justify-center gap-8">
+                  <div className="group relative shadow-sm">
+                    <div className="animate-tilt opacity-85 absolute -inset-[0.145rem] transform rounded-lg bg-gradient-to-r from-yellow-400 to-orange-400 blur duration-1000 ease-in-out group-hover:opacity-100 group-hover:duration-200 dark:-inset-0.5 dark:from-blue-600 dark:to-green-600 dark:opacity-75"></div>
+                    <Link
+                      to={"/HeartPage"}
+                      className="w-45 sm:w-62 relative flex items-center justify-around rounded-lg bg-gray-100 px-4 py-2 font-bold leading-none dark:bg-black sm:px-7 sm:py-4"
+                    >
+                      <span className="flex items-center pl-1 text-gray-800 transition duration-500 ease-in-out group-hover:text-zinc-400 dark:text-zinc-50 dark:group-hover:text-zinc-500 sm:pl-2">
+                        进入发泄墙
+                      </span>
+                      <ArrowNarrowRightIcon className="ml-3 h-6 w-7 animate-[cloes_2s_ease-in-out_infinite] text-zinc-900 dark:text-zinc-100" />
+                    </Link>
+                  </div>
+                </div>
               </div>
-            ))}
+            )}
           </div>
         </div>
       </div>
