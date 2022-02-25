@@ -83,6 +83,7 @@ const FindPswPage = () => {
                   required
                   minLength={11}
                   maxLength={11}
+                  pattern="^1[3456789]\d{9}$"
                   placeholder="要找回的手机号"
                   //SM:实时接收输入框里的值
                   onChange={(e) =>

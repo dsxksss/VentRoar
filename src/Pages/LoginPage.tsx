@@ -83,6 +83,7 @@ const Login = () => {
                   required
                   maxLength={13}
                   placeholder="手机号码"
+                  pattern="^1[3456789]\d{9}$"
                   //SM:实时接收输入框里的值
                   onChange={(e) =>
                     setUserData((data) => ({
