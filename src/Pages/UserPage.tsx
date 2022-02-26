@@ -241,11 +241,10 @@ function UserPage() {
                   </div>
                 </div>
                 <div className="my-5 grid items-start justify-center gap-8">
-                  <div className="group relative shadow-sm">
-                    <div className="animate-tilt opacity-85 absolute -inset-[0.145rem] transform rounded-lg bg-gradient-to-r from-yellow-400 to-orange-400 blur duration-1000 ease-in-out group-hover:opacity-100 group-hover:duration-200 dark:-inset-0.5 dark:from-blue-600 dark:to-green-600 dark:opacity-75"></div>
+                  <div className="group relative">
                     <Link
                       to={"/HeartPage"}
-                      className="w-45 sm:w-62 relative flex items-center justify-around rounded-lg bg-gray-100 px-4 py-2 font-bold leading-none dark:bg-black sm:px-7 sm:py-4"
+                      className="w-45 sm:w-62 relative flex items-center justify-around rounded-lg px-4 py-2 font-bold leading-none sm:px-7 sm:py-4"
                     >
                       <span className="flex items-center pl-1 text-gray-800 transition duration-500 ease-in-out group-hover:text-zinc-400 dark:text-zinc-50 dark:group-hover:text-zinc-500 sm:pl-2">
                         进入发泄墙
