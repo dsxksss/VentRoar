@@ -23,7 +23,9 @@ function HelpPage() {
               className="
         text-center text-[1.2rem] font-bold text-red-500 md:text-[1.5rem] lg:text-[1.8rem]"
             >
-              网站还在火速开发中🚀🚀🚀 版本V:0.7.0
+              🎉🎉 版本V:1.0.0 🎉🎉
+              <br />
+              剩下的工作是创建一个此网页的手机端app,如果有多余时间也会增加、优化此网站功能。
             </p>
             <br />
           </div>
@@ -33,14 +35,14 @@ function HelpPage() {
             <span className="dark:text-slate-50">待开发🚧 :</span>
 
             <b className="text-yellow-400">
-              网站主页样式、Heart页面交互优化、优化页面交互、优化交互动画等、修复部分BUG......
+              Heart页面交互优化、优化页面交互、优化交互动画等、修复部分BUG......
             </b>
           </p>
           <p>
             <span className="dark:text-slate-50">已完成✅ :</span>
 
             <b className="text-green-500">
-              登入页面样式、Heart页面样式、注册页面样式、找回密码页面样式及功能、用户主页样式及后台逻辑、从数据库获取数据、登入和注册的后端逻辑、关于页面样式、前后端数据库链接、自动登录功能、夜间模式、
+              网站主页样式、登入页面样式、Heart页面样式、注册页面样式、找回密码页面样式及功能、用户主页样式及后台逻辑、从数据库获取数据、登入和注册的后端逻辑、关于页面样式、前后端数据库链接、自动登录功能、夜间模式、
             </b>
           </p>
         </div>
