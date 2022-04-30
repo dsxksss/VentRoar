@@ -45,6 +45,9 @@ function HelpPage() {
               网站主页样式、登入页面样式、Heart页面样式、注册页面样式、找回密码页面样式及功能、用户主页样式及后台逻辑、从数据库获取数据、登入和注册的后端逻辑、关于页面样式、前后端数据库链接、自动登录功能、夜间模式、
             </b>
           </p>
+          <div className="mt-12 text-center text-[1.1rem] font-bold text-red-500 sm:text-[1.3rem] lg:text-[1.5rem]">
+            QQ联系我:🎉😊2546650292
+          </div>
         </div>
       </div>
     </>

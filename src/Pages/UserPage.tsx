@@ -99,7 +99,7 @@ function UserPage() {
             🎉欢迎来到你的主页🎉
           </p>
           <div className="flex items-center justify-center space-x-2">
-            <div className="flex h-[7vh] flex-col items-center justify-center overflow-hidden rounded-2xl bg-slate-50 px-3  py-4 text-center font-bold text-gray-900 shadow-md duration-200 ease-in-out dark:bg-[#304053] dark:text-gray-300">
+            <div className="flex h-[7vh] select-none flex-col items-center justify-center overflow-hidden rounded-2xl bg-slate-50 px-3  py-4 text-center font-bold text-gray-900 shadow-md duration-200 ease-in-out dark:bg-[#304053] dark:text-gray-300">
               {userData && (
                 <strong
                   className={`${
